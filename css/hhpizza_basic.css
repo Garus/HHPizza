@@ -1,0 +1,35 @@
+html {
+    height: 100%;
+}
+body {
+    background-image: url('../img/551070_51362643.jpg');
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    background-color:#FFFFFF;
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+}
+/*
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+*/
+.push { /* .push must be the same height as .footer */
+    height: 4em;
+}
+.footer {
+    background-color: #666699;
+    width: 100%;
+    height: 4em;
+}
+
+.wrapper {
+
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -4em; /* has to be the negative of the footer height */
+}
