@@ -29,7 +29,6 @@
 							<h3>${pizza.name}</h3>
 							<p>${pizza.description}</p>
 							<p>${pizza.price}€</p>
-							<p>Available ${pizza.name} units in stock</p>
 							<p>
 								<a href="<spring:url value="/pizzat/pizza?id=${pizza.id}" /> "
 									class="btn btn-primary">Info</a>
