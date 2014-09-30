@@ -5,9 +5,11 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import fi.haagahelia.pizza.domain.Pizza;
 
+@Repository
 public class PizzaDAOImpl implements PizzaDAO {
 
 	private static final Logger logger = Logger.getLogger(PizzaDAOImpl.class);
@@ -20,6 +22,7 @@ public class PizzaDAOImpl implements PizzaDAO {
 	@Override
 	public void addPizza(Pizza p) {
 		Session session = this.sessionFactory.getCurrentSession();
+		logger.info("Trying to save pizza :: " + p);
 		session.persist(p);
 		logger.info("Pizza saved:: " + p);
 

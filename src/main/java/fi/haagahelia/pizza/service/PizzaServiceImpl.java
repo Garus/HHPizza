@@ -31,4 +31,11 @@ public class PizzaServiceImpl implements PizzaService {
 		return pizzaDAO.getPizzaById(id);
 	}
 
+	@Override
+	@Transactional
+	public void addPizza(Pizza p) {
+		pizzaDAO.addPizza(p);
+		
+	}
+
 }

@@ -7,5 +7,8 @@ import fi.haagahelia.pizza.domain.Pizza;
 public interface PizzaService {
 
 	List<Pizza> getAllPizzas();
+
 	Pizza getPizzaById(int id);
+
+	void addPizza(Pizza p);
 }
