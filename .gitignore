@@ -3,4 +3,6 @@
 .settings/
 log/
 target/
-
+.idea/
+*.iml
+*.iws

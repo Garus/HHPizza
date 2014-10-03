@@ -22,7 +22,8 @@
         </div>
         <div class="content">
             <h2>
-                <a href="pizzat/kaikki">Pizzat</a>
+                <a href="pizzat/kaikki">Pizzat</a><br>
+                <a href="pizzat/uusi">Lisää uusi pizza</a>
             </h2>
         </div>
     </div>

@@ -26,7 +26,7 @@ CREATE TABLE `Pizza` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `price` int(11) NOT NULL,
+  `price` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +37,7 @@ CREATE TABLE `Pizza` (
 
 LOCK TABLES `Pizza` WRITE;
 /*!40000 ALTER TABLE `Pizza` DISABLE KEYS */;
-INSERT INTO `Pizza` VALUES (3,'Maistuvia merenherkkuja pizzan muodossa. Jaa vaikka kaverin kanssa!','Frutti Di Mare',2500),(4,'Maailman parhaaksi valittu pizza! Savuporo, kantarelli ja pizzapohjan ruiskuitu vakuuttivat niin Amerikan tuomarit kuin italialaisen suomalaisen ruokaosaamisen epäilijänkin.','Berlusconi',2000),(5,'Pepperonimakkaraa tonnikalan seurana. Tuhti makuelämys ei jätä ketään nälkäiseksi.','Pepperoni',2050),(6,'Special Operan jokaiseen makuun! Perinteinen, loistokkaan makoisa.','Special Opera',2100),(7,'Kulinaristillekin kelpaa aurinkokuivatulla tomaatilla, salamilla, ananaksella ja mozzarellajuustolla aateloitu erikoisuus. Hienostuneet maut täydentävät toisiaan.','Mozarella',2900);
+INSERT INTO `Pizza` VALUES (2,'Maistuvia merenherkkuja pizzan muodossa. Jaa vaikka kaverin kanssa!','Frutti Di Mare',25),(3,'Maailman parhaaksi valittu pizza! Savuporo, kantarelli ja pizzapohjan ruiskuitu vakuuttivat niin Amerikan tuomarit kuin italialaisen suomalaisen ruokaosaamisen epäilijänkin.','Berlusconi',20),(4,'Pepperonimakkaraa tonnikalan seurana. Tuhti makuelämys ei jätä ketään nälkäiseksi.','Pepperoni',20.5),(5,'Special Operan jokaiseen makuun! Perinteinen, loistokkaan makoisa.','Special Opera',21),(6,'Kulinaristillekin kelpaa aurinkokuivatulla tomaatilla, salamilla, ananaksella ja mozzarellajuustolla aateloitu erikoisuus. Hienostuneet maut täydentävät toisiaan.','Mozarella',29);
 /*!40000 ALTER TABLE `Pizza` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-22 14:41:41
+-- Dump completed on 2014-10-03 19:59:59
