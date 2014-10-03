@@ -14,5 +14,5 @@ public interface PizzaDAO {
 
 	public Pizza getPizzaById(int id);
 
-	public void removePizza(int id);
+	public void removePizza(Pizza p);
 }

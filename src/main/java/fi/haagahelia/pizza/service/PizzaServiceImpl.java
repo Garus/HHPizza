@@ -38,4 +38,11 @@ public class PizzaServiceImpl implements PizzaService {
 		
 	}
 
+	@Override
+	@Transactional
+	public void removePizza(Pizza p) {
+		pizzaDAO.removePizza(p);
+		
+	}
+
 }

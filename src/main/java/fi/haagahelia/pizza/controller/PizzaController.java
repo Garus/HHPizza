@@ -58,5 +58,10 @@ public class PizzaController {
 		pizzaService.addPizza(pizza);
 		return "redirect:/pizzat";
 	}
-
+	@RequestMapping("/poista")
+	public String removePizzaById(Model model, @RequestParam("id") Integer id) {
+		Pizza p = pizzaService.getPizzaById(id);
+		pizzaService.removePizza(p);
+		return "redirect:/pizzat";
+	}
 }

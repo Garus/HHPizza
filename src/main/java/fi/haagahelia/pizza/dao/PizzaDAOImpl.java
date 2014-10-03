@@ -55,8 +55,10 @@ public class PizzaDAOImpl implements PizzaDAO {
 	}
 
 	@Override
-	public void removePizza(int id) {
-		// TODO Auto-generated method stub
+	public void removePizza(Pizza p) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.delete(p);
+		logger.info("Pizza :: " + p + " removed.");
 
 	}
 

@@ -11,4 +11,6 @@ public interface PizzaService {
 	Pizza getPizzaById(int id);
 
 	void addPizza(Pizza p);
+
+	void removePizza(Pizza p);
 }
