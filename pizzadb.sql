@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `tilausloki` (
   `kayttaja_id` int(11) NOT NULL,
   `tilat_id` int(11) NOT NULL,
   `aikakoodi` timestamp NOT NULL,
-  KEY `Index 1` (`id`),
+  PRIMARY KEY (`id`),
   KEY `FK__tilaus` (`tilaus_id`),
   KEY `FK__kayttaja` (`kayttaja_id`),
   KEY `FK__tilat` (`tilat_id`),
