@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="fi.haagahelia_pizza_war_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>fi.haagahelia.pizza.domain.Tyyppi</class>
+    <class>fi.haagahelia.pizza.domain.Kayttaja</class>
+    <class>fi.haagahelia.pizza.domain.Tilaaja</class>
+    <class>fi.haagahelia.pizza.domain.Tilausloki</class>
+    <class>fi.haagahelia.pizza.domain.Tilaustuote</class>
+    <class>fi.haagahelia.pizza.domain.Roolit</class>
+    <class>fi.haagahelia.pizza.domain.Tilat</class>
+    <class>fi.haagahelia.pizza.domain.Tilaus</class>
+    <class>fi.haagahelia.pizza.domain.Tuote</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pizzadb?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="pizza"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="azzip"/>
+    </properties>
+  </persistence-unit>
+</persistence>

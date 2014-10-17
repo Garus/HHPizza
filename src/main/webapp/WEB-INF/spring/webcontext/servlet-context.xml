@@ -31,7 +31,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>fi.haagahelia.pizza.domain.Pizza</value>
+				<value>fi.haagahelia.pizza.domain.Tuote</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -43,11 +43,11 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="pizzaDAO" class="fi.haagahelia.pizza.dao.PizzaDAOImpl">
+	<bean id="tuoteDAO" class="fi.haagahelia.pizza.dao.TuoteDAOImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</bean>
-	<bean id="pizzaService" class="fi.haagahelia.pizza.service.PizzaServiceImpl">
-		<property name="pizzaDAO" ref="pizzaDAO"></property>
+	<bean id="tuoteService" class="fi.haagahelia.pizza.service.TuoteServiceImpl">
+		<property name="tuoteDAO" ref="tuoteDAO"></property>
 	</bean>
 
 	<tx:annotation-driven transaction-manager="transactionManager" />

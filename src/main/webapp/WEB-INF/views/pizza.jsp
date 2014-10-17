@@ -24,11 +24,11 @@
         </div>
         <div class="content">
             <div>
-                    Nimi: <span>${pizza.name}</span>
+                    Nimi: <span>${pizza.nimi}</span>
                     <p />
-                    Hinta: <span>${pizza.price}</span>
+                    Hinta: <span>${pizza.hinta}</span>
                     <p />
-                    Kuvaus: <span>${pizza.description}</span>
+                    Kuvaus: <span>${pizza.kuvaus}</span>
                     <p />
             </div>
         </div>
