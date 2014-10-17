@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 16, 2014 10:22:15 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="fi.haagahelia.pizza.pojo.Tuote" table="tuote" catalog="pizzadb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tyyppi" class="fi.haagahelia.pizza.pojo.Tyyppi" fetch="select">
+            <column name="tyyppi_id" />
+        </many-to-one>
+        <property name="kuvaus" type="string">
+            <column name="kuvaus" />
+        </property>
+        <property name="nimi" type="string">
+            <column name="nimi" />
+        </property>
+        <property name="hinta" type="float">
+            <column name="hinta" precision="12" scale="0" not-null="true" />
+        </property>
+        <set name="tilaustuotes" table="tilaustuote" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tuote_id" not-null="true" />
+            </key>
+            <one-to-many class="fi.haagahelia.pizza.pojo.Tilaustuote" />
+        </set>
+    </class>
+</hibernate-mapping>
