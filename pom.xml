@@ -64,6 +64,7 @@
 		</dependency>
 	</dependencies>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jettyVersion>9.2.2.v20140723</jettyVersion>
 		<tomcatVersion>2.1</tomcatVersion>
 		<maven.compiler.source>1.7</maven.compiler.source>

@@ -3,11 +3,13 @@ package fi.haagahelia.pizza.dao;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import fi.haagahelia.pizza.domain.Pizza;
+import fi.haagahelia.pizza.exceptions.PizzaNotFoundException;
 
 @Repository
 public class PizzaDAOImpl implements PizzaDAO {
@@ -48,9 +50,16 @@ public class PizzaDAOImpl implements PizzaDAO {
 
 	@Override
 	public Pizza getPizzaById(int id) {
+		Pizza p = null;
 		Session session = this.sessionFactory.getCurrentSession();
-		Pizza p = (Pizza) session.load(Pizza.class, new Integer(id));
+		logger.info("Trying to loaded pizza with ID " + id);
+		p = (Pizza) session.get(Pizza.class, new Integer(id));
 		logger.info("Pizza loaded successfully, Pizza = " + p);
+
+		if (p == null) {
+			throw new PizzaNotFoundException("No pizza found by id " + id);
+		}
+
 		return p;
 	}
 
