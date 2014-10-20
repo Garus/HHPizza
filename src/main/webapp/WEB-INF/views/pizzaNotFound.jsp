@@ -29,7 +29,7 @@ ss/bootstrap.min.css">
 					<p>
 						<b>Or you could just press this neat little button:</b>
 					</p>
-					<a href="/" class="btn btn-large btn-info"><i
+					<a href="<spring:url value="/" /> " class="btn btn-large btn-info"><i
 						class="icon-home icon-white"></i>Etusivulle</a>
 				</div>
 			</div>
