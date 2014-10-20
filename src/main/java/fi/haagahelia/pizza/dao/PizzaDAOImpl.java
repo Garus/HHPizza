@@ -32,7 +32,10 @@ public class PizzaDAOImpl implements PizzaDAO {
 
 	@Override
 	public void updatePizza(Pizza p) {
-		// TODO Auto-generated method stub
+        Session session = this.sessionFactory.getCurrentSession();
+        logger.info("Trying to update pizza :: " + p);
+        session.update(p);
+        logger.info("Pizza updated:: " + p);
 
 	}
 

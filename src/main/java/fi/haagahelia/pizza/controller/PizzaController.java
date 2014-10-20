@@ -2,15 +2,12 @@ package fi.haagahelia.pizza.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import fi.haagahelia.pizza.domain.Pizza;
@@ -21,6 +18,7 @@ import fi.haagahelia.pizza.service.PizzaService;
 @RequestMapping("/pizzat")
 public class PizzaController {
 
+    private static final Logger logger = Logger.getLogger(PizzaController.class);
 	// @Autowired
 	private PizzaService pizzaService;
 
@@ -43,7 +41,11 @@ public class PizzaController {
 		model.addAttribute("pizzat", pizzaService.getAllPizzas());
 		return "pizzat";
 	}
-
+    @RequestMapping(value="/admin/pizzat")
+    public String getAdminPizzas(Model model) {
+        model.addAttribute("pizzat", pizzaService.getAllPizzas());
+        return "adminpizzat";
+    }
 	@RequestMapping("/pizza")
 	public String getPizzaById(Model model, @RequestParam("id") Integer id) {
 		model.addAttribute("pizza", pizzaService.getPizzaById(id));
@@ -60,20 +62,33 @@ public class PizzaController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/uusi", method = RequestMethod.GET)
-	public String getAddNewPizza(Model model) {
-		Pizza pizza = new Pizza();
-		model.addAttribute("uusipizza", pizza);
+	@RequestMapping(value = "/admin/uusi", method = RequestMethod.GET)
+	public String getAddNewPizza(Model model, @RequestParam(required = false) Integer id) {
+        Pizza pizza;
+
+        if (id == null) {
+            pizza = new Pizza();
+        } else {
+            pizza = pizzaService.getPizzaById(id);
+        }
+
+        model.addAttribute("uusipizza", pizza);
 		return "uusipizza";
 	}
 
-	@RequestMapping(value = "/uusi", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/uusi", method = RequestMethod.POST)
 	public String processAddNewProduct(@ModelAttribute("uusipizza") Pizza pizza) {
-		pizzaService.addPizza(pizza);
+
+        if (pizza.getId() == 0) {
+            logger.info("PIZZA: " + pizza.toString());
+            pizzaService.addPizza(pizza);
+        } else {
+            pizzaService.updatePizza(pizza);
+        }
 		return "redirect:/pizzat";
 	}
 
-	@RequestMapping("/poista")
+	@RequestMapping("/admin/poista")
 	public String removePizzaById(Model model, @RequestParam("id") Integer id) {
 		Pizza p = pizzaService.getPizzaById(id);
 		pizzaService.removePizza(p);

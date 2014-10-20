@@ -6,11 +6,13 @@ import fi.haagahelia.pizza.domain.Pizza;
 
 public interface PizzaService {
 
-	List<Pizza> getAllPizzas();
+    List<Pizza> getAllPizzas();
 
-	Pizza getPizzaById(int id);
+    Pizza getPizzaById(int id);
 
-	void addPizza(Pizza p);
+    void addPizza(Pizza p);
 
-	void removePizza(Pizza p);
+    void removePizza(Pizza p);
+
+    void updatePizza(Pizza p);
 }
