@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Pizza")
-public class Pizza {
+@Table(name = "tuotteet")
+public class Tuote {
 
 	@Id
 	@Column(name = "id")
@@ -35,17 +35,17 @@ public class Pizza {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pizza other = (Pizza) obj;
+		Tuote other = (Tuote) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
 
-	public Pizza() {
+	public Tuote() {
 		super();
 	}
 
-	public Pizza(int id, String name, int price) {
+	public Tuote(int id, String name, int price) {
 		this.id = id;
 		this.name = name;
 		this.price = price;

@@ -25,16 +25,15 @@
 		</div>
 		<div class="content">
 			<div class="row">
-				<c:forEach items="${pizzat}" var="pizza">
+				<c:forEach items="${tuotteet}" var="tuote">
 					<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 						<div class="thumbnail">
 							<div class="caption">
-								<h3>${pizza.name}</h3>
-								<p>${pizza.description}</p>
-<%-- 								<p>${pizza.price}€</p> --%>
-								<p><fmt:formatNumber value="${pizza.price}" type="currency"/></p>
+								<h3>${tuote.name}</h3>
+								<p>${tuote.description}</p>
+								<p><fmt:formatNumber value="${tuote.price}" type="currency"/></p>
 								<p>
-									<a href="<spring:url value="/pizzat/pizza?id=${pizza.id}" /> "
+									<a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> "
 										class="btn btn-primary">Info</a>
 								</p>
 							</div>

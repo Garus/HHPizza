@@ -13,7 +13,7 @@
           href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link href="../css/hhpizza_basic.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Uusi pizza</title>
+    <title>Uusi tuote</title>
 </head>
 <body>
 <div class="header">
@@ -25,13 +25,14 @@
     </div>
 </div>
 <div class="content">
+
     <section class="container"><form:form
-            modelAttribute="uusipizza" class="form horizontal">
+            modelAttribute="uusituote" class="form horizontal">
         <fieldset>
-            <legend>Uusi pizza</legend>
+            <legend>Uusi tuote</legend>
             <div class="form-group">
                 <label class="control-label col-lg-2" for="name"><spring:message
-                        code="uusipizza.form.name.label"/></label>
+                        code="uusituote.form.name.label"/></label>
 
                 <div class="col-lg-10">
                     <form:input id="name" path="name" type="text"/>
@@ -39,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-lg-2" for="name"><spring:message
-                        code="uusipizza.form.price.label"/></label>
+                        code="uusituote.form.price.label"/></label>
 
                 <div class="col-lg-10">
                     <form:input id="price" path="price" type="text"/>
@@ -47,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-lg-2" for="description"><spring:message
-                        code="uusipizza.form.description.label"/></label>
+                        code="uusituote.form.description.label"/></label>
 
                 <div class="col-lg-10">
                     <form:textarea id="description" path="description" rows="2"/>
@@ -56,7 +57,7 @@
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
                     <input type="submit" id="btnAdd" class="btn btn primary"
-                           value="${!empty person.id ? 'Lisää pizza' : 'Tallenna'}">
+                           value="${!empty tuote.id ? 'Lisää tuote' : 'Tallenna'}">
                 </div>
             </div>
         </fieldset>

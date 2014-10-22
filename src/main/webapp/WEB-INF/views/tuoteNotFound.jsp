@@ -17,7 +17,7 @@ ss/bootstrap.min.css">
 			<div class="span12">
 				<div class="hero-unit center">
 					<h1>
-						${invalidPizzaId} <small><font
+						${invalidTuoteId} <small><font
 							face="Tahoma" color="red">${exception}</font></small>
 					</h1>
 					<br />

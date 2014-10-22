@@ -24,16 +24,19 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="row">
-				<c:forEach items="${pizzat}" var="pizza">
+            <div class="jumbotron">
+                <a href="<spring:url value="/tuotteet/admin/uusi"/>">Lisää uusi tuote</a>
+            </div>
+            <div class="row">
+				<c:forEach items="${tuotteet}" var="tuote">
 					<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 						<div class="thumbnail">
 							<div class="caption">
-								<p>${pizza.name} &nbsp;<span><fmt:formatNumber value="${pizza.price}" type="currency"/></span></p>
+								<p><a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" />">${tuote.name}</a> &nbsp;<span><fmt:formatNumber value="${tuote.price}" type="currency"/></span></p>
 								<p>
-									<a href="<spring:url value="/pizzat/admin/poista?id=${pizza.id}" /> "
+									<a href="<spring:url value="/tuotteet/admin/poista?id=${tuote.id}" /> "
 										class="btn btn-primary">Poista</a>
-                                    <a href="<spring:url value="/pizzat/admin/uusi?id=${pizza.id}" /> "
+                                    <a href="<spring:url value="/tuotteet/admin/uusi?id=${tuote.id}" /> "
                                        class="btn btn-primary">Muokkaa</a>
 								</p>
 							</div>

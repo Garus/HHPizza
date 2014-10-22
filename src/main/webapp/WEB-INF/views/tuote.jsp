@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<link href="../css/hhpizza_basic.css" rel="stylesheet">
+<link href="../css/hhtuote_basic.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pizzeria Il Grasso</title>
 </head>
@@ -24,11 +24,11 @@
         </div>
         <div class="content">
             <div>
-                    Nimi: <span>${pizza.name}</span>
+                    Nimi: <span>${tuote.name}</span>
                     <p />
-                    Hinta: <span>${pizza.price}</span>
+                    Hinta: <span>${tuote.price}</span>
                     <p />
-                    Kuvaus: <span>${pizza.description}</span>
+                    Kuvaus: <span>${tuote.description}</span>
                     <p />
             </div>
         </div>
