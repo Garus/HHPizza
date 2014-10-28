@@ -34,7 +34,7 @@
                         code="uusipizza.form.name.label"/></label>
 
                 <div class="col-lg-10">
-                    <form:input id="name" path="name" type="text"/>
+                    <form:input id="nimi" path="nimi" type="text"/>
                 </div>
             </div>
             <div class="form-group">
@@ -42,7 +42,7 @@
                         code="uusipizza.form.price.label"/></label>
 
                 <div class="col-lg-10">
-                    <form:input id="price" path="price" type="text"/>
+                    <form:input id="hinta" path="hinta" type="text"/>
                 </div>
             </div>
             <div class="form-group">
@@ -50,7 +50,7 @@
                         code="uusipizza.form.description.label"/></label>
 
                 <div class="col-lg-10">
-                    <form:textarea id="description" path="description" rows="2"/>
+                    <form:textarea id="kuvaus" path="kuvaus" rows="2"/>
                 </div>
             </div>
             <div class="form-group">

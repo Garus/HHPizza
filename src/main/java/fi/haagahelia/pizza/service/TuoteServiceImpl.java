@@ -32,7 +32,7 @@ public class TuoteServiceImpl implements TuoteService {
     @Override
     @Transactional
     public void addTuote(Tuote p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tuoteDAO.addTuote(p);
     }
 
     @Override

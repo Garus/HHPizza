@@ -31,6 +31,7 @@ public class PizzaDAOImpl implements PizzaDAO {
 	@Override
 	public void updatePizza(Pizza p) {
 		// TODO Auto-generated method stub
+		logger.info("Pizza updated:: " + p);
 
 	}
 

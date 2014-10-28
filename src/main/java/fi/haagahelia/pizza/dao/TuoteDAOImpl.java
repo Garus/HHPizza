@@ -14,20 +14,22 @@ public class TuoteDAOImpl implements TuoteDAO {
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sf) {
-            this.sessionFactory = sf;
-    }    
-    
-    
+        this.sessionFactory = sf;
+    }
+
     @Override
     public void addTuote(Tuote p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = this.sessionFactory.getCurrentSession();
+        logger.info("Trying to save tuote :: " + p);
+        session.persist(p);
+        logger.info("Tuote saved:: " + p);
     }
 
     @Override
     public void updateTuote(Tuote p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Tuote> getAllTuote(int type) {
@@ -35,7 +37,7 @@ public class TuoteDAOImpl implements TuoteDAO {
         List<Tuote> tuoteList = session.createQuery("FROM Tuote t WHERE t.tyyppiId = " + type).list();
 
         for (Tuote p : tuoteList) {
-                logger.info("Tuote list:: " + p);
+            logger.info("Tuote list:: " + p);
         }
         return tuoteList;
     }
@@ -52,5 +54,5 @@ public class TuoteDAOImpl implements TuoteDAO {
     public void removeTuote(Tuote p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
