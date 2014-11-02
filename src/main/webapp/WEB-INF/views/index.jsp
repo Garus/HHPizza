@@ -23,6 +23,7 @@
         <div class="content">
             <h2>
                 <a href="tuotteet/kaikki">Tuotteet</a><br>
+                <a href="ostoskori">Ostoskori</a><br>
                 <a href="tuotteet/admin">Admin</a>
             </h2>
         </div>

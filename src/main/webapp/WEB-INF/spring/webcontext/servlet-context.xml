@@ -32,7 +32,16 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
+                <value>fi.haagahelia.pizza.domain.Kayttaja</value>
+                <value>fi.haagahelia.pizza.domain.Ostoskori</value>
+                <value>fi.haagahelia.pizza.domain.Roolit</value>
+                <value>fi.haagahelia.pizza.domain.Tilaaja</value>
+                <value>fi.haagahelia.pizza.domain.Tilat</value>
+                <value>fi.haagahelia.pizza.domain.Tilaus</value>
+                <value>fi.haagahelia.pizza.domain.Tilausloki</value>
+                <value>fi.haagahelia.pizza.domain.Tilaustuote</value>
                 <value>fi.haagahelia.pizza.domain.Tuote</value>
+                <!--<value>fi.haagahelia.pizza.domain.Tyyppi</value>-->
             </list>
         </property>
         <property name="hibernateProperties">
@@ -40,7 +49,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
             </props>
         </property>
     </bean>

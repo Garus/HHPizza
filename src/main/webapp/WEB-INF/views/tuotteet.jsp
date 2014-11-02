@@ -32,10 +32,12 @@
 								<h3>${tuote.name}</h3>
 								<p>${tuote.description}</p>
 								<p><fmt:formatNumber value="${tuote.price}" type="currency"/></p>
-								<p>
-									<a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> "
-										class="btn btn-primary">Info</a>
-								</p>
+                                <p>
+                                    <a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> "
+                                       class="btn btn-info">Info</a> &nbsp; <a
+                                        href="<spring:url value="/ostoskori/add?id=${tuote.id}" /> "
+                                        class="btn btn-primary">Lisää koriin</a>
+                                </p>
 							</div>
 						</div>
 					</div>
