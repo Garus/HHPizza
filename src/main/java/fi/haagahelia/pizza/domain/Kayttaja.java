@@ -43,14 +43,14 @@ public class Kayttaja implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "nimi")
+    
     private String nimi;
-    @JoinColumn(name = "rooli_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JoinColumn(name = "rooli_id", referencedColumnName = "id")
     private Roolit rooliId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "kayttajaId")
     private List<Tilausloki> tilauslokiList;
-
+ 
     public Kayttaja() {
     }
 
@@ -85,15 +85,6 @@ public class Kayttaja implements Serializable {
 
     public void setRooliId(Roolit rooliId) {
         this.rooliId = rooliId;
-    }
-
-    @XmlTransient
-    public List<Tilausloki> getTilauslokiList() {
-        return tilauslokiList;
-    }
-
-    public void setTilauslokiList(List<Tilausloki> tilauslokiList) {
-        this.tilauslokiList = tilauslokiList;
     }
 
     @Override
