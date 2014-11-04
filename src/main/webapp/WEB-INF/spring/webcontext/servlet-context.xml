@@ -59,12 +59,6 @@
     <bean id="tuoteService" class="fi.haagahelia.pizza.service.TuoteServiceImpl">
         <property name="tuoteDAO" ref="tuoteDAO"></property>
     </bean>
-    <bean id="kayttajaDAO" class="fi.haagahelia.pizza.dao.KayttajaDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="kayttajaService" class="fi.haagahelia.pizza.service.KayttajaServiceImpl">
-        <property name="kayttajaDAO" ref="kayttajaDAO"></property>
-    </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager"
