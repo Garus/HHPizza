@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.service;
 import java.util.List;
 
 import fi.haagahelia.pizza.domain.Kayttaja;
+import fi.haagahelia.pizza.domain.Roolit;
 
 public interface KayttajaService {
 
@@ -15,4 +16,6 @@ public interface KayttajaService {
     void poistaKayttaja(Kayttaja p);
 
     void päivitäKayttaja(Kayttaja p);
+
+    public List<Roolit> haeKayttajaRoolit();
 }

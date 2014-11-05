@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.dao;
 import java.util.List;
 
 import fi.haagahelia.pizza.domain.Kayttaja;
+import fi.haagahelia.pizza.domain.Roolit;
 
 public interface KayttajaDAO {
 
@@ -15,5 +16,7 @@ public interface KayttajaDAO {
 	public Kayttaja haeKayttajaTunnuksella(int id);
 
 	public void poistaKayttaja(Kayttaja p);
+
+    public List<Roolit> haeKayttajaRoolit();
 }
     

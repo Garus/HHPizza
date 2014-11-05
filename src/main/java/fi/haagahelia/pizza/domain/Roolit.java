@@ -43,8 +43,7 @@ public class Roolit implements Serializable {
     @Basic(optional = false)
     @Column(name = "rooli")
     private String rooli;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rooliId")
-    private List<Kayttaja> kayttajaList;
+
 
     public Roolit() {
     }
@@ -72,15 +71,6 @@ public class Roolit implements Serializable {
 
     public void setRooli(String rooli) {
         this.rooli = rooli;
-    }
-
-    @XmlTransient
-    public List<Kayttaja> getKayttajaList() {
-        return kayttajaList;
-    }
-
-    public void setKayttajaList(List<Kayttaja> kayttajaList) {
-        this.kayttajaList = kayttajaList;
     }
 
     @Override

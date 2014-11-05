@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.service;
 import java.util.List;
 
 import fi.haagahelia.pizza.domain.Kayttaja;
+import fi.haagahelia.pizza.domain.Roolit;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,5 +52,11 @@ public class KayttajaServiceImpl implements KayttajaService {
 		kayttajaDAO.poistaKayttaja(p);
 		
 	}
+
+    @Override
+    @Transactional
+    public List<Roolit> haeKayttajaRoolit() {
+        return kayttajaDAO.haeKayttajaRoolit();
+    }
 
 }

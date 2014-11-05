@@ -5,6 +5,7 @@ import java.util.List;
 
 import fi.haagahelia.pizza.domain.Event;
 import fi.haagahelia.pizza.domain.Kayttaja;
+import fi.haagahelia.pizza.domain.Roolit;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -64,4 +65,8 @@ public class KayttajaDAOImpl implements KayttajaDAO {
 
     }
 
+    public List<Roolit> haeKayttajaRoolit() {
+        Session session = this.sessionFactory.getCurrentSession();
+        return session.createQuery("from Roolit ").list();
+    }
 }

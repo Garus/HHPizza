@@ -29,21 +29,16 @@ public class KayttajaController {
 
     @RequestMapping
     public String list(Model model) {
-
-        model.addAttribute("tuotteet", kayttajaService.haeKaikkiKayttajat());
-
-        return "tuotteet";
+        model.addAttribute("kayttajat", kayttajaService.haeKaikkiKayttajat());
+        model.addAttribute("roolit", kayttajaService.haeKayttajaRoolit());
+        return "kayttajat";
     }
 
     @RequestMapping("/kaikki")
     public String haeKaikkiKayttajat(Model model) {
-        model.addAttribute("kayttajat", kayttajaService.haeKaikkiKayttajat());
-        return "kayttajat";
-    }
 
-    @RequestMapping(value = "/admin")
-    public String haeKaikkiAdminKayttajat(Model model) {
         model.addAttribute("kayttajat", kayttajaService.haeKaikkiKayttajat());
+        model.addAttribute("roolit", kayttajaService.haeKayttajaRoolit());
         return "kayttajat";
     }
 
@@ -64,6 +59,7 @@ public class KayttajaController {
         }
 
         model.addAttribute("uusikayttaja", kayttaja);
+        model.addAttribute("roolit", kayttajaService.haeKayttajaRoolit());
         return "uusikayttaja";
     }
 
@@ -77,13 +73,13 @@ public class KayttajaController {
             kayttajaService.päivitäKayttaja(kayttaja);
         }
   
-        return "redirect:/kayttajat";
+        return "redirect:/kayttajat/kaikki";
     }
 
     @RequestMapping("/admin/poista")
     public String poistaKayttaja(Model model, @RequestParam("id") Integer id) {
         Kayttaja p = kayttajaService.haeKayttajaTunnuksella(id);
         kayttajaService.poistaKayttaja(p);
-        return "redirect:/tuotteet/admin";
+        return "redirect:/kayttajat/admin";
     }
 }
