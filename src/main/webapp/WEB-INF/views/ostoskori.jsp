@@ -51,7 +51,13 @@
                                 </td>
                                 <td>${tuote.description}</td>
                                 <td><fmt:formatNumber value="${tuote.price}" type="currency"/></td>
-                                <td>
+                                <td valign="middle" align="right">
+                                    <a href="<spring:url value="/ostoskori/add?id=${tuote.id}" /> "
+                                       class="btn btn-warning">+</a>
+                                    <a href="<spring:url value="/ostoskori/rem?id=${tuote.id}" /> "
+                                       class="btn btn-warning">-</a>
+                                <%--</td>--%>
+                                <%--<td valign="middle" align="right">--%>
                                     <a href="<spring:url value="/ostoskori/rem?id=${tuote.id}" /> "
                                        class="btn btn-warning">Poista</a>
                                 </td>
@@ -59,11 +65,11 @@
                         </c:forEach>
                         <tr>
                             <td colspan="2"></td>
-                            <td colspan="2" align="right">Tuotteita yhteensä: ${ostoskori.count} <br/> Summa:
+                            <td colspan="3" align="right">Tuotteita yhteensä: ${ostoskori.count} <br/> Summa:
                                 <fmt:formatNumber
-                                        value="${ostoskori.sum}" type="currency"/></td>
-                            <td><a href="<spring:url value="/tilaa" /> "
-                                   class="btn btn-inverse">Tilaa</a></td>
+                                        value="${ostoskori.sum}" type="currency"/><br>
+                                <a href="<spring:url value="/tilaa" /> "
+                                   class="btn btn-inverse">Tilaa tuotteet</a></td>
                         </tr>
                         </tbody>
                     </table>
