@@ -12,7 +12,7 @@
     <link href="<spring:url value="/css/hhpizza_basic.css" />"
           rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pizzeria Il Grasso - ${tuote.name}</title>
+    <title>Pizzeria Il Grasso - ${tuote.nimi}</title>
 </head>
 <body>
 <div class="wrapper">
@@ -28,11 +28,11 @@
         <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 
             <div class="caption">
-                <h3>${tuote.name}</h3>
+                <h3>${tuote.nimi}</h3>
 
-                <p>${tuote.description}</p>
+                <p>${tuote.kuvaus}</p>
 
-                <p><fmt:formatNumber value="${tuote.price}" type="currency"/></p>
+                <p><fmt:formatNumber value="${tuote.hinta}" type="currency"/></p>
 
                 <p><a href="<spring:url value="/ostoskori/add?id=${tuote.id}" /> "
                       class="btn btn-primary">Lisää koriin</a>

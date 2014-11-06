@@ -29,9 +29,9 @@
 					<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 						<div class="thumbnail">
 							<div class="caption">
-								<h3>${tuote.name}</h3>
-								<p>${tuote.description}</p>
-								<p><fmt:formatNumber value="${tuote.price}" type="currency"/></p>
+								<h3>${tuote.nimi}</h3>
+								<p>${tuote.kuvaus}</p>
+								<p><fmt:formatNumber value="${tuote.hinta}" type="currency"/></p>
                                 <p>
                                     <a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> "
                                        class="btn btn-info">Info</a> &nbsp; <a

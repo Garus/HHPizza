@@ -15,9 +15,9 @@ public class Tuote {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	private double price;
-	private String description;
+	private String nimi;
+	private double hinta;
+	private String kuvaus;
 
 	@Override
 	public int hashCode() {
@@ -45,34 +45,34 @@ public class Tuote {
 		super();
 	}
 
-	public Tuote(int id, String name, double price) {
+	public Tuote(int id, String nimi, double hinta) {
 		this.id = id;
-		this.name = name;
-		this.price = price;
+		this.nimi = nimi;
+		this.hinta = hinta;
 	}
 
-	public String getName() {
-		return name;
+	public String getNimi() {
+		return nimi;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNimi(String name) {
+		this.nimi = name;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getHinta() {
+		return hinta;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setHinta(double price) {
+		this.hinta = price;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getKuvaus() {
+		return kuvaus;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setKuvaus(String description) {
+		this.kuvaus = description;
 	}
 
 	public int getId() {
@@ -84,6 +84,6 @@ public class Tuote {
 	}
 
 	public String toString() {
-		return this.name + " (" + id + ")";
+		return this.nimi + " (" + id + ")";
 	}
 }

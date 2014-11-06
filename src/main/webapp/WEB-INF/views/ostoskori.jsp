@@ -46,11 +46,11 @@
                         <tbody>
                         <c:forEach items="${ostoskori.tuotteet}" var="tuote" varStatus="loop">
                             <tr>
-                                <td>${loop.index+1}</td>
-                                <td><a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> ">${tuote.name}</a>
+                                <td>${loop.index+1}.</td>
+                                <td><a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> ">${tuote.nimi}</a>
                                 </td>
-                                <td>${tuote.description}</td>
-                                <td><fmt:formatNumber value="${tuote.price}" type="currency"/></td>
+                                <td>${tuote.kuvaus}</td>
+                                <td><fmt:formatNumber value="${tuote.hinta}" type="currency"/></td>
                                 <td valign="middle" align="right">
                                     <a href="<spring:url value="/ostoskori/add?id=${tuote.id}" /> "
                                        class="btn btn-warning">+</a>

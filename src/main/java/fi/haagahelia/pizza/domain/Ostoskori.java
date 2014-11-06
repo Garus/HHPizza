@@ -36,7 +36,7 @@ public class Ostoskori {
         double sum = 0;
 
         for (Tuote tuote: tuotteet) {
-            sum += tuote.getPrice();
+            sum += tuote.getHinta();
         }
 
         return sum;

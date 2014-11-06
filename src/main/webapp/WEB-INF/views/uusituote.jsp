@@ -35,7 +35,7 @@
                         code="uusituote.form.name.label"/></label>
 
                 <div class="col-lg-10">
-                    <form:input id="name" path="name" type="text"/>
+                    <form:input id="name" path="nimi" type="text"/>
                 </div>
             </div>
             <div class="form-group">
@@ -43,7 +43,7 @@
                         code="uusituote.form.price.label"/></label>
 
                 <div class="col-lg-10">
-                    <form:input id="price" path="price" type="text"/>
+                    <form:input id="price" path="hinta" type="text"/>
                 </div>
             </div>
             <div class="form-group">
@@ -51,7 +51,7 @@
                         code="uusituote.form.description.label"/></label>
 
                 <div class="col-lg-10">
-                    <form:textarea id="description" path="description" rows="2"/>
+                    <form:textarea id="description" path="kuvaus" rows="2"/>
                 </div>
             </div>
             <div class="form-group">
