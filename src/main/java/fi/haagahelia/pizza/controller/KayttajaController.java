@@ -6,12 +6,17 @@ import fi.haagahelia.pizza.domain.Kayttaja;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import fi.haagahelia.pizza.service.KayttajaService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/kayttajat")
@@ -70,6 +75,7 @@ public class KayttajaController {
             logger.info("Tallenetaan uusi käyttäjä"); 
             kayttajaService.lisääKayttaja(kayttaja);
         } else {
+            logger.info("Muokataan olemassaolevaa käyttäjää: " + kayttaja);
             kayttajaService.päivitäKayttaja(kayttaja);
         }
   
@@ -81,5 +87,12 @@ public class KayttajaController {
         Kayttaja p = kayttajaService.haeKayttajaTunnuksella(id);
         kayttajaService.poistaKayttaja(p);
         return "redirect:/kayttajat/admin";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        sdf.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 }

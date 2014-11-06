@@ -25,7 +25,7 @@
                 <a href="tuotteet/kaikki">Tuotteet</a><br>
                 <a href="ostoskori">Ostoskori</a><br>
                 <a href="tuotteet/admin">tuotteet/Admin</a><br>
-                <a href="kayttajat/admin">käyttäjät/Admin</a>
+                <a href="kayttajat/">käyttäjät</a>
             </h2>
         </div>
     </div>

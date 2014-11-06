@@ -3,7 +3,6 @@ package fi.haagahelia.pizza.dao;
 import java.util.Date;
 import java.util.List;
 
-import fi.haagahelia.pizza.domain.Event;
 import fi.haagahelia.pizza.domain.Tuote;
 import fi.haagahelia.pizza.exceptions.TuoteNotFoundException;
 import org.apache.log4j.Logger;

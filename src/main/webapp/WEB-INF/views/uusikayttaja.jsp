@@ -28,42 +28,53 @@
 
     <section class="container"><form:form
             modelAttribute="uusikayttaja" class="form horizontal">
+        <form:hidden path="luotuPvm" id="luotuPvm"/>
         <fieldset>
             <legend>Uusi käyttajä</legend>
             <%--<div class="form-group">--%>
-                <%--<label class="control-label col-lg-2" for="id"><spring:message--%>
+                <%--<label class="control-label " for="id"><spring:message--%>
                         <%--code="uusikayttaja.form.id.label"/></label>--%>
 
-                <%--<div class="col-lg-10">--%>
-                    <%--<label class="control-label col-lg-2" id="id">${uusikayttaja.id}</label>--%>
+                <%--<div >--%>
+                    <%--<label class="control-label " id="id">${uusikayttaja.id}</label>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="form-group">--%>
+                <%--<label class="control-label " for="luotuPvm"><spring:message--%>
+                        <%--code="uusikayttaja.form.luotu.label"/></label>--%>
+
+                <%--<div >--%>
+                    <%--<div >--%>
+                        <%--<form:input id="luotuPvm" path="luotuPvm" type="text"/>--%>
+                    <%--</div>--%>
                 <%--</div>--%>
             <%--</div>--%>
             <div class="form-group">
-                <label class="control-label col-lg-2" for="kayttajaTunnus"><spring:message
+                <label class="control-label " for="kayttajaTunnus"><spring:message
                         code="uusikayttaja.form.tunnus.label"/></label>
 
-                <div class="col-lg-10">
-                    <div class="col-lg-10">
+                <div >
+                    <div >
                         <form:input id="kayttajaTunnus" path="kayttajaTunnus" type="text"/>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2" for="nimi"><spring:message
+                <label class="control-label " for="nimi"><spring:message
                         code="uusikayttaja.form.name.label"/></label>
 
-                <div class="col-lg-10">
+                <div >
                     <form:input id="nimi" path="nimi" type="text"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-2" for="rooli"><spring:message
+                <label class="control-label " for="rooli"><spring:message
                         code="uusikayttaja.form.role.label"/></label>
 
                 <form:select path="rooli.id" id="rooli" items="${roolit}" itemValue="id" itemLabel="rooli"/>
             </div>
             <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-10">
+                <div>
                     <input type="submit" id="btnAdd" class="btn btn primary"
                            value="${!empty kayttaja.id ? 'Lisää kayttaja' : 'Tallenna'}">
                 </div>

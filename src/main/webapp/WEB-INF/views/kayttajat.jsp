@@ -47,7 +47,7 @@
                         <tbody>
                         <c:forEach items="${kayttajat}" var="kayttaja" varStatus="loop">
                             <tr>
-                                <td>${loop.index+1}</td>
+                                <td>${loop.index+1}.</td>
                                 <td>${kayttaja.kayttajaTunnus}</td>
                                 <td>${kayttaja.nimi}</td>
                                 <td>
@@ -59,7 +59,7 @@
                                         </c:forEach>
                                     </select>
                                 </td>
-                                <td><fmt:formatDate value="${kayttaja.liitymisPvm}" type="both" dateStyle="full"
+                                <td><fmt:formatDate value="${kayttaja.luotuPvm}" type="both" dateStyle="short"
                                                     timeStyle="short"/></td>
                                 <td valign="middle" align="right">
                                     <a href="<spring:url value="/kayttajat/admin/uusi?id=${kayttaja.id}" /> "

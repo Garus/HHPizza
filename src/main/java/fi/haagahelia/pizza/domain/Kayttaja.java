@@ -6,19 +6,12 @@
 
 package fi.haagahelia.pizza.domain;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -45,9 +38,11 @@ public class Kayttaja implements Serializable {
     private String kayttajaTunnus;
     @Column(name = "salasana")
     private String salasana;
-    @Column(name = "liittymis_pvm",
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "luotu_pvm", nullable = false,
             columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
-    private Date liitymisPvm;
+    @Generated(value = GenerationTime.INSERT)
+    private Date luotuPvm;
     @JoinColumn(name = "rooli_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Roolit rooli;
@@ -85,12 +80,12 @@ public class Kayttaja implements Serializable {
         this.rooli = rooli;
     }
 
-    public Date getLiitymisPvm() {
-        return liitymisPvm;
+    public Date getLuotuPvm() {
+        return luotuPvm;
     }
 
-    public void setLiitymisPvm(Date liitymisPvm) {
-        this.liitymisPvm = liitymisPvm;
+    public void setLuotuPvm(Date liitymisPvm) {
+        this.luotuPvm = liitymisPvm;
     }
 
     public String getKayttajaTunnus() {
@@ -136,7 +131,7 @@ public class Kayttaja implements Serializable {
                 ", nimi='" + nimi + '\'' +
                 ", kayttajaTunnus='" + kayttajaTunnus + '\'' +
                 ", salasana='" + salasana + '\'' +
-                ", liitymisPvm=" + liitymisPvm +
+                ", liitymisPvm=" + luotuPvm +
                 ", rooli=" + rooli +
                 '}';
     }
