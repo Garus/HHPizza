@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Koordinaattori
  */
 @Entity
-@Table(name = "tilaus")
+@Table(name = "tilaukset")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Tilaus.findAll", query = "SELECT t FROM Tilaus t"),
@@ -54,10 +54,6 @@ public class Tilaus implements Serializable {
     @JoinColumn(name = "tilaaja_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Tilaaja tilaajaId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tilausId")
-    private List<Tilaustuote> tilaustuoteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tilausId")
-    private List<Tilausloki> tilauslokiList;
 
     public Tilaus() {
     }
@@ -109,24 +105,6 @@ public class Tilaus implements Serializable {
 
     public void setTilaajaId(Tilaaja tilaajaId) {
         this.tilaajaId = tilaajaId;
-    }
-
-    @XmlTransient
-    public List<Tilaustuote> getTilaustuoteList() {
-        return tilaustuoteList;
-    }
-
-    public void setTilaustuoteList(List<Tilaustuote> tilaustuoteList) {
-        this.tilaustuoteList = tilaustuoteList;
-    }
-
-    @XmlTransient
-    public List<Tilausloki> getTilauslokiList() {
-        return tilauslokiList;
-    }
-
-    public void setTilauslokiList(List<Tilausloki> tilauslokiList) {
-        this.tilauslokiList = tilauslokiList;
     }
 
     @Override

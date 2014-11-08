@@ -12,7 +12,7 @@
     <link href="<spring:url value="/css/hhpizza_basic.css" />"
           rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pizzeria Il Grasso - ${tuote.nimi}</title>
+    <title>Pizzeria Il Grasso</title>
 </head>
 <body>
 <div class="wrapper">
@@ -25,20 +25,10 @@
         </div>
     </div>
     <div class="content">
-        <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+        <h1>Ei toteutusta vielä.</h1>
 
-            <div class="caption">
-                <h3>${tuote.nimi}</h3>
-
-                <p>${tuote.kuvaus}</p>
-
-                <p><fmt:formatNumber value="${tuote.hinta}" type="currency"/></p>
-
-                <p><a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
-                      class="btn btn-primary">Lisää koriin</a>
-                </p>
-            </div>
-        </div>
+        <div><c:choose><c:when test="${answer eq 42}"><h2>${answer}: The answer to life, the universe and
+            everything</h2></c:when><c:otherwise>${answer}</c:otherwise></c:choose></div>
     </div>
     <!-- Tämä div työntää footerin pohjalle. Jättäkää tyhjäksi -->
     <div class="push"></div>

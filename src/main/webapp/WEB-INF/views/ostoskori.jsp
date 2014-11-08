@@ -40,42 +40,45 @@
                             <th>Tuote</th>
                             <th>Kuvaus</th>
                             <th>Hinta</th>
+                            <th>Määrä</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${ostoskori.tuotteet}" var="tuote" varStatus="loop">
+                        <c:forEach items="${ostoskori.tuotteet}" var="korinTuote" varStatus="loop">
                             <tr>
                                 <td>${loop.index+1}.</td>
-                                <td><a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}" /> ">${tuote.nimi}</a>
+                                <td><a href="<spring:url value="/tuotteet/tuote?id=${korinTuote.tuote.id}" /> ">${korinTuote.tuote.nimi}</a>
                                 </td>
-                                <td>${tuote.kuvaus}</td>
-                                <td><fmt:formatNumber value="${tuote.hinta}" type="currency"/></td>
+                                <td>${korinTuote.tuote.kuvaus}</td>
+                                <td><fmt:formatNumber value="${korinTuote.tuote.hinta}" type="currency"/></td>
+                                <td>${korinTuote.maara}</td>
                                 <td valign="middle" align="right">
-                                    <a href="<spring:url value="/ostoskori/add?id=${tuote.id}" /> "
+                                    <a href="<spring:url value="/ostoskori/lisaa?id=${korinTuote.tuote.id}" /> "
                                        class="btn btn-warning">+</a>
-                                    <a href="<spring:url value="/ostoskori/rem?id=${tuote.id}" /> "
+                                    <a href="<spring:url value="/ostoskori/vahenna?id=${korinTuote.tuote.id}" /> "
                                        class="btn btn-warning">-</a>
                                 <%--</td>--%>
                                 <%--<td valign="middle" align="right">--%>
-                                    <a href="<spring:url value="/ostoskori/rem?id=${tuote.id}" /> "
+                                    <a href="<spring:url value="/ostoskori/poista?id=${korinTuote.tuote.id}" /> "
                                        class="btn btn-warning">Poista</a>
                                 </td>
                             </tr>
                         </c:forEach>
                         <tr>
                             <td colspan="2"></td>
-                            <td colspan="3" align="right">Tuotteita yhteensä: ${ostoskori.count} <br/> Summa:
+                            <td colspan="4" align="right">Tuotteita yhteensä: ${ostoskori.count} <br/> Summa:
                                 <fmt:formatNumber
                                         value="${ostoskori.sum}" type="currency"/><br>
-                                <a href="<spring:url value="/tilaa" /> "
+                                <a href="<spring:url value="/tilaus" /> "
                                    class="btn btn-inverse">Tilaa tuotteet</a></td>
                         </tr>
                         </tbody>
                     </table>
                 </c:when>
                 <c:otherwise>
-                    Ostoskorissa ei ole tuotteita!
+                    Ostoskorissa ei ole tuotteita!<br>
+                    <a href="<spring:url value="/tuotteet" />">Tuotteet</a>
                 </c:otherwise>
             </c:choose>
         </div>

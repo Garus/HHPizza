@@ -8,17 +8,7 @@ package fi.haagahelia.pizza.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -27,13 +17,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Koordinaattori
  */
 @Entity
-@Table(name = "tilaaja")
+@Table(name = "tilaajat")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Tilaaja.findAll", query = "SELECT t FROM Tilaaja t"),
         @NamedQuery(name = "Tilaaja.findById", query = "SELECT t FROM Tilaaja t WHERE t.id = :id"),
         @NamedQuery(name = "Tilaaja.findByNimi", query = "SELECT t FROM Tilaaja t WHERE t.nimi = :nimi"),
-        @NamedQuery(name = "Tilaaja.findByKantaAsiakas", query = "SELECT t FROM Tilaaja t WHERE t.kantaAsiakas = :kantaAsiakas"),
+        @NamedQuery(name = "Tilaaja.findByKantaAsiakas", query = "SELECT t FROM Tilaaja t WHERE t.isKantaAsiakas = :kantaAsiakas"),
         @NamedQuery(name = "Tilaaja.findByOsoite", query = "SELECT t FROM Tilaaja t WHERE t.osoite = :osoite"),
         @NamedQuery(name = "Tilaaja.findByEmail", query = "SELECT t FROM Tilaaja t WHERE t.email = :email"),
         @NamedQuery(name = "Tilaaja.findByPuhelin", query = "SELECT t FROM Tilaaja t WHERE t.puhelin = :puhelin")})
@@ -48,16 +38,16 @@ public class Tilaaja implements Serializable {
     @Column(name = "nimi")
     private String nimi;
     @Basic(optional = false)
-    @Column(name = "kanta-asiakas")
-    private short kantaAsiakas;
-    @Column(name = "osoite")
-    private String osoite;
+    @Column(name = "kanta_asiakas")
+    private boolean isKantaAsiakas;
+//    @Column(name = "osoite")
+//    @JoinColumn(name = "osoite_id", referencedColumnName = "id")
+    @Embedded
+    private Osoite osoite;
     @Column(name = "email")
     private String email;
     @Column(name = "puhelin")
     private String puhelin;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tilaajaId")
-    private List<Tilaus> tilausList;
 
     public Tilaaja() {
     }
@@ -66,10 +56,10 @@ public class Tilaaja implements Serializable {
         this.id = id;
     }
 
-    public Tilaaja(Integer id, String nimi, short kantaAsiakas) {
+    public Tilaaja(Integer id, String nimi, boolean kantaAsiakas) {
         this.id = id;
         this.nimi = nimi;
-        this.kantaAsiakas = kantaAsiakas;
+        this.isKantaAsiakas = kantaAsiakas;
     }
 
     public Integer getId() {
@@ -88,19 +78,19 @@ public class Tilaaja implements Serializable {
         this.nimi = nimi;
     }
 
-    public short getKantaAsiakas() {
-        return kantaAsiakas;
+    public boolean getKantaAsiakas() {
+        return isKantaAsiakas;
     }
 
-    public void setKantaAsiakas(short kantaAsiakas) {
-        this.kantaAsiakas = kantaAsiakas;
+    public void setKantaAsiakas(boolean isKantaAsiakas) {
+        this.isKantaAsiakas = isKantaAsiakas;
     }
 
-    public String getOsoite() {
+    public Osoite getOsoite() {
         return osoite;
     }
 
-    public void setOsoite(String osoite) {
+    public void setOsoite(Osoite osoite) {
         this.osoite = osoite;
     }
 
@@ -118,15 +108,6 @@ public class Tilaaja implements Serializable {
 
     public void setPuhelin(String puhelin) {
         this.puhelin = puhelin;
-    }
-
-    @XmlTransient
-    public List<Tilaus> getTilausList() {
-        return tilausList;
-    }
-
-    public void setTilausList(List<Tilaus> tilausList) {
-        this.tilausList = tilausList;
     }
 
     @Override
