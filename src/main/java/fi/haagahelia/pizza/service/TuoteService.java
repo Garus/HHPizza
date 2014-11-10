@@ -2,6 +2,7 @@ package fi.haagahelia.pizza.service;
 
 import java.util.List;
 
+import fi.haagahelia.pizza.domain.Kategoria;
 import fi.haagahelia.pizza.domain.Tuote;
 
 public interface TuoteService {
@@ -15,4 +16,8 @@ public interface TuoteService {
     void poistaTuote(Tuote p);
 
     void päivitäTuote(Tuote p);
+
+    public List<Kategoria> haeKaikkiKategoriat();
+
+    public List<Tuote> haeKategorianTuotteet(String kategoria);
 }

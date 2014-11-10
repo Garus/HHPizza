@@ -16,13 +16,64 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `kayttaja`
+-- Table structure for table `kategoria_tuotteet`
 --
 
-DROP TABLE IF EXISTS `kayttaja`;
+DROP TABLE IF EXISTS `kategoria_tuotteet`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kayttaja` (
+CREATE TABLE `kategoria_tuotteet` (
+  `kategoriat_kategoriaId` int(11) NOT NULL,
+  `tuotteet_id` int(11) NOT NULL,
+  UNIQUE KEY `UK_33muf7yy98l2kyv32md59c5n6` (`tuotteet_id`),
+  KEY `FK_tbghnyshkenie1fx2o57lmjq5` (`kategoriat_kategoriaId`),
+  CONSTRAINT `FK_tbghnyshkenie1fx2o57lmjq5` FOREIGN KEY (`kategoriat_kategoriaId`) REFERENCES `kategoriat` (`kategoriaId`),
+  CONSTRAINT `FK_33muf7yy98l2kyv32md59c5n6` FOREIGN KEY (`tuotteet_id`) REFERENCES `tuotteet` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kategoria_tuotteet`
+--
+
+LOCK TABLES `kategoria_tuotteet` WRITE;
+/*!40000 ALTER TABLE `kategoria_tuotteet` DISABLE KEYS */;
+INSERT INTO `kategoria_tuotteet` VALUES (1,1),(1,2),(2,3),(2,4),(2,5);
+/*!40000 ALTER TABLE `kategoria_tuotteet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kategoriat`
+--
+
+DROP TABLE IF EXISTS `kategoriat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kategoriat` (
+  `kategoriaId` int(11) NOT NULL AUTO_INCREMENT,
+  `kategoriaNimi` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`kategoriaId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kategoriat`
+--
+
+LOCK TABLES `kategoriat` WRITE;
+/*!40000 ALTER TABLE `kategoriat` DISABLE KEYS */;
+INSERT INTO `kategoriat` VALUES (1,'Pizzat'),(2,'Pannupizzat');
+/*!40000 ALTER TABLE `kategoriat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kayttajat`
+--
+
+DROP TABLE IF EXISTS `kayttajat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kayttajat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tunnus` varchar(255) NOT NULL,
   `luotu_pvm` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -30,19 +81,19 @@ CREATE TABLE `kayttaja` (
   `salasana` varchar(255) DEFAULT NULL,
   `rooli_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_ckdnd5bereusu0oebg3yqcn5m` (`rooli_id`),
-  CONSTRAINT `FK_ckdnd5bereusu0oebg3yqcn5m` FOREIGN KEY (`rooli_id`) REFERENCES `roolit` (`id`)
+  KEY `FK_sooo6jq1en9l0nbkkbraqqc1a` (`rooli_id`),
+  CONSTRAINT `FK_sooo6jq1en9l0nbkkbraqqc1a` FOREIGN KEY (`rooli_id`) REFERENCES `roolit` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `kayttaja`
+-- Dumping data for table `kayttajat`
 --
 
-LOCK TABLES `kayttaja` WRITE;
-/*!40000 ALTER TABLE `kayttaja` DISABLE KEYS */;
-INSERT INTO `kayttaja` VALUES (1,'aku','2014-11-06 15:47:42','Ankka Admin',NULL,1),(2,'saku','2014-11-06 15:47:42','Sorsa User',NULL,2),(3,'kissa','2014-11-06 15:47:42','Kissa Käyttäjä',NULL,3);
-/*!40000 ALTER TABLE `kayttaja` ENABLE KEYS */;
+LOCK TABLES `kayttajat` WRITE;
+/*!40000 ALTER TABLE `kayttajat` DISABLE KEYS */;
+INSERT INTO `kayttajat` VALUES (1,'aku','2014-11-09 18:56:38','Ankka Admin',NULL,1),(2,'saku','2014-11-09 18:56:38','Sorsa User',NULL,2),(3,'kissa','2014-11-09 18:56:38','Kissa Käyttäjä',NULL,3);
+/*!40000 ALTER TABLE `kayttajat` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -70,6 +121,35 @@ INSERT INTO `roolit` VALUES (1,'admin'),(2,'superuser'),(3,'kayttaja');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tilaajat`
+--
+
+DROP TABLE IF EXISTS `tilaajat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tilaajat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `kanta_asiakas` bit(1) NOT NULL,
+  `nimi` varchar(255) NOT NULL,
+  `katuOsoite` varchar(255) DEFAULT NULL,
+  `postiNumero` varchar(255) DEFAULT NULL,
+  `postiToimiPaikka` varchar(255) DEFAULT NULL,
+  `puhelin` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tilaajat`
+--
+
+LOCK TABLES `tilaajat` WRITE;
+/*!40000 ALTER TABLE `tilaajat` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tilaajat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tilat`
 --
 
@@ -93,29 +173,31 @@ LOCK TABLES `tilat` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tilaus`
+-- Table structure for table `tilaukset`
 --
 
-DROP TABLE IF EXISTS `tilaus`;
+DROP TABLE IF EXISTS `tilaukset`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tilaus` (
+CREATE TABLE `tilaukset` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `maksutapa` varchar(255) DEFAULT NULL,
   `osoite` varchar(255) DEFAULT NULL,
   `toimitustapa` varchar(255) NOT NULL,
   `tilaaja_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_djx4b9r91a310h8x1k9r3jtsu` (`tilaaja_id`),
+  CONSTRAINT `FK_djx4b9r91a310h8x1k9r3jtsu` FOREIGN KEY (`tilaaja_id`) REFERENCES `tilaajat` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tilaus`
+-- Dumping data for table `tilaukset`
 --
 
-LOCK TABLES `tilaus` WRITE;
-/*!40000 ALTER TABLE `tilaus` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tilaus` ENABLE KEYS */;
+LOCK TABLES `tilaukset` WRITE;
+/*!40000 ALTER TABLE `tilaukset` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tilaukset` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -135,9 +217,9 @@ CREATE TABLE `tilausloki` (
   KEY `FK_afq8rodde8l3ut2q6bl34hw2l` (`kayttaja_id`),
   KEY `FK_5324joh474r7lu8mqrjpvmvru` (`tilat_id`),
   KEY `FK_ojbt8e1dbbtqcbl1tl9me3xix` (`tilaus_id`),
-  CONSTRAINT `FK_ojbt8e1dbbtqcbl1tl9me3xix` FOREIGN KEY (`tilaus_id`) REFERENCES `tilaus` (`id`),
+  CONSTRAINT `FK_ojbt8e1dbbtqcbl1tl9me3xix` FOREIGN KEY (`tilaus_id`) REFERENCES `tilaukset` (`id`),
   CONSTRAINT `FK_5324joh474r7lu8mqrjpvmvru` FOREIGN KEY (`tilat_id`) REFERENCES `tilat` (`id`),
-  CONSTRAINT `FK_afq8rodde8l3ut2q6bl34hw2l` FOREIGN KEY (`kayttaja_id`) REFERENCES `kayttaja` (`id`)
+  CONSTRAINT `FK_afq8rodde8l3ut2q6bl34hw2l` FOREIGN KEY (`kayttaja_id`) REFERENCES `kayttajat` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -166,7 +248,7 @@ CREATE TABLE `tilaustuote` (
   KEY `FK_awfk628mrwdk1nvjtokpjmy4e` (`tilaus_id`),
   KEY `FK_ecuim19wcpykd2m4v5ak5vv6e` (`tuote_id`),
   CONSTRAINT `FK_ecuim19wcpykd2m4v5ak5vv6e` FOREIGN KEY (`tuote_id`) REFERENCES `tuotteet` (`id`),
-  CONSTRAINT `FK_awfk628mrwdk1nvjtokpjmy4e` FOREIGN KEY (`tilaus_id`) REFERENCES `tilaus` (`id`)
+  CONSTRAINT `FK_awfk628mrwdk1nvjtokpjmy4e` FOREIGN KEY (`tilaus_id`) REFERENCES `tilaukset` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -192,7 +274,7 @@ CREATE TABLE `tuotteet` (
   `kuvaus` varchar(255) DEFAULT NULL,
   `nimi` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +283,7 @@ CREATE TABLE `tuotteet` (
 
 LOCK TABLES `tuotteet` WRITE;
 /*!40000 ALTER TABLE `tuotteet` DISABLE KEYS */;
-INSERT INTO `tuotteet` VALUES (1,20,'Maistuvia merenherkkuja pizzan muodossa. Jaa vaikka kaverin kanssa!','Frutti Di Mare'),(2,20,'Maailman parhaaksi valittu pizza! Savuporo, kantarelli ja pizzapohjan ruiskuitu vakuuttivat niin Amerikan tuomarit kuin italialaisen suomalaisen ruokaosaamisen epäilijänkin.','Berlusconi'),(3,20.5,'Pepperonimakkaraa tonnikalan seurana. Tuhti makuelämys ei jätä ketään nälkäiseksi.','Pepperoni'),(4,21,'Special Operan jokaiseen makuun! Perinteinen, loistokkaan makoisa.','Special Opera'),(5,29,'Kulinaristillekin kelpaa aurinkokuivatulla tomaatilla, salamilla, ananaksella ja mozzarellajuustolla aateloitu erikoisuus. Hienostuneet maut täydentävät toisiaan.','Mozarella'),(6,0,'bar','foo');
+INSERT INTO `tuotteet` VALUES (1,25,'Maistuvia merenherkkuja pizzan muodossa. Jaa vaikka kaverin kanssa!','Frutti Di Mare'),(2,20,'Maailman parhaaksi valittu pizza! Savuporo, kantarelli ja pizzapohjan ruiskuitu vakuuttivat niin Amerikan tuomarit kuin italialaisen suomalaisen ruokaosaamisen epäilijänkin.','Berlusconi'),(3,20.5,'Pepperonimakkaraa tonnikalan seurana. Tuhti makuelämys ei jätä ketään nälkäiseksi.','Pepperoni'),(4,21,'Special Operan jokaiseen makuun! Perinteinen, loistokkaan makoisa.','Special Opera'),(5,29,'Kulinaristillekin kelpaa aurinkokuivatulla tomaatilla, salamilla, ananaksella ja mozzarellajuustolla aateloitu erikoisuus. Hienostuneet maut täydentävät toisiaan.','Mozarella');
 /*!40000 ALTER TABLE `tuotteet` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -214,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-06 17:51:23
+-- Dump completed on 2014-11-10 20:32:19

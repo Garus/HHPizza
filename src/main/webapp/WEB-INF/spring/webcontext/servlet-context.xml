@@ -41,6 +41,7 @@
                 <value>fi.haagahelia.pizza.domain.Tilausloki</value>
                 <value>fi.haagahelia.pizza.domain.Tilaustuote</value>
                 <value>fi.haagahelia.pizza.domain.Tuote</value>
+                <value>fi.haagahelia.pizza.domain.Kategoria</value>
                 <!--<value>fi.haagahelia.pizza.domain.Tyyppi</value>-->
             </list>
         </property>
@@ -49,7 +50,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
             </props>
         </property>
     </bean>

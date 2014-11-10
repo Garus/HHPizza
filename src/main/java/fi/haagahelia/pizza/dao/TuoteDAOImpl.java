@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.dao;
 import java.util.Date;
 import java.util.List;
 
+import fi.haagahelia.pizza.domain.Kategoria;
 import fi.haagahelia.pizza.domain.Tuote;
 import fi.haagahelia.pizza.exceptions.TuoteNotFoundException;
 import org.apache.log4j.Logger;
@@ -71,4 +72,20 @@ public class TuoteDAOImpl implements TuoteDAO {
 
 	}
 
+	@Override
+	public List<Kategoria> haeKaikkiKategoriat() {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Kategoria> kategoriat = session.createQuery("from Kategoria ").list();
+		logger.info("Kategoriat:: " + kategoriat);
+		return kategoriat;
+	}
+
+	@Override
+	public List<Tuote> haeKategorianTuotteet(String kategoriaNimi) {
+		Session session = this.sessionFactory.getCurrentSession();
+		// select t.* from tuotteet t join kategoria_tuotteet kt on kt.tuotteet_id = t.id
+		// join kategoriat k on kt.kategoriat_kategoriaId = k.kategoriaId where k.kategoriaNimi = 'Pizzat';
+		List<Tuote> tuotteet = session.getNamedQuery("kategorianTuotteet").setString("kategoriaNimi", kategoriaNimi).list();
+		return tuotteet;
+	}
 }

@@ -19,7 +19,7 @@ import fi.haagahelia.pizza.service.TuoteService;
 public class TuoteController {
 
     private static final Logger logger = Logger.getLogger(TuoteController.class);
-    // @Autowired
+
     private TuoteService tuoteService;
 
     @Autowired(required = true)
@@ -95,4 +95,13 @@ public class TuoteController {
         tuoteService.poistaTuote(p);
         return "redirect:/tuotteet/admin";
     }
+
+    @RequestMapping("/{kategoria}")
+    public String getProductsByCategory(Model model, @PathVariable("kategoria")
+    String kategoria) {
+        model.addAttribute("tuotteet", tuoteService.haeKategorianTuotteet(kategoria));
+
+        return "tuotteet";
+    }
 }
+
