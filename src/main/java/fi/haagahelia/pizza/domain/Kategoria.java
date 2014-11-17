@@ -5,6 +5,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+/**
+ * Luo java-oliot tietokannan taulusta 'kategoriat', joka mahdollistaa yhden
+ * tyyppiselle tuotteelle useamman alikategorian. Luokka mahdollistaa olion
+ * tallentamisen tietokantaan persist kommennolla.
+ * 
+ * @author Heikki Telinen
+ * @version %I%
+ */
+
 @Entity
 @Table(name = "kategoriat")
 public class Kategoria {
@@ -47,6 +56,11 @@ public class Kategoria {
     public Collection<Tuote> getTuotteet() {
         return tuotteet;
     }
+    /**
+     * Asettaa oliolle kokoelman tuotteita muuttujalla tuotteet.
+     * 
+     * @param tuotteeet kokoelma tuotteita
+     */
 
     public void setTuotteet(Collection<Tuote> tuotteet) {
         this.tuotteet = tuotteet;
@@ -54,7 +68,11 @@ public class Kategoria {
 
     public Kategoria() {
     }
-
+    /**
+     * Luo oliolle attribuutin kategorianimi muuttujalla kategroiaNimi.
+     * 
+     * @param kategoriaNimi Merkkijono jossa mainitaan kategorian nimi
+     */
     public Kategoria(String kategoriaNimi) {
         this.kategoriaNimi = kategoriaNimi;
     }

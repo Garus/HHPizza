@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fi.haagahelia.pizza.domain;
 
 import java.io.Serializable;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Koordinaattori
+ * @author Gabriel Herrera
  */
 @Entity
 @Table(name = "roolit")
@@ -48,6 +47,12 @@ public class Roolit implements Serializable {
     public Roolit() {
     }
 
+    /**
+     *<p>
+     * Luo tyhjän rooli olion tietylle ID:lle
+     * </p>
+     * @param id
+     */
     public Roolit(Integer id) {
         this.id = id;
     }
@@ -97,5 +102,5 @@ public class Roolit implements Serializable {
     public String toString() {
         return "fi.haagahelia.pizza.domain.Roolit[ id=" + id + " ]";
     }
-    
+
 }

@@ -16,7 +16,18 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Controller ostoskoriin liittyviin toimintoihin.
+ * <p>
+ * Välittää tietoja metodeissa kartoitettujen view tason jsp sivujen ja model
+ * tason tuoteService ja ostoskoriService luokkien välillä. Kartoitus /ostoskori
+ *
+ * @author Heikki Telinen
+ * @version %I%
+ *
+ * @see TuoteService
+ * @see OstoskoriService
+ */
 @Controller
 @Scope("request")
 @RequestMapping("/ostoskori")
@@ -26,12 +37,23 @@ public class OstoskoriController {
 
 //    @Autowired
 //    private Ostoskori cart;
-
+    /**
+     * Service-tason luokan olio
+     */
     @Autowired
     private TuoteService tuoteService;
+    /**
+     * Service-tason luokan olio
+     */
     @Autowired
     private OstoskoriService ostoskoriService;
-
+    /**
+     * Määrittelee mallin ja näkymän välisen yhteyden sitomalla OstoskoriService
+     * olion malliin.
+     * 
+     * @param model malli jota käytetään
+     * @return ModelAndView olio jossa määritelty ostoskori näkyymä
+     */
     @RequestMapping
     public ModelAndView list(Model model) {
         ModelAndView modelAndView = new ModelAndView();
@@ -39,7 +61,13 @@ public class OstoskoriController {
         modelAndView.setViewName("ostoskori");
         return modelAndView;
     }
-
+    /**
+     * Lisää OstoskoService luokan olioon TuoteService-luokan olion uutena
+     * tuotteena. Kartoitus /ostoskori/lisää
+     * 
+     * @param id kokonaisluku, ostoskoriin lisättävän tuotteen id
+     * @return uudelleenohjaus /ostoskori
+     */
     @RequestMapping("/lisaa")
     public String lisääKoriin(@RequestParam("id") int id) {
 
@@ -48,7 +76,13 @@ public class OstoskoriController {
         ostoskoriService.lisaaTuote(tuote);
         return "redirect:/ostoskori";
     }
-
+    /**
+     * Vähentää OstoskoriService-luokan oliosta yhden TuoteService-luokan 
+     * tuotteen id numerolla määritellyistä olioista. /ostoskori/vahenna
+     * 
+     * @param id kokonaisluku, mallista vähennettävän tuotteen id
+     * @return uudelleenohjaus /ostoskori
+     */
     @RequestMapping("/vahenna")
     public String vahennaTuoteKorista(@RequestParam("id") int id) {
 
@@ -59,7 +93,14 @@ public class OstoskoriController {
 
         return "redirect:/ostoskori";
     }
-
+    /**
+     * Poistaa OstoskoriService-luokan oliosta yhden TuoteService-luokan 
+     * tuotteen id numerolla määritellyistä olioista. Kartoitus 
+     * /ostoskori/poista
+     * 
+     * @param id kokonaisluku, mallista vähennettävän tuotteen id
+     * @return uudelleenohjaus /ostoskori
+     */
     @RequestMapping("/poista")
     public String poistaKorista(@RequestParam("id") int id) {
 
@@ -70,6 +111,12 @@ public class OstoskoriController {
 
         return "redirect:/ostoskori";
     }
+    /**
+     * Poistaa OstoskoriService-luokan oliosta kaikki TuoteService-luokan 
+     * tuotteet. Kartoitus /ostoskori/tyhjenna
+     * 
+     * @return uudelleenohjaus /ostoskori
+     */
 
     @RequestMapping("/tyhjenna")
     public String poistaKaikkiTuotteet() {
