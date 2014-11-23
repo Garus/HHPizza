@@ -9,36 +9,57 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fi.haagahelia.pizza.dao.KayttajaDAO;
 
+/**
+ * {@inheritDoc}
+ */
 @Service
 public class KayttajaServiceImpl implements KayttajaService {
 
-	private KayttajaDAO kayttajaDAO;
+    /**
+     * KäyttäjäDAO luokan olio
+     */
+    private KayttajaDAO kayttajaDAO;
 
-	public void setKayttajaDAO(KayttajaDAO kayttajaDAO) {
-		this.kayttajaDAO = kayttajaDAO;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void setKayttajaDAO(KayttajaDAO kayttajaDAO) {
+        this.kayttajaDAO = kayttajaDAO;
+    }
 
-	@Override
-	@Transactional
-	public List<Kayttaja> haeKaikkiKayttajat() {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public List<Kayttaja> haeKaikkiKayttajat() {
 
-		return kayttajaDAO.haeKaikkiKayttajat();
-	}
+        return kayttajaDAO.haeKaikkiKayttajat();
+    }
 
-	@Override
-	@Transactional
-	public Kayttaja haeKayttajaTunnuksella(int id) {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public Kayttaja haeKayttajaTunnuksella(int id) {
 
-		return kayttajaDAO.haeKayttajaTunnuksella(id);
-	}
+        return kayttajaDAO.haeKayttajaTunnuksella(id);
+    }
 
-	@Override
-	@Transactional
-	public void lisääKayttaja(Kayttaja p) {
-		kayttajaDAO.addKayttaja(p);
-		
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public void lisääKayttaja(Kayttaja p) {
+        kayttajaDAO.addKayttaja(p);
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public void päivitäKayttaja(Kayttaja p) {
@@ -46,13 +67,19 @@ public class KayttajaServiceImpl implements KayttajaService {
 
     }
 
-	@Override
-	@Transactional
-	public void poistaKayttaja(Kayttaja p) {
-		kayttajaDAO.poistaKayttaja(p);
-		
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public void poistaKayttaja(Kayttaja p) {
+        kayttajaDAO.poistaKayttaja(p);
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public List<Roolit> haeKayttajaRoolit() {

@@ -9,15 +9,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fi.haagahelia.pizza.dao.TuoteDAO;
 
+/**
+ * {@inheritDoc}
+ */
 @Service
 public class TuoteServiceImpl implements TuoteService {
 
+    /**
+     * TuoteDAO-luokan olio
+     */
     private TuoteDAO tuoteDAO;
 
+    /**
+     * {@inheritDoc}
+     */
     public void setTuoteDAO(TuoteDAO tuoteDAO) {
         this.tuoteDAO = tuoteDAO;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public List<Tuote> haeKaikkiTuotteet() {
@@ -25,6 +37,9 @@ public class TuoteServiceImpl implements TuoteService {
         return tuoteDAO.haeKaikkiTuotteet();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public Tuote haeTuoteTunnuksella(int id) {
@@ -32,6 +47,9 @@ public class TuoteServiceImpl implements TuoteService {
         return tuoteDAO.haeTuoteTunnuksella(id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public void lisääTuote(Tuote p) {
@@ -39,6 +57,9 @@ public class TuoteServiceImpl implements TuoteService {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public void päivitäTuote(Tuote p) {
@@ -46,6 +67,9 @@ public class TuoteServiceImpl implements TuoteService {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public void poistaTuote(Tuote p) {
@@ -53,12 +77,18 @@ public class TuoteServiceImpl implements TuoteService {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public List<Kategoria> haeKaikkiKategoriat() {
         return tuoteDAO.haeKaikkiKategoriat();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     public List<Tuote> haeKategorianTuotteet(String kategoria) {
