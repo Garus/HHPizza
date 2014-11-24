@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,6 +34,21 @@
                 <p>${tuote.kuvaus}</p>
 
                 <p><fmt:formatNumber value="${tuote.hinta}" type="currency"/></p>
+
+                <c:forEach items="${tuote.aineet}" var="aine" varStatus="loop">
+                    <p>
+                        ${loop.index+1} &nbsp; ${aine.name} &nbsp; <fmt:formatNumber value="${aine.price}" type="currency"/>
+                    </p>
+                </c:forEach>
+
+                <p>
+                    <form:select path="lisaAineet" id="aine" items="${lisaAineet}" itemValue="id" itemLabel="name"/>
+                        <c:forEach items="${tuote.aineet}" var="aine" varStatus="stat">
+                            <c:set var="myVar" value="${stat.first ? '' : myVar}&aine=${aine.id}" />
+                        </c:forEach>
+                    <a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}${myVar}" /> "
+                       class="btn btn-lg">Lisää pizzaan</a>
+                </p>
 
                 <p><a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
                       class="btn btn-primary">Lisää koriin</a>

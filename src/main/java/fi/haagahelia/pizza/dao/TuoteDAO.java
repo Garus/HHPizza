@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.dao;
 import java.util.List;
 
 import fi.haagahelia.pizza.domain.Kategoria;
+import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.Tuote;
 
 public interface TuoteDAO {
@@ -20,4 +21,6 @@ public interface TuoteDAO {
 	public List<Kategoria> haeKaikkiKategoriat();
 
 	public List<Tuote> haeKategorianTuotteet(String kategoriaNimi);
+
+	public List<LisaAine> haeKaikkiLisaAineet();
 }

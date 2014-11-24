@@ -1,6 +1,8 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tuotteet")
@@ -14,6 +16,9 @@ public class Tuote {
 	private String nimi;
 	private double hinta;
 	private String kuvaus;
+
+	@Transient
+	private List<LisaAine> aineet = new ArrayList<>();
 
 	@Override
 	public int hashCode() {
@@ -77,6 +82,14 @@ public class Tuote {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<LisaAine> getAineet() {
+		return aineet;
+	}
+
+	public void setAineet(List<LisaAine> aineet) {
+		this.aineet = aineet;
 	}
 
 	public String toString() {

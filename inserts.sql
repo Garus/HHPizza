@@ -3,4 +3,4 @@ INSERT INTO tuotteet (nimi, hinta, kuvaus) values ('Frutti Di Mare', 25.00, 'Mai
 INSERT INTO `kategoria_tuotteet` VALUES (1,1),(1,2),(2,3),(2,4),(2,5);
 INSERT INTO `roolit` VALUES (1,'admin'),(2,'superuser'),(3,'kayttaja');
 INSERT INTO kayttajat(tunnus,nimi,rooli_id) VALUES ('aku','Ankka Admin',1),('saku','Sorsa User',2),('kissa','Kissa Käyttäjä',3);
-
+INSERT INTO `lisa_aineet` VALUES (1,'valkosipuli', 1.5),(2,'oregano', 0.5),(3,'kanamuna',2);

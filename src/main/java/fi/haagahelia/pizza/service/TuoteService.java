@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.service;
 import java.util.List;
 
 import fi.haagahelia.pizza.domain.Kategoria;
+import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.Tuote;
 /**
  *  Service tason käyttöliittymä tuotteisiin liittyviin toimintoihin.
@@ -60,4 +61,10 @@ public interface TuoteService {
      * @return Lista Tuote-luokan olioista halutussa kategoriassa
      */
     public List<Tuote> haeKategorianTuotteet(String kategoria);
+
+    /**
+     *
+     * @return Lista LisaAine:sta
+     */
+    public List<LisaAine> haeKaikkiLisaAineet();
 }

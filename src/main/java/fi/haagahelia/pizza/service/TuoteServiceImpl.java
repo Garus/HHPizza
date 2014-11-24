@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.service;
 import java.util.List;
 
 import fi.haagahelia.pizza.domain.Kategoria;
+import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.Tuote;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -93,5 +94,11 @@ public class TuoteServiceImpl implements TuoteService {
     @Transactional
     public List<Tuote> haeKategorianTuotteet(String kategoria) {
         return tuoteDAO.haeKategorianTuotteet(kategoria);
+    }
+
+    @Override
+    @Transactional
+    public List<LisaAine> haeKaikkiLisaAineet() {
+        return tuoteDAO.haeKaikkiLisaAineet();
     }
 }
