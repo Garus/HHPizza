@@ -33,23 +33,30 @@
 
                 <p>${tuote.kuvaus}</p>
 
-                <p><fmt:formatNumber value="${tuote.hinta}" type="currency"/></p>
-
                 <c:forEach items="${tuote.aineet}" var="aine" varStatus="loop">
-                    <p>
-                        ${loop.index+1} &nbsp; ${aine.name} &nbsp; <fmt:formatNumber value="${aine.price}" type="currency"/>
-                    </p>
+                    <c:set var="sum" value="${sum + aine.price}"/>
+                    ${loop.index+1} &nbsp; ${aine.name} &nbsp; <fmt:formatNumber value="${aine.price}"
+                                                                                 type="currency"/>
+                    <br>
                 </c:forEach>
 
-                <p>
-                    <form:select path="lisaAineet" id="aine" items="${lisaAineet}" itemValue="id" itemLabel="name"/>
-                        <c:forEach items="${tuote.aineet}" var="aine" varStatus="stat">
-                            <c:set var="myVar" value="${stat.first ? '' : myVar}&aine=${aine.id}" />
-                        </c:forEach>
-                    <a href="<spring:url value="/tuotteet/tuote?id=${tuote.id}${myVar}" /> "
-                       class="btn btn-lg">Lisää pizzaan</a>
-                </p>
+                <p>Hinta: <fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></p>
 
+                <form method="get" action="tuote">
+                    <input type="hidden" value="${tuote.id}" name="id"/>
+
+                    <c:if test="${lisaAineet.size()>0}">
+                        <form:select path="lisaAineet" name="aine" id="aine" items="${lisaAineet}" itemValue="id"
+                                     itemLabel="name"/>
+                        <input type="submit" value="Lisää pizzaan" class="btn btn-sm"/>
+                    </c:if>
+
+                    <c:forEach items="${tuote.aineet}" var="aine" varStatus="stat">
+                        <input type="hidden" value="${aine.id}" name="aine"/>
+                        <c:set var="sum" value="${sum + aine.price}"/>
+                        <c:set var="myVar" value="${stat.first ? '' : myVar}&aine=${aine.id}"/>
+                    </c:forEach>
+                </form>
                 <p><a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
                       class="btn btn-primary">Lisää koriin</a>
                 </p>

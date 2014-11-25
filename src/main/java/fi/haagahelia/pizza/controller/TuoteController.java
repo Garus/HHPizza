@@ -116,8 +116,8 @@ public class TuoteController {
             }
         }
 
-        model.addAttribute("tuote", tuote);
         model.addAttribute("lisaAineet", aineet);
+        model.addAttribute("tuote", tuote);
 
         return "tuote";
     }
