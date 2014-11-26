@@ -1,5 +1,6 @@
 package fi.haagahelia.pizza.controller;
 
+import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.Ostoskori;
 import fi.haagahelia.pizza.domain.Tuote;
 import fi.haagahelia.pizza.service.OstoskoriService;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,13 +20,12 @@ import java.util.List;
 
 /**
  * Controller ostoskoriin liittyviin toimintoihin.
- * <p>
+ * <p/>
  * Välittää tietoja metodeissa kartoitettujen view tason jsp sivujen ja model
  * tason tuoteService ja ostoskoriService luokkien välillä. Kartoitus /ostoskori
  *
  * @author Heikki Telinen
  * @version %I%
- *
  * @see TuoteService
  * @see OstoskoriService
  */
@@ -47,10 +48,11 @@ public class OstoskoriController {
      */
     @Autowired
     private OstoskoriService ostoskoriService;
+
     /**
      * Määrittelee mallin ja näkymän välisen yhteyden sitomalla OstoskoriService
      * olion malliin.
-     * 
+     *
      * @param model malli jota käytetään
      * @return ModelAndView olio jossa määritelty ostoskori näkyymä
      */
@@ -61,10 +63,11 @@ public class OstoskoriController {
         modelAndView.setViewName("ostoskori");
         return modelAndView;
     }
+
     /**
      * Lisää OstoskoService luokan olioon TuoteService-luokan olion uutena
      * tuotteena. Kartoitus /ostoskori/lisää
-     * 
+     *
      * @param id kokonaisluku, ostoskoriin lisättävän tuotteen id
      * @return uudelleenohjaus /ostoskori
      */
@@ -76,10 +79,11 @@ public class OstoskoriController {
         ostoskoriService.lisaaTuote(tuote);
         return "redirect:/ostoskori";
     }
+
     /**
-     * Vähentää OstoskoriService-luokan oliosta yhden TuoteService-luokan 
+     * Vähentää OstoskoriService-luokan oliosta yhden TuoteService-luokan
      * tuotteen id numerolla määritellyistä olioista. /ostoskori/vahenna
-     * 
+     *
      * @param id kokonaisluku, mallista vähennettävän tuotteen id
      * @return uudelleenohjaus /ostoskori
      */
@@ -93,11 +97,12 @@ public class OstoskoriController {
 
         return "redirect:/ostoskori";
     }
+
     /**
-     * Poistaa OstoskoriService-luokan oliosta yhden TuoteService-luokan 
-     * tuotteen id numerolla määritellyistä olioista. Kartoitus 
+     * Poistaa OstoskoriService-luokan oliosta yhden TuoteService-luokan
+     * tuotteen id numerolla määritellyistä olioista. Kartoitus
      * /ostoskori/poista
-     * 
+     *
      * @param id kokonaisluku, mallista vähennettävän tuotteen id
      * @return uudelleenohjaus /ostoskori
      */
@@ -111,10 +116,11 @@ public class OstoskoriController {
 
         return "redirect:/ostoskori";
     }
+
     /**
-     * Poistaa OstoskoriService-luokan oliosta kaikki TuoteService-luokan 
+     * Poistaa OstoskoriService-luokan oliosta kaikki TuoteService-luokan
      * tuotteet. Kartoitus /ostoskori/tyhjenna
-     * 
+     *
      * @return uudelleenohjaus /ostoskori
      */
 
@@ -122,5 +128,38 @@ public class OstoskoriController {
     public String poistaKaikkiTuotteet() {
         ostoskoriService.tyhjennaOstoskori();
         return "redirect:/ostoskori";
+    }
+
+    /**
+     * Lisää muokattava pizza sessioon
+     * @param model
+     * @param id tuote (pizza) id
+     * @return uudelleenphjaus muokkaapizzaa nkäymään
+     */
+    @RequestMapping(value = "/muokkaapizza/id", method = RequestMethod.GET)
+    public String muokkaaPizzaa(Model model, @RequestParam(required = false) Integer id) {
+
+        if (id != null && id > 0) {
+            Tuote tuote = tuoteService.haeTuoteTunnuksella(id);
+            ostoskoriService.setMuokattavaTuote(tuote);
+        }
+        return "redirect:/ostoskori/muokkaapizza";
+    }
+
+    /**
+     *
+     * @param model
+     * @return muokkaa pizzaa näkymä
+     */
+    @RequestMapping("/muokkaapizza")
+    public String pizzaa(Model model) {
+
+        List<LisaAine> aineet = tuoteService.haeKaikkiLisaAineet();
+        List<Tuote> tuotteet = ostoskoriService.getTuotteet();
+
+        model.addAttribute("tuotteet", tuotteet);
+        model.addAttribute("lisaAineet", aineet);
+
+        return "muokkaapizza";
     }
 }

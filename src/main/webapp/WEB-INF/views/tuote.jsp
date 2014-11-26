@@ -57,7 +57,11 @@
                         <c:set var="myVar" value="${stat.first ? '' : myVar}&aine=${aine.id}"/>
                     </c:forEach>
                 </form>
-                <p><a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
+                <br>
+                <p>
+                    <a href="<spring:url value="/ostoskori/muokkaapizza/id?id=${tuote.id}" /> "
+                       class="btn btn-default">Muokkaa</a> &nbsp;
+                    <a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
                       class="btn btn-primary">Lisää koriin</a>
                 </p>
             </div>

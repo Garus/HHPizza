@@ -39,25 +39,6 @@ public class Ostoskori {
         }
     }
 
-//    public void lisaaTuote(Tuote tuote) {
-//        for (Iterator<OstoskorinTuote> it = tuotteet.iterator(); it.hasNext();) {
-//            OstoskorinTuote korinTuote = it.next();
-//            if (korinTuote.getTuote().equals(tuote)) {
-//                korinTuote.lisaaLukumaara();
-//            }
-//        }
-//    }
-//
-//    public void vahennaTuote(Tuote tuote) {
-//        for (Iterator<OstoskorinTuote> it = tuotteet.iterator(); it.hasNext();) {
-//            OstoskorinTuote korinTuote = it.next();
-//            if (korinTuote.getTuote().equals(tuote)) {
-//
-//                korinTuote.vahennaLukumaara();
-//            }
-//        }
-//    }
-
     public boolean poistaTuoteKorista(Tuote tuote, boolean poistaKaikki) {
         boolean ok = false;
         for (Iterator<OstoskorinTuote> it = tuotteet.iterator(); it.hasNext();) {
