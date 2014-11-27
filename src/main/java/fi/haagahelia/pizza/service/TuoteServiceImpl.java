@@ -101,4 +101,10 @@ public class TuoteServiceImpl implements TuoteService {
     public List<LisaAine> haeKaikkiLisaAineet() {
         return tuoteDAO.haeKaikkiLisaAineet();
     }
+
+    @Override
+    @Transactional
+    public LisaAine haeLisaAineTunnuksella(int id) {
+        return tuoteDAO.haeLisaAineTunnuksella(id);
+    }
 }

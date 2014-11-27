@@ -26,23 +26,73 @@
         </div>
     </div>
     <div class="content">
-        <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+        <section id="center-panel-grid">
+            <c:choose>
+            <c:when test="${tuotteet.size()>0}">
+            <h3>Muokattavana olevat tuotteet (${tuotteet.size()})</h3>
 
-            <div class="caption">
-                <h3>Muokattavana olevat tuotteet</h3>
-
+            <div class="container">
                 <c:forEach items="${tuotteet}" var="tuote">
-                    ${tuote.id} &nbsp; ${tuote.nimi} &nbsp; <fmt:formatNumber value="${tuote.hinta}"
-                                                                                  type="currency"/>
-                    <br>
-                </c:forEach>
+                    <div class="row" style="padding: 10px">
+                        <div>
+                            <h3>${tuote.nimi}, ${tuote.id}</h3>
 
-                <label for="aineet">Lisäaineet</label>
-                <form:select path="lisaAineet" name="aine" id="aineet" items="${lisaAineet}" itemValue="id"
-                             itemLabel="name"/>
+                            <p>${tuote.kuvaus}</p>
+                            <table class="table">
+                                <tr>
+                                    <td>Pizza</td>
+                                    <td><fmt:formatNumber value="${tuote.hinta}" type="currency"/></td>
+                                    <td></td>
+                                </tr>
+
+                                <c:choose>
+                                    <c:when test="${tuote.aineet.size() > 0}">
+                                        <c:forEach items="${tuote.aineet}" var="aine" varStatus="stat">
+                                            <tr>
+                                                <td>${aine.name}</td>
+                                                <td>&nbsp;<fmt:formatNumber value="${aine.price}"
+                                                                             type="currency"/>
+                                                    <c:set var="sum" value="${sum + aine.price}"/>
+                                                </td>
+                                                <td><a class="btn-link" href="muokkaapizza/aine/${tuote.id}/${aine.id}">Poista</a></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <tr>
+                                        <td colspan="2"></td>
+                                        <td>Ei lisäaineita</td>
+                                        </tr>
+                                    </c:otherwise>
+                                </c:choose>
+                                <tr>
+                                    <td>Yhteensä</td>
+                                    <td><fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                            <form method="get" action="muokkaapizza/lisaa">
+                                <label for="aineet"><input type="submit" value="Lisää pizzaan"
+                                                           class="btn btn-sm"/></label>
+                                <form:select path="lisaAineet" name="aine" id="aineet" items="${lisaAineet}"
+                                             itemValue="id"
+                                             itemLabel="name"/>
+                                <input type="hidden" value="${tuote.id}" name="pizza"/>
+                            </form>
+                            <a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
+                               class="btn btn-primary">Lisää koriin</a>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
-        </div>
+            </c:when>
+            <c:otherwise>
+            Tuotteita ei ole muokattavana!
+            </c:otherwise>
+            </c:choose>
     </div>
+    </section>
     <!-- Tämä div työntää footerin pohjalle. Jättäkää tyhjäksi -->
     <div class="push"></div>
 </div>

@@ -14,8 +14,8 @@ import fi.haagahelia.pizza.domain.Tuote;
  * @author Heikki Telinen
  * @version %I%
  * 
- * @see TuoteController'
- * @see TuoteDAO
+ * @see fi.haagahelia.pizza.controller.TuoteController
+ * @see fi.haagahelia.pizza.dao.TuoteDAO
  */
 public interface TuoteService {
     /**
@@ -67,4 +67,6 @@ public interface TuoteService {
      * @return Lista LisaAine:sta
      */
     public List<LisaAine> haeKaikkiLisaAineet();
+
+    public LisaAine haeLisaAineTunnuksella(int id);
 }

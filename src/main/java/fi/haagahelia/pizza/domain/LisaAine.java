@@ -46,6 +46,23 @@ public class LisaAine {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LisaAine)) return false;
+
+        LisaAine lisaAine = (LisaAine) o;
+
+        if (id != lisaAine.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
     public String toString() {
         return "LisaAine{" +
                 "id=" + id +

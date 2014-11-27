@@ -23,4 +23,6 @@ public interface TuoteDAO {
 	public List<Tuote> haeKategorianTuotteet(String kategoriaNimi);
 
 	public List<LisaAine> haeKaikkiLisaAineet();
+
+	public LisaAine haeLisaAineTunnuksella(int id);
 }

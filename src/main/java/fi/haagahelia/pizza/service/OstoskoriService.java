@@ -1,5 +1,6 @@
 package fi.haagahelia.pizza.service;
 
+import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.Ostoskori;
 import fi.haagahelia.pizza.domain.Tuote;
 
@@ -25,6 +26,10 @@ public interface OstoskoriService {
     Tuote getMuokattavaTuote(int id);
 
     List<Tuote> getTuotteet();
+
+    void lisaaAinePizzaan(int pizzaiId, LisaAine aine);
+
+    void poistaAinePizzasta(int pizzaiId, LisaAine aine);
 
 
 }

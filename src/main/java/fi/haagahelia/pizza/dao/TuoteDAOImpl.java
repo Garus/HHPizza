@@ -95,4 +95,10 @@ public class TuoteDAOImpl implements TuoteDAO {
 		List<LisaAine> lisaAineet = this.sessionFactory.getCurrentSession().createQuery("from LisaAine  ").list();
 		return lisaAineet;
 	}
+
+	@Override
+	public LisaAine haeLisaAineTunnuksella(int id) {
+		LisaAine aine = (LisaAine) this.sessionFactory.getCurrentSession().get(LisaAine.class, new Integer(id));
+		return aine;
+	}
 }
