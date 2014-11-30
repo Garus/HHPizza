@@ -10,15 +10,15 @@ public class LisaAine {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
-    private double price;
+    private String nimi;
+    private double hinta;
 
     public LisaAine(){}
 
-    public LisaAine(int id, String name, double price){
+    public LisaAine(int id, String nimi, double hinta){
         this.id = id;
-        this.name = name;
-        this.price = price;
+        this.nimi = nimi;
+        this.hinta = hinta;
     }
 
     public int getId() {
@@ -29,20 +29,20 @@ public class LisaAine {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNimi() {
+        return nimi;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
     }
 
-    public double getPrice() {
-        return price;
+    public double getHinta() {
+        return hinta;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setHinta(double hinta) {
+        this.hinta = hinta;
     }
 
     @Override
@@ -66,8 +66,8 @@ public class LisaAine {
     public String toString() {
         return "LisaAine{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
+                ", nimi='" + nimi + '\'' +
+                ", hinta=" + hinta +
                 '}';
     }
 }

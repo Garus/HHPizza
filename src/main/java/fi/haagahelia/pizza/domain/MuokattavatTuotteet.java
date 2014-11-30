@@ -8,9 +8,9 @@ import java.util.*;
 
 @Component
 @Scope("session")
-public class MuokattavatPizzat {
+public class MuokattavatTuotteet {
 
-    private static final Logger logger = Logger.getLogger(MuokattavatPizzat.class);
+    private static final Logger logger = Logger.getLogger(MuokattavatTuotteet.class);
     private Map<Integer, Tuote> tuotteet = new HashMap<>();
 
     public Map<Integer, Tuote> getTuotteet() {
@@ -46,7 +46,7 @@ public class MuokattavatPizzat {
 
     }
 
-    public MuokattavatPizzat() {
+    public MuokattavatTuotteet() {
         super();
     }
 

@@ -41,43 +41,44 @@
                             <table class="table">
                                 <tr>
                                     <td>Pizza</td>
+                                    <td></td>
                                     <td><fmt:formatNumber value="${tuote.hinta}" type="currency"/></td>
                                     <td></td>
                                 </tr>
 
                                 <c:choose>
                                     <c:when test="${tuote.aineet.size() > 0}">
-                                        <c:forEach items="${tuote.aineet}" var="aine" varStatus="stat">
+                                        <c:forEach items="${tuote.aineet}" var="pizzanaine" varStatus="stat">
                                             <tr>
-                                                <td>${aine.name}</td>
-                                                <td>&nbsp;<fmt:formatNumber value="${aine.price}"
+                                                <td>${pizzanaine.tuote.nimi}</td>
+                                                <td>${pizzanaine.maara}</td>
+                                                <td>&nbsp;<fmt:formatNumber value="${pizzanaine.tuote.hinta}"
                                                                              type="currency"/>
-                                                    <c:set var="sum" value="${sum + aine.price}"/>
+                                                    <c:set var="sum" value="${sum + pizzanaine.tuote.hinta}"/>
                                                 </td>
-                                                <td><a class="btn-link" href="muokkaapizza/aine/${tuote.id}/${aine.id}">Poista</a></td>
+                                                <td><a class="btn-link" href="muokkaapizza/aine/${tuote.id}/${pizzanaine.tuote.id}">Poista</a></td>
                                             </tr>
                                         </c:forEach>
                                     </c:when>
                                     <c:otherwise>
                                         <tr>
-                                        <td colspan="2"></td>
+                                        <td colspan="3"></td>
                                         <td>Ei lisäaineita</td>
                                         </tr>
                                     </c:otherwise>
                                 </c:choose>
                                 <tr>
-                                    <td>Yhteensä</td>
-                                    <td><fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></td>
+                                    <td colspan="2">Yhteensä: </td>
+                                    <td><fmt:formatNumber value="${tuote.hinta + pizzanaine.summa}" type="currency"/></td>
                                     <td></td>
                                 </tr>
                             </table>
-
                             <form method="get" action="muokkaapizza/lisaa">
                                 <label for="aineet"><input type="submit" value="Lisää pizzaan"
                                                            class="btn btn-sm"/></label>
                                 <form:select path="lisaAineet" name="aine" id="aineet" items="${lisaAineet}"
                                              itemValue="id"
-                                             itemLabel="name"/>
+                                             itemLabel="nimi"/>
                                 <input type="hidden" value="${tuote.id}" name="pizza"/>
                             </form>
                             <a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "

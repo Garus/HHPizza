@@ -1,7 +1,7 @@
 package fi.haagahelia.pizza.service;
 
 import fi.haagahelia.pizza.domain.LisaAine;
-import fi.haagahelia.pizza.domain.MuokattavatPizzat;
+import fi.haagahelia.pizza.domain.MuokattavatTuotteet;
 import fi.haagahelia.pizza.domain.Ostoskori;
 import fi.haagahelia.pizza.domain.Tuote;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class OstoskoriServiceImpl implements OstoskoriService {
     private Ostoskori ostoskori;
 
     @Autowired
-    private MuokattavatPizzat muokkaPizza;
+    private MuokattavatTuotteet muokkaPizza;
 
     @Override
     public Ostoskori getOstoskori() {
@@ -43,13 +43,13 @@ public class OstoskoriServiceImpl implements OstoskoriService {
     @Override
     public void lisaaAinePizzaan(int pizzaiId, LisaAine aine) {
         Tuote tuote = muokkaPizza.getTuote(pizzaiId);
-        boolean isAineLisattu = tuote.getAineet().add(aine);
+        tuote.lisaaAinePizzaan(aine);
     }
 
     @Override
     public void poistaAinePizzasta(int pizzaId, LisaAine aine) {
         Tuote tuote = muokkaPizza.getTuote(pizzaId);
-        tuote.getAineet().remove(aine);
+        tuote.poistaAinePizzasta(aine, false);
     }
 
 

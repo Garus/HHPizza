@@ -1,14 +1,14 @@
 package fi.haagahelia.pizza.domain;
 
 /**
- * 1 rivi ostoskorissa
+ * 1 lisä aineen tietue tuotteessa
  */
-public class OstoskorinTuote<T extends Tuote> {
+public class TuotteenLisaAine<T extends LisaAine> {
 
     private T tuote;
     private int maara;
 
-    public OstoskorinTuote(T tuote) {
+    public TuotteenLisaAine(T tuote) {
         this.tuote = tuote;
         this.maara = 1;
     }

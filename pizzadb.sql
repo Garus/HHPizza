@@ -53,7 +53,7 @@ CREATE TABLE `kategoriat` (
   `kategoriaId` int(11) NOT NULL AUTO_INCREMENT,
   `kategoriaNimi` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`kategoriaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `kategoriat` (
 
 LOCK TABLES `kategoriat` WRITE;
 /*!40000 ALTER TABLE `kategoriat` DISABLE KEYS */;
-INSERT INTO `kategoriat` VALUES (1,'Pizzat'),(2,'Pannupizzat');
+INSERT INTO `kategoriat` VALUES (1,'Pizzat'),(2,'Pannupizzat'),(3,'Juomat');
 /*!40000 ALTER TABLE `kategoriat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,8 +92,33 @@ CREATE TABLE `kayttajat` (
 
 LOCK TABLES `kayttajat` WRITE;
 /*!40000 ALTER TABLE `kayttajat` DISABLE KEYS */;
-INSERT INTO `kayttajat` VALUES (1,'aku','2014-11-09 18:56:38','Ankka Admin',NULL,1),(2,'saku','2014-11-09 18:56:38','Sorsa User',NULL,2),(3,'kissa','2014-11-09 18:56:38','Kissa Käyttäjä',NULL,3);
+INSERT INTO `kayttajat` VALUES (1,'aku','2014-11-30 19:59:48','Ankka Admin',NULL,1),(2,'saku','2014-11-30 19:59:48','Sorsa User',NULL,2),(3,'kissa','2014-11-30 19:59:48','Kissa Käyttäjä',NULL,3);
 /*!40000 ALTER TABLE `kayttajat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lisa_aineet`
+--
+
+DROP TABLE IF EXISTS `lisa_aineet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lisa_aineet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hinta` double NOT NULL,
+  `nimi` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lisa_aineet`
+--
+
+LOCK TABLES `lisa_aineet` WRITE;
+/*!40000 ALTER TABLE `lisa_aineet` DISABLE KEYS */;
+INSERT INTO `lisa_aineet` VALUES (1,1.5,'valkosipuli'),(2,0.5,'oregano'),(3,2,'kanamuna');
+/*!40000 ALTER TABLE `lisa_aineet` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -296,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-10 20:32:19
+-- Dump completed on 2014-11-30 22:14:40

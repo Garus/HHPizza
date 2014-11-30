@@ -101,20 +101,20 @@ public class TuoteController {
 
         List<LisaAine> aineet = tuoteService.haeKaikkiLisaAineet();
 
-        if (aine != null && aine.length > 0) {
-            // iteroi kaikki lisaaineet ja poista jo tuotteessa olemassaolevat aineet
-            for (Iterator it = aineet.iterator(); it.hasNext(); ) {
-                LisaAine lisaAine = (LisaAine) it.next();
-                for (int i = 0; i < aine.length; i++) {
-                    int aineId = Integer.parseInt(aine[i]);
-                    if (lisaAine.getId() == aineId) {
-                        tuote.getAineet().add(lisaAine);
-                        it.remove();
-                        break;
-                    }
-                }
-            }
-        }
+//        if (aine != null && aine.length > 0) {
+//            // iteroi kaikki lisaaineet ja poista jo tuotteessa olemassaolevat aineet
+//            for (Iterator it = aineet.iterator(); it.hasNext(); ) {
+//                LisaAine lisaAine = (LisaAine) it.next();
+//                for (int i = 0; i < aine.length; i++) {
+//                    int aineId = Integer.parseInt(aine[i]);
+//                    if (lisaAine.getId() == aineId) {
+//                        tuote.getAineet().add(lisaAine);
+//                        it.remove();
+//                        break;
+//                    }
+//                }
+//            }
+//        }
 
         model.addAttribute("lisaAineet", aineet);
         model.addAttribute("tuote", tuote);

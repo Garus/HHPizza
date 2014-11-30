@@ -1,8 +1,7 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "tuotteet")
@@ -18,7 +17,7 @@ public class Tuote {
 	private String kuvaus;
 
 	@Transient
-	private List<LisaAine> aineet = new ArrayList<>();
+	private List<TuotteenLisaAine> aineet = new ArrayList<>();
 
 	@Override
 	public int hashCode() {
@@ -84,11 +83,46 @@ public class Tuote {
 		this.id = id;
 	}
 
-	public List<LisaAine> getAineet() {
+	public List<TuotteenLisaAine> getAineet() {
 		return aineet;
 	}
 
-	public void setAineet(List<LisaAine> aineet) {
+	public void lisaaAinePizzaan(LisaAine aine) {
+		boolean isAinePizzassa = true;
+		for (TuotteenLisaAine korinTuote : aineet) {
+			if (korinTuote.getTuote().equals(aine)) {
+				korinTuote.lisaaLukumaara();
+				isAinePizzassa = false;
+			}
+		}
+
+		if (isAinePizzassa) {
+			aineet.add(new TuotteenLisaAine(aine));
+		}
+	}
+
+	public boolean poistaAinePizzasta(LisaAine aine, boolean poistaKaikki) {
+		boolean ok = false;
+		for (Iterator<TuotteenLisaAine> it = aineet.iterator(); it.hasNext();) {
+			TuotteenLisaAine lisaAine = it.next();
+			if (lisaAine.getTuote().equals(aine)) {
+				if (poistaKaikki) {
+					it.remove();
+					ok = true;
+				} else {
+					if (lisaAine.getMaara() == 1) {
+						it.remove();
+						ok = true;
+					} else {
+						lisaAine.vahennaLukumaara();
+					}
+				}
+			}
+		}
+		return ok;
+	}
+
+	public void setAineet(List<TuotteenLisaAine> aineet) {
 		this.aineet = aineet;
 	}
 
