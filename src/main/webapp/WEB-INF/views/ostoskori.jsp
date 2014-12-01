@@ -59,10 +59,10 @@
                                     </c:forEach>
                                 </c:when>
                                 <c:otherwise>
-                                    <tr>
-                                        <td colspan="3"></td>
-                                        <td>Ei lisäaineita</td>
-                                    </tr>
+                                    <%--<tr>--%>
+                                        <%--<td colspan="3"></td>--%>
+                                        <%--<td>Ei lisäaineita</td>--%>
+                                    <%--</tr>--%>
                                 </c:otherwise>
                             </c:choose>
                                 </td>

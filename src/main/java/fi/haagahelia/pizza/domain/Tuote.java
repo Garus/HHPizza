@@ -19,28 +19,6 @@ public class Tuote {
     @Transient
     private List<TuotteenLisaAine> aineet = new ArrayList<>();
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Tuote other = (Tuote) obj;
-        if (id != other.id)
-            return false;
-        return true;
-    }
-
     public Tuote() {
         super();
     }
@@ -136,5 +114,25 @@ public class Tuote {
             sum += aine.getSumma();
         }
         return sum;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tuote)) return false;
+
+        Tuote tuote = (Tuote) o;
+
+        if (id != tuote.id) return false;
+        if (!aineet.equals(tuote.aineet)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + aineet.hashCode();
+        return result;
     }
 }

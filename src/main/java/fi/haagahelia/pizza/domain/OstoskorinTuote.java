@@ -19,7 +19,7 @@ public class OstoskorinTuote<T extends Tuote> {
      */
     public double getSumma() {
         double summa = 0;
-        summa = maara * tuote.getHinta();
+        summa = maara * tuote.getSumma();
         return summa;
     }
 
