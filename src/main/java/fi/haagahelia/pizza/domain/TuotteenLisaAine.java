@@ -20,6 +20,7 @@ public class TuotteenLisaAine<T extends LisaAine> {
     public double getSumma() {
         double summa = 0;
         summa = maara * tuote.getHinta();
+        System.err.println("summa " + maara + " + " +  tuote.getHinta());
         return summa;
     }
 

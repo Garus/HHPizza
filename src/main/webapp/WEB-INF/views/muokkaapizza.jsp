@@ -54,7 +54,7 @@
                                                 <td>${pizzanaine.maara}</td>
                                                 <td>&nbsp;<fmt:formatNumber value="${pizzanaine.tuote.hinta}"
                                                                              type="currency"/>
-                                                    <c:set var="sum" value="${sum + pizzanaine.tuote.hinta}"/>
+                                                    <c:set var="sum" value="${sum + pizzanaine.getSumma()}"/>
                                                 </td>
                                                 <td><a class="btn-link" href="muokkaapizza/aine/${tuote.id}/${pizzanaine.tuote.id}">Poista</a></td>
                                             </tr>
@@ -69,7 +69,7 @@
                                 </c:choose>
                                 <tr>
                                     <td colspan="2">Yhteensä: </td>
-                                    <td><fmt:formatNumber value="${tuote.hinta + pizzanaine.summa}" type="currency"/></td>
+                                    <td><fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></td>
                                     <td></td>
                                 </tr>
                             </table>
@@ -81,7 +81,7 @@
                                              itemLabel="nimi"/>
                                 <input type="hidden" value="${tuote.id}" name="pizza"/>
                             </form>
-                            <a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
+                            <a href="<spring:url value="/ostoskori/lisaamuokattu?id=${tuote.id}" /> "
                                class="btn btn-primary">Lisää koriin</a>
                         </div>
                     </div>

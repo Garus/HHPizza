@@ -49,9 +49,8 @@ public class OstoskoriServiceImpl implements OstoskoriService {
     @Override
     public void poistaAinePizzasta(int pizzaId, LisaAine aine) {
         Tuote tuote = muokkaPizza.getTuote(pizzaId);
-        tuote.poistaAinePizzasta(aine, false);
+        tuote.poistaAinePizzasta(aine, true);
     }
-
 
     @Override
     public void lisaaTuote(Tuote tuote) {

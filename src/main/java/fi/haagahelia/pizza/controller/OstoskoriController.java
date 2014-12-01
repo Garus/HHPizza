@@ -133,8 +133,9 @@ public class OstoskoriController {
 
     /**
      * Lisää muokattava pizza sessioon
+     *
      * @param model
-     * @param id tuote (pizza) id
+     * @param id    tuote (pizza) id
      * @return uudelleenphjaus muokkaapizzaa nkäymään
      */
     @RequestMapping(value = "/muokkaapizza/id", method = RequestMethod.GET)
@@ -146,47 +147,55 @@ public class OstoskoriController {
         }
         return "redirect:/ostoskori/muokkaapizza";
     }
+
+    /**
+     * hae kategorian kaikki tuotteet
+     *
+     * @param model
+     * @param kategoria kategorian id
+     * @return
+     */
     @RequestMapping("/{kategoria}")
     public String getProductsByCategory(Model model, @PathVariable("kategoria") String kategoria) {
         model.addAttribute("tuotteet", tuoteService.haeKategorianTuotteet(kategoria));
 
         return "tuotteet";
     }
-    @RequestMapping(value = "/muokkaapizza/{pizzaid}/{aine}", method = RequestMethod.GET)
-    public String lisaAinePizzaanPath(Model model, @PathVariable("aine") Integer aineId, @PathVariable("pizzaid") Integer pizzaId) {
 
-        if (aineId != null || pizzaId != null) {
-            LisaAine aine = tuoteService.haeLisaAineTunnuksella(aineId);
-            if (aine != null){
-                ostoskoriService.lisaaAinePizzaan(pizzaId, aine);
-            }
-        }
-        return "redirect:/ostoskori/muokkaapizza";
-    }
+    /**
+     * lisää aine pizzaan
+     *
+     * @param model
+     * @param aine  aineen id
+     * @param pizza pizzan id
+     * @return
+     */
     @RequestMapping(value = "/muokkaapizza/lisaa", method = RequestMethod.GET)
     public String lisaAinePizzaan(Model model, @RequestParam(required = true) Integer aine, @RequestParam(required = true) Integer pizza) {
 
-        logger.info("aineId : " + aine);
-        logger.info("pizzaid : " + pizza);
-
         if (aine != null || pizza != null) {
             LisaAine lisaAine = tuoteService.haeLisaAineTunnuksella(aine);
-            if (lisaAine != null){
+            if (lisaAine != null) {
                 ostoskoriService.lisaaAinePizzaan(pizza, lisaAine);
             }
         }
         return "redirect:/ostoskori/muokkaapizza";
     }
 
+    /**
+     * Poista aine pizzasta
+     *
+     * @param model
+     * @param pizza pizzan id
+     * @param aine  aineen id
+     * @return
+     */
     @RequestMapping(value = "/muokkaapizza/aine/{pizza}/{aine}", method = RequestMethod.GET)
-    public String poistaAinePizzasta(Model model, @PathVariable("pizza") Integer aine, @PathVariable("aine") Integer pizza) {
-
-        logger.info("aineId : " + aine);
-        logger.info("pizzaid : " + pizza);
+    public String poistaAinePizzasta(Model model, @PathVariable("pizza") Integer pizza, @PathVariable("aine") Integer aine) {
 
         if (aine != null && pizza != null) {
             LisaAine lisaAine = tuoteService.haeLisaAineTunnuksella(aine);
-            if (lisaAine != null){
+            if (lisaAine != null) {
                 ostoskoriService.poistaAinePizzasta(pizza, lisaAine);
             }
         }
@@ -194,7 +203,6 @@ public class OstoskoriController {
     }
 
     /**
-     *
      * @param model
      * @return muokkaa pizzaa näkymä
      */
@@ -208,5 +216,20 @@ public class OstoskoriController {
         model.addAttribute("lisaAineet", aineet);
 
         return "muokkaapizza";
+    }
+
+    /**
+     * lisää muokattu tuote (pizza) ostoskoriin
+     *
+     * @param id pizzan id
+     * @return uudelleenohjaus ostoskoriin
+     */
+    @RequestMapping("/lisaamuokattu")
+    public String lisääMuokattuTuoteKoriin(@RequestParam("id") int id) {
+
+        Tuote tuote = ostoskoriService.getMuokattavaTuote(id);
+        logger.info("Löydettiin sessiosta tuote: " + tuote);
+        ostoskoriService.lisaaTuote(tuote);
+        return "redirect:/ostoskori";
     }
 }

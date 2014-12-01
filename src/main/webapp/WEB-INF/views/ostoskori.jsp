@@ -49,9 +49,25 @@
                             <tr>
                                 <td>${loop.index+1}.</td>
                                 <td><a href="<spring:url value="/tuotteet/tuote?id=${korinTuote.tuote.id}" /> ">${korinTuote.tuote.nimi}</a>
+                            <c:choose>
+                                <c:when test="${korinTuote.tuote.aineet.size() > 0}">
+                                    <c:forEach items="${korinTuote.tuote.aineet}" var="pizzanaine" varStatus="stat">
+                                        <br>${pizzanaine.maara}x ${pizzanaine.tuote.nimi}
+                                            &nbsp;<fmt:formatNumber value="${pizzanaine.tuote.hinta}"
+                                                                        type="currency"/>
+                                                <c:set var="sum" value="${sum + pizzanaine.getSumma()}"/>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td>Ei lisäaineita</td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
                                 </td>
                                 <td>${korinTuote.tuote.kuvaus}</td>
-                                <td><fmt:formatNumber value="${korinTuote.tuote.hinta}" type="currency"/></td>
+                                <td><fmt:formatNumber value="${korinTuote.tuote.getSumma()}" type="currency"/></td>
                                 <td>${korinTuote.maara}</td>
                                 <td valign="middle" align="right">
                                     <a href="<spring:url value="/ostoskori/lisaa?id=${korinTuote.tuote.id}" /> "
