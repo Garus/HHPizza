@@ -31,14 +31,14 @@ public interface OstoskoriService {
      * Poistaa sessiosta tietyn Tuote-luokan olion. Tarkennus tapahtuu
      * tuote-olion id attribuutin perusteella.
      * 
-     * @param tuote
+     * @param tuote Tuote-luokan olio
      * @return tosi jos tuote poistettiin, epätosi jos ei
      */
     boolean poistaTuote(Tuote tuote);
     /**
      * Poistaa tietyn tuote-olion instanssin sessiosta.
      * 
-     * @param tuote
+     * @param tuote Tuote-luokan olio
      * @return tosi jos vähennys onnistui, muuten epätosi
      */
     boolean vahennaTuote(Tuote tuote);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * {@inheritDoc}
  */
 @Service
-public class TilausServiceImpl implements TilausServise {
+public class TilausServiceImpl implements TilausService {
     @Autowired
     private TilausDAO tilausDAO;
 

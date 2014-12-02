@@ -59,7 +59,7 @@ public class Kategoria {
     /**
      * Asettaa oliolle kokoelman tuotteita muuttujalla tuotteet.
      * 
-     * @param tuotteeet kokoelma tuotteita
+     * @param tuotteet kokoelma tuotteita
      */
 
     public void setTuotteet(Collection<Tuote> tuotteet) {

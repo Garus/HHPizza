@@ -51,7 +51,7 @@ public class Roolit implements Serializable {
      *<p>
      * Luo tyhjän rooli olion tietylle ID:lle
      * </p>
-     * @param id
+     * @param id kokonaisluku, roolin id numero
      */
     public Roolit(Integer id) {
         this.id = id;

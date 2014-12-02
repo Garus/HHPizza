@@ -15,7 +15,7 @@ import fi.haagahelia.pizza.domain.Tuote;
  * @author Heikki Telinen
  * @version %I%
  *
- * @see fi.haagahelia.pizza.service.TuoteService'
+ * @see fi.haagahelia.pizza.service.TuoteService
  * @see fi.haagahelia.pizza.domain.Tuote
  */
 public interface TuoteDAO {
@@ -69,7 +69,7 @@ public interface TuoteDAO {
     /**
      * Listaa tietyn kategorian kaikki tuotteet
      *
-     * @param kategoria merkkijono, kategorian nimi
+     * @param kategoriaNimi merkkijono, kategorian nimi
      * @return Lista Tuote-luokan olioista halutussa kategoriassa
      */
     public List<Tuote> haeKategorianTuotteet(String kategoriaNimi);

@@ -14,7 +14,7 @@ import java.util.Random;
  * @author Heikki Telinen
  * @version %I%
  *
- * @see fi.haagahelia.pizza.service.tilausService
+ * @see fi.haagahelia.pizza.service.TilausService
  */
 
 @Controller

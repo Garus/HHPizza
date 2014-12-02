@@ -19,7 +19,7 @@ import java.util.*;
 
 /**
  * Controller tuotteisiin liittyviin toimintoihin.
- * <p/>
+ * <p>
  * Välittää tietoja metodeissa kartoitettujen view tason jsp sivujen ja model
  * tason TuoteService luokan välillä. Kartoitus /tuotteet
  *
@@ -75,7 +75,7 @@ public class TuoteController {
      * Palauttaa kaikki mallin sisältämät hallinnoitavat tuotteet.
      * Kartoitus /tuotteet/admin
      *
-     * @param model
+     * @param model malli jota käytetään
      * @return admintuotteet lista kaikista tuoteService olion tuotteista
      */
     @RequestMapping(value = "/admin")
@@ -164,7 +164,7 @@ public class TuoteController {
     /**
      * Lisää uuden tuotteen. Kartoitus /tuotteet/admin/uusi
      *
-     * @param tuote
+     * @param tuote Tuote-luokan olio
      * @return uudelleenohjaus sivulle /tuotteet/admin
      */
     @RequestMapping(value = "/admin/uusi", method = RequestMethod.POST)

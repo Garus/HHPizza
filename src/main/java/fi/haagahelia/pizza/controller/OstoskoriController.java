@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * Controller ostoskoriin liittyviin toimintoihin.
- * <p/>
+ * <p>
  * Välittää tietoja metodeissa kartoitettujen view tason jsp sivujen ja model
  * tason tuoteService ja ostoskoriService luokkien välillä. Kartoitus /ostoskori
  *
@@ -134,7 +134,7 @@ public class OstoskoriController {
     /**
      * Lisää muokattava pizza sessioon
      *
-     * @param model
+     * @param model malli jota käytetään
      * @param id    tuote (pizza) id
      * @return uudelleenphjaus muokkaapizzaa nkäymään
      */
@@ -151,9 +151,9 @@ public class OstoskoriController {
     /**
      * hae kategorian kaikki tuotteet
      *
-     * @param model
+     * @param model malli jota käytetään
      * @param kategoria kategorian id
-     * @return
+     * @return palauttaa tuotteet
      */
     @RequestMapping("/{kategoria}")
     public String getProductsByCategory(Model model, @PathVariable("kategoria") String kategoria) {
@@ -165,10 +165,10 @@ public class OstoskoriController {
     /**
      * lisää aine pizzaan
      *
-     * @param model
+     * @param model malli jota käytetään
      * @param aine  aineen id
      * @param pizza pizzan id
-     * @return
+     * @return uudelleenohjaus muokkaussivulle
      */
     @RequestMapping(value = "/muokkaapizza/lisaa", method = RequestMethod.GET)
     public String lisaAinePizzaan(Model model, @RequestParam(required = true) Integer aine, @RequestParam(required = true) Integer pizza) {
@@ -185,10 +185,10 @@ public class OstoskoriController {
     /**
      * Poista aine pizzasta
      *
-     * @param model
+     * @param model malli jota käytetään
      * @param pizza pizzan id
      * @param aine  aineen id
-     * @return
+     * @return uudelleenohjaus pizzan muokkaus jsp sivulle
      */
     @RequestMapping(value = "/muokkaapizza/aine/{pizza}/{aine}", method = RequestMethod.GET)
     public String poistaAinePizzasta(Model model, @PathVariable("pizza") Integer pizza, @PathVariable("aine") Integer aine) {
@@ -203,7 +203,7 @@ public class OstoskoriController {
     }
 
     /**
-     * @param model
+     * @param model malli jota käytetään
      * @return muokkaa pizzaa näkymä
      */
     @RequestMapping("/muokkaapizza")

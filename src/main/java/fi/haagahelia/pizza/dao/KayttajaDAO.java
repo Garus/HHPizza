@@ -14,7 +14,7 @@ import fi.haagahelia.pizza.domain.Roolit;
  * @author Gabriel Herrera
  * @version %I%
  *
- * @see fi.haagahelia.pizza.service.KayttajaService'
+ * @see fi.haagahelia.pizza.service.KayttajaService
  * @see fi.haagahelia.pizza.domain.Kayttaja
  */
 public interface KayttajaDAO {

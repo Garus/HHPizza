@@ -13,7 +13,7 @@ import fi.haagahelia.pizza.domain.Roolit;
  * @author Gabriel Herrera
  * @version %I%
  * 
- * @see fi.haagahelia.pizza.controller.KayttajaController'
+ * @see fi.haagahelia.pizza.controller.KayttajaController
  * @see fi.haagahelia.pizza.dao.KayttajaDAO
  * @see fi.haagahelia.pizza.domain.Roolit
  */

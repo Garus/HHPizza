@@ -10,7 +10,7 @@ import fi.haagahelia.pizza.domain.Tilaus;
  * @author Heikki Telinen
  * @version %I%
  *
- * @see fi.haagahelia.pizza.service.TilausService'
+ * @see fi.haagahelia.pizza.service.TilausService
  * @see fi.haagahelia.pizza.domain.Tilaus
  */
 public interface TilausDAO {
