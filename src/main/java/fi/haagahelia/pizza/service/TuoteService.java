@@ -16,6 +16,7 @@ import fi.haagahelia.pizza.domain.Tuote;
  * 
  * @see fi.haagahelia.pizza.controller.TuoteController
  * @see fi.haagahelia.pizza.dao.TuoteDAO
+ * @see fi.haagahelia.pizza.domain.Tuote
  */
 public interface TuoteService {
     /**

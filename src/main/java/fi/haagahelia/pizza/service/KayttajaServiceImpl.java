@@ -16,7 +16,7 @@ import fi.haagahelia.pizza.dao.KayttajaDAO;
 public class KayttajaServiceImpl implements KayttajaService {
 
     /**
-     * KäyttäjäDAO luokan olio
+     * KäyttäjäDAO-luokan olio
      */
     private KayttajaDAO kayttajaDAO;
 

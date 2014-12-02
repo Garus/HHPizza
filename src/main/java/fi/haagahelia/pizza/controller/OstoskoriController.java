@@ -27,8 +27,8 @@ import java.util.List;
  *
  * @author Heikki Telinen
  * @version %I%
- * @see TuoteService
- * @see OstoskoriService
+ * @see fi.haagahelia.pizza.service.TuoteService
+ * @see fi.haagahelia.pizza.service.OstoskoriService
  */
 @Controller
 @Scope("request")

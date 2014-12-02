@@ -26,7 +26,7 @@ import java.util.Date;
  * @author Heikki Telinen
  * @version %I%
  *
- * @see KayttajaService
+ * @see fi.haagahelia.pizza.service.KayttajaService
  */
 @Controller
 @RequestMapping("/kayttajat")

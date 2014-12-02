@@ -25,7 +25,7 @@ import java.util.*;
  *
  * @author Heikki Telinen
  * @version %I%
- * @see TuoteService
+ * @see fi.haagahelia.pizza.service.TuoteService
  */
 @Controller
 @RequestMapping("/tuotteet")
