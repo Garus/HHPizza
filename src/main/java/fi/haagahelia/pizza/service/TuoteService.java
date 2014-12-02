@@ -46,12 +46,15 @@ public interface TuoteService {
      */
     void poistaTuote(Tuote p);
     /**
+     * Vaihtaa mallin sisältämän tuote-olion attribuutit toiseen.
+     * Tunnistus id-attribuutin perusteella
      * 
-     * @param p 
+     * @param p Tuote-luokan olio jonka attribuutteja muokataan
      */
     void päivitäTuote(Tuote p);
     /**
      * Listaa kaikki kategoriat joihin tuote voi kuulua
+     * 
      * @return Lista kaikista Kategoria-luokan olioista
      */
     public List<Kategoria> haeKaikkiKategoriat();
@@ -64,10 +67,17 @@ public interface TuoteService {
     public List<Tuote> haeKategorianTuotteet(String kategoria);
 
     /**
-     *
-     * @return Lista LisaAine:sta
+     * Listaa kaikki mahdolliset lisäaineet
+     * 
+     * @return Lista LisaAine-luokan olioista
      */
     public List<LisaAine> haeKaikkiLisaAineet();
-
+    /**
+     * Palauttaa tietyn id-attribuutilla tunnistettavan LisaAine-luokan olion
+     * 
+     * @param id kokonaisluku, jolla palautettava LisaAine-luokan olion id
+     * attribuutti tunnistetaan
+     * @return LisaAine-luokan olio
+     */
     public LisaAine haeLisaAineTunnuksella(int id);
 }

@@ -9,13 +9,12 @@ import java.util.List;
  *  Service tason käyttöliittymä ostoskoriin liittyviin toimintoihin.
  * <p>
  * Välittää tietoja controller tason OstoskoriController-luokasta model tason 
- * OstoskoriDAO käyttöliittymälle.
+ * Ostoskori luokalle.
  * 
  * @author Heikki Telinen
  * @version %I%
  * 
  * @see fi.haagahelia.pizza.controller.OstoskoriController
- * @see fi.haagahelia.pizza.dao.OstoskoriDAO
  * @see fi.haagahelia.pizza.domain.Ostoskori
  */
 public interface OstoskoriService {

@@ -6,23 +6,88 @@ import fi.haagahelia.pizza.domain.Kategoria;
 import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.Tuote;
 
+/**
+ * Model tason käyttöliittymä tuotteisiin liittyviin toimintoihin.
+ * <p>
+ * Välittää tietoja service tason TuoteService-luokasta model tason Tuote
+ * hibernate luokalle.
+ *
+ * @author Heikki Telinen
+ * @version %I%
+ *
+ * @see fi.haagahelia.pizza.service.TuoteService'
+ * @see fi.haagahelia.pizza.domain.Tuote
+ */
 public interface TuoteDAO {
 
-	public void addTuote(Tuote p);
+    /**
+     * Lisää Tuote-luokan olion malliin
+     *
+     * @param p lisättävä Tuote-luokan olio
+     */
+    public void addTuote(Tuote p);
 
-	public void updateTuote(Tuote p);
+    /**
+     * Vaihtaa mallin sisältämän tuote-olion attribuutit toiseen. Tunnistus
+     * id-attribuutin perusteella
+     *
+     * @param p Tuote-luokan olio jonka attribuutteja muokataan
+     */
+    public void updateTuote(Tuote p);
 
-	public List<Tuote> haeKaikkiTuotteet();
+    /**
+     * Luo listan kaikista tuotteista
+     *
+     * @return lista kaikista tuotteista
+     */
+    public List<Tuote> haeKaikkiTuotteet();
 
-	public Tuote haeTuoteTunnuksella(int id);
+    /**
+     * Luo Tuote-luokan olion tietyn id:n sisältävästä tuotteesta
+     *
+     * @param id kokonaisluku, luotavan tuotteen id numero
+     *
+     * @return Tuote-luokan olio
+     */
+    public Tuote haeTuoteTunnuksella(int id);
 
-	public void poistaTuote(Tuote p);
+    /**
+     * Poistaa valitun Tuote-luokan olion mallista olion id attribuutin
+     * perusteella
+     *
+     * @param p poistettava Tuote-luokan olio.
+     */
+    public void poistaTuote(Tuote p);
 
-	public List<Kategoria> haeKaikkiKategoriat();
+    /**
+     * Listaa kaikki kategoriat joihin tuote voi kuulua
+     *
+     * @return Lista kaikista Kategoria-luokan olioista
+     */
+    public List<Kategoria> haeKaikkiKategoriat();
 
-	public List<Tuote> haeKategorianTuotteet(String kategoriaNimi);
+    /**
+     * Listaa tietyn kategorian kaikki tuotteet
+     *
+     * @param kategoria merkkijono, kategorian nimi
+     * @return Lista Tuote-luokan olioista halutussa kategoriassa
+     */
+    public List<Tuote> haeKategorianTuotteet(String kategoriaNimi);
 
-	public List<LisaAine> haeKaikkiLisaAineet();
+    /**
+     * Listaa kaikki mahdolliset lisäaineet
+     *
+     * @return Lista LisaAine-luokan olioista
+     */
 
-	public LisaAine haeLisaAineTunnuksella(int id);
+    public List<LisaAine> haeKaikkiLisaAineet();
+
+    /**
+     * Palauttaa tietyn id-attribuutilla tunnistettavan LisaAine-luokan olion
+     *
+     * @param id kokonaisluku, jolla palautettava LisaAine-luokan olion id
+     * attribuutti tunnistetaan
+     * @return LisaAine-luokan olio
+     */
+    public LisaAine haeLisaAineTunnuksella(int id);
 }

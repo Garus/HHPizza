@@ -15,7 +15,9 @@ public class TilausDAOImpl implements TilausDAO {
     public void setSessionFactory(SessionFactory sf) {
         this.sessionFactory = sf;
     }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int tallennaTilaus(Tilaus tilaus) {
         Session session = this.sessionFactory.getCurrentSession();

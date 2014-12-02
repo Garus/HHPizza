@@ -10,6 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+/**
+ * {@inheritDoc}
+ */
 @Repository
 public class KayttajaDAOImpl implements KayttajaDAO {
 
@@ -20,6 +23,9 @@ public class KayttajaDAOImpl implements KayttajaDAO {
         this.sessionFactory = sf;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addKayttaja(Kayttaja kayttaja) {
         Session session = this.sessionFactory.getCurrentSession();
@@ -27,6 +33,9 @@ public class KayttajaDAOImpl implements KayttajaDAO {
         logger.info("Kayttaja tallennettu:: " + kayttaja);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateKayttaja(Kayttaja kayttaja) {
         Session session = this.sessionFactory.getCurrentSession();
@@ -34,6 +43,9 @@ public class KayttajaDAOImpl implements KayttajaDAO {
         logger.info("Kayttaja päivitetty:: " + kayttaja);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @SuppressWarnings("unchecked")
     @Override
     public List<Kayttaja> haeKaikkiKayttajat() {
@@ -46,6 +58,9 @@ public class KayttajaDAOImpl implements KayttajaDAO {
         return tuotteetList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Kayttaja haeKayttajaTunnuksella(int id) {
         Kayttaja kayttaja = null;
@@ -56,6 +71,9 @@ public class KayttajaDAOImpl implements KayttajaDAO {
         return kayttaja;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void poistaKayttaja(Kayttaja p) {
         Session session = this.sessionFactory.getCurrentSession();
@@ -64,6 +82,9 @@ public class KayttajaDAOImpl implements KayttajaDAO {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public List<Roolit> haeKayttajaRoolit() {
         Session session = this.sessionFactory.getCurrentSession();
         return session.createQuery("from Roolit ").list();
