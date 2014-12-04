@@ -39,11 +39,20 @@ public class Ostoskori {
         }
     }
 
-    public boolean poistaTuoteKorista(Tuote tuote, boolean poistaKaikki) {
+    public void lisääTuoteKoriin(int tuoteId) {
+
+        for (OstoskorinTuote korinTuote : tuotteet) {
+            if (korinTuote.getTuote().getId() == tuoteId) {
+                korinTuote.lisaaLukumaara();
+            }
+        }
+    }
+
+    public boolean poistaTuoteKorista(int tuoteId, boolean poistaKaikki) {
         boolean ok = false;
         for (Iterator<OstoskorinTuote> it = tuotteet.iterator(); it.hasNext();) {
             OstoskorinTuote korinTuote = it.next();
-            if (korinTuote.getTuote().equals(tuote)) {
+            if (korinTuote.getTuote().getId() == tuoteId) {
                 if (poistaKaikki) {
                     it.remove();
                     ok = true;

@@ -27,21 +27,27 @@ public interface OstoskoriService {
      * @param tuote Tuote-luokan olio
      */
     void lisaaTuote(Tuote tuote);
+
+    /**
+     *
+     * @param tuoteId int
+     */
+    void lisaaTuote(int tuoteId);
     /**
      * Poistaa sessiosta tietyn Tuote-luokan olion. Tarkennus tapahtuu
      * tuote-olion id attribuutin perusteella.
      * 
-     * @param tuote Tuote-luokan olio
+     * @param tuoteId tuotteen id
      * @return tosi jos tuote poistettiin, epätosi jos ei
      */
-    boolean poistaTuote(Tuote tuote);
+    boolean poistaTuote(int tuoteId);
     /**
      * Poistaa tietyn tuote-olion instanssin sessiosta.
      * 
-     * @param tuote Tuote-luokan olio
+     * @param tuoteId tuotteen id
      * @return tosi jos vähennys onnistui, muuten epätosi
      */
-    boolean vahennaTuote(Tuote tuote);
+    boolean vahennaTuote(int tuoteId);
     /**
      * Ostoskorissa olevien tuotteiden hinta-attribuutit yhteenlaskettuina.
      * 
@@ -101,4 +107,10 @@ public interface OstoskoriService {
      * @param aine LisaAine-luokan olio
      */
     void poistaAinePizzasta(int pizzaiId, LisaAine aine);
+
+    /**
+     * poista muokattava pizza listalta
+     * @param pizzaid int
+     */
+    void poistaMuokattavaPizza(int pizzaid);
 }

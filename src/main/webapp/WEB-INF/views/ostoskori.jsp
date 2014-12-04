@@ -70,7 +70,7 @@
                                 <td><fmt:formatNumber value="${korinTuote.tuote.getSumma()}" type="currency"/></td>
                                 <td>${korinTuote.maara}</td>
                                 <td valign="middle" align="right">
-                                    <a href="<spring:url value="/ostoskori/lisaa?id=${korinTuote.tuote.id}" /> "
+                                    <a href="<spring:url value="/ostoskori/lisaalkm?id=${korinTuote.tuote.id}" /> "
                                        class="btn btn-warning">+</a>
                                     <a href="<spring:url value="/ostoskori/vahenna?id=${korinTuote.tuote.id}" /> "
                                        class="btn btn-warning">-</a>

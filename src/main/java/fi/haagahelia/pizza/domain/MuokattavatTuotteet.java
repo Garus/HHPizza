@@ -46,6 +46,14 @@ public class MuokattavatTuotteet {
 
     }
 
+    public void poistaTuote(int tuoteId) {
+
+        if (tuotteet.containsKey(tuoteId)) {
+            tuotteet.remove(tuoteId);
+        }
+
+    }
+
     public MuokattavatTuotteet() {
         super();
     }

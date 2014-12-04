@@ -31,7 +31,7 @@ public class OstoskoriTest {
     @Test
     public void testPoistaTuote() throws Exception {
         ostoskori.lisääTuoteKoriin(tuote);
-        assertTrue(ostoskori.poistaTuoteKorista(new Tuote(100, "sata", 100.00), true));
+        assertTrue(ostoskori.poistaTuoteKorista(100, true));
     }
 
     @Test

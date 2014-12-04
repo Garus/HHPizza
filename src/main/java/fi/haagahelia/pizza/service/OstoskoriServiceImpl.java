@@ -69,6 +69,12 @@ public class OstoskoriServiceImpl implements OstoskoriService {
         Tuote tuote = muokkaPizza.getTuote(pizzaId);
         tuote.poistaAinePizzasta(aine, true);
     }
+
+    @Override
+    public void poistaMuokattavaPizza(int pizzaid) {
+        muokkaPizza.poistaTuote(pizzaid);
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -76,19 +82,25 @@ public class OstoskoriServiceImpl implements OstoskoriService {
     public void lisaaTuote(Tuote tuote) {
         ostoskori.lisääTuoteKoriin(tuote);
     }
+
+    @Override
+    public void lisaaTuote(int tuoteId) {
+        ostoskori.lisääTuoteKoriin(tuoteId);
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean poistaTuote(Tuote tuote) {
-        return ostoskori.poistaTuoteKorista(tuote, true);
+    public boolean poistaTuote(int tuoteId) {
+        return ostoskori.poistaTuoteKorista(tuoteId, true);
     }
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean vahennaTuote(Tuote tuote) {
-        return ostoskori.poistaTuoteKorista(tuote, false);
+    public boolean vahennaTuote(int tuoteId) {
+        return ostoskori.poistaTuoteKorista(tuoteId, false);
     }
     /**
      * {@inheritDoc}

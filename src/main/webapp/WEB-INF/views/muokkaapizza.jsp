@@ -54,7 +54,7 @@
                                                 <td>${pizzanaine.maara}</td>
                                                 <td>&nbsp;<fmt:formatNumber value="${pizzanaine.tuote.hinta}"
                                                                              type="currency"/>
-                                                    <c:set var="sum" value="${sum + pizzanaine.getSumma()}"/>
+                                                    <%--<c:set var="sum" value="${sum + pizzanaine.getSumma()}"/>--%>
                                                 </td>
                                                 <td><a class="btn-link" href="muokkaapizza/aine/${tuote.id}/${pizzanaine.tuote.id}">Poista</a></td>
                                             </tr>
@@ -69,7 +69,7 @@
                                 </c:choose>
                                 <tr>
                                     <td colspan="2">Yhteensä: </td>
-                                    <td><fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></td>
+                                    <td><fmt:formatNumber value="${tuote.getSumma()}" type="currency"/></td>
                                     <td></td>
                                 </tr>
                             </table>
@@ -83,13 +83,16 @@
                             </form>
                             <a href="<spring:url value="/ostoskori/lisaamuokattu?id=${tuote.id}" /> "
                                class="btn btn-primary">Lisää koriin</a>
+                            <a href="<spring:url value="/ostoskori/muokkaapizza/poista/${tuote.id}" /> "
+                               class="btn btn-link">Poista</a>
                         </div>
                     </div>
                 </c:forEach>
             </div>
             </c:when>
             <c:otherwise>
-            Tuotteita ei ole muokattavana!
+                Tuotteita ei ole muokattavana!<br>
+                <a href="<spring:url value="/tuotteet" />">Tuotteet</a>
             </c:otherwise>
             </c:choose>
     </div>

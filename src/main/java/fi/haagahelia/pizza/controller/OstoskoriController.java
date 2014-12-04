@@ -5,6 +5,7 @@ import fi.haagahelia.pizza.domain.Ostoskori;
 import fi.haagahelia.pizza.domain.Tuote;
 import fi.haagahelia.pizza.service.OstoskoriService;
 import fi.haagahelia.pizza.service.TuoteService;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -81,6 +82,13 @@ public class OstoskoriController {
         return "redirect:/ostoskori";
     }
 
+    @RequestMapping("/lisaalkm")
+    public String päivittääTuotteenLkm(@RequestParam("id") int id) {
+
+        ostoskoriService.lisaaTuote(id);
+        return "redirect:/ostoskori";
+    }
+
     /**
      * Vähentää OstoskoriService-luokan oliosta yhden TuoteService-luokan
      * tuotteen id numerolla määritellyistä olioista. /ostoskori/vahenna
@@ -90,10 +98,7 @@ public class OstoskoriController {
      */
     @RequestMapping("/vahenna")
     public String vahennaTuoteKorista(@RequestParam("id") int id) {
-
-        Tuote tuote = tuoteService.haeTuoteTunnuksella(id);
-        logger.info("Löydettiin tuote: " + tuote);
-        boolean succ = ostoskoriService.vahennaTuote(tuote);
+        boolean succ = ostoskoriService.vahennaTuote(id);
         logger.info("Tuotteen poisto: " + (succ == true ? "onnistui" : "epäonnistui"));
 
         return "redirect:/ostoskori";
@@ -109,10 +114,7 @@ public class OstoskoriController {
      */
     @RequestMapping("/poista")
     public String poistaKorista(@RequestParam("id") int id) {
-
-        Tuote tuote = tuoteService.haeTuoteTunnuksella(id);
-        logger.info("Löydettiin tuote: " + tuote);
-        boolean succ = ostoskoriService.poistaTuote(tuote);
+        boolean succ = ostoskoriService.poistaTuote(id);
         logger.info("Tuotteen poisto: " + (succ == true ? "onnistui" : "epäonnistui"));
 
         return "redirect:/ostoskori";
@@ -143,6 +145,8 @@ public class OstoskoriController {
 
         if (id != null && id > 0) {
             Tuote tuote = tuoteService.haeTuoteTunnuksella(id);
+            // generoi uusi "uniikki" id muokattavalle pizzalle
+            tuote.setId(RandomUtils.nextInt(1500,3000));
             ostoskoriService.setMuokattavaTuote(tuote);
         }
         return "redirect:/ostoskori/muokkaapizza";
@@ -178,6 +182,15 @@ public class OstoskoriController {
             if (lisaAine != null) {
                 ostoskoriService.lisaaAinePizzaan(pizza, lisaAine);
             }
+        }
+        return "redirect:/ostoskori/muokkaapizza";
+    }
+
+    @RequestMapping(value = "/muokkaapizza/poista/{pizza}", method = RequestMethod.GET)
+    public String poistaMuokattavaPizza(Model model, @PathVariable("pizza") Integer pizza) {
+
+        if (pizza != null) {
+            ostoskoriService.poistaMuokattavaPizza(pizza);
         }
         return "redirect:/ostoskori/muokkaapizza";
     }
