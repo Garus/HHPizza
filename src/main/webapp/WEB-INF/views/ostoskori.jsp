@@ -48,7 +48,8 @@
                         <c:forEach items="${ostoskori.tuotteet}" var="korinTuote" varStatus="loop">
                             <tr>
                                 <td>${loop.index+1}.</td>
-                                <td><a href="<spring:url value="/tuotteet/tuote?id=${korinTuote.tuote.id}" /> ">${korinTuote.tuote.nimi}</a>
+                                <%--<a href="<spring:url value="/tuotteet/tuote?id=${korinTuote.tuote.id}" /> ">${korinTuote.tuote.nimi}</a>--%>
+                                <td><span>${korinTuote.tuote.nimi}</span>
                             <c:choose>
                                 <c:when test="${korinTuote.tuote.aineet.size() > 0}">
                                     <c:forEach items="${korinTuote.tuote.aineet}" var="pizzanaine" varStatus="stat">
