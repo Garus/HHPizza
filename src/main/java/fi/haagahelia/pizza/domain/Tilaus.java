@@ -7,22 +7,8 @@
 package fi.haagahelia.pizza.domain;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,7 +22,8 @@ import javax.xml.bind.annotation.XmlTransient;
         @NamedQuery(name = "Tilaus.findById", query = "SELECT t FROM Tilaus t WHERE t.id = :id"),
         @NamedQuery(name = "Tilaus.findByToimitustapa", query = "SELECT t FROM Tilaus t WHERE t.toimitustapa = :toimitustapa"),
         @NamedQuery(name = "Tilaus.findByMaksutapa", query = "SELECT t FROM Tilaus t WHERE t.maksutapa = :maksutapa"),
-        @NamedQuery(name = "Tilaus.findByOsoite", query = "SELECT t FROM Tilaus t WHERE t.osoite = :osoite")})
+//        @NamedQuery(name = "Tilaus.findByOsoite", query = "SELECT t FROM Tilaus t WHERE t.osoite = :osoite")
+})
 public class Tilaus implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,9 +40,21 @@ public class Tilaus implements Serializable {
     private String osoite;
     @JoinColumn(name = "tilaaja_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Tilaaja tilaajaId;
+    private Tilaaja tilaaja;
+
+    public Ostoskori getOstoskori() {
+        return ostoskori;
+    }
+
+    public void setOstoskori(Ostoskori ostoskori) {
+        this.ostoskori = ostoskori;
+    }
+
+    @Transient
+    private Ostoskori ostoskori;
 
     public Tilaus() {
+        this.tilaaja = new Tilaaja();
     }
 
     public Tilaus(Integer id) {
@@ -99,12 +98,12 @@ public class Tilaus implements Serializable {
         this.osoite = osoite;
     }
 
-    public Tilaaja getTilaajaId() {
-        return tilaajaId;
+    public Tilaaja getTilaaja() {
+        return tilaaja;
     }
 
-    public void setTilaajaId(Tilaaja tilaajaId) {
-        this.tilaajaId = tilaajaId;
+    public void setTilaaja(Tilaaja tilaaja) {
+        this.tilaaja = tilaaja;
     }
 
     @Override

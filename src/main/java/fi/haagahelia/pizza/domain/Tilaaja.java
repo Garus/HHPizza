@@ -50,6 +50,7 @@ public class Tilaaja implements Serializable {
     private String puhelin;
 
     public Tilaaja() {
+        this.osoite = new Osoite();
     }
 
     public Tilaaja(Integer id) {

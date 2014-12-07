@@ -1,10 +1,11 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "lisa_aineet")
-public class LisaAine {
+public class LisaAine implements Serializable {
 
     @Id
     @Column(name = "id")

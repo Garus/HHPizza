@@ -33,36 +33,17 @@
 
                 <p>${tuote.kuvaus}</p>
 
-                <%--<c:forEach items="${tuote.aineet}" var="aine" varStatus="loop">--%>
-                    <%--<c:set var="sum" value="${sum + aine.hinta}"/>--%>
-                    <%--${loop.index+1} &nbsp; ${aine.nimi} &nbsp; <fmt:formatNumber value="${aine.hinta}"--%>
-                                                                                 <%--type="currency"/>--%>
-                    <%--<br>--%>
-                <%--</c:forEach>--%>
-
                 <p>Hinta: <fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></p>
 
-                <%--<form method="get" action="tuote">--%>
-                    <%--<input type="hidden" value="${tuote.id}" name="id"/>--%>
-
-                    <%--<c:if test="${lisaAineet.size()>0}">--%>
-                        <%--<form:select path="lisaAineet" name="aine" id="aine" items="${lisaAineet}" itemValue="id"--%>
-                                     <%--itemLabel="name"/>--%>
-                        <%--<input type="submit" value="Lisää pizzaan" class="btn btn-sm"/>--%>
-                    <%--</c:if>--%>
-
-                    <%--<c:forEach items="${tuote.aineet}" var="aine" varStatus="stat">--%>
-                        <%--<input type="hidden" value="${aine.id}" name="aine"/>--%>
-                        <%--<c:set var="sum" value="${sum + aine.hinta}"/>--%>
-                        <%--<c:set var="myVar" value="${stat.first ? '' : myVar}&aine=${aine.id}"/>--%>
-                    <%--</c:forEach>--%>
-                <%--</form>--%>
                 <br>
+
                 <p>
                     <a href="<spring:url value="/ostoskori/muokkaapizza/id?id=${tuote.id}" /> "
                        class="btn btn-default">Muokkaa</a> &nbsp;
                     <a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
-                      class="btn btn-primary">Lisää koriin</a>
+                       class="btn btn-primary">Lisää koriin</a> &nbsp;<input action="action" value="Takaisin"
+                                                                             type="button" class="btn btn-default"
+                                                                             onclick="history.go(-1);"/>
                 </p>
             </div>
         </div>

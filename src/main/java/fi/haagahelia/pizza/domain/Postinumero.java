@@ -1,9 +1,10 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class Postinumero {
+public class Postinumero implements Serializable {
     private String postiNumero;
     private String postiToimiPaikka;
 

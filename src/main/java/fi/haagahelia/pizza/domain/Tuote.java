@@ -1,12 +1,13 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "tuotteet")
 @NamedQuery(name = "kategorianTuotteet", query = "select t from Kategoria k join k.tuotteet t where k.kategoriaNimi = :kategoriaNimi")
-public class Tuote {
+public class Tuote implements Serializable {
 
     @Id
     @Column(name = "id")

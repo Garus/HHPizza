@@ -4,13 +4,14 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 @Component
 @Scope("session")
-public class Ostoskori {
+public class Ostoskori implements Serializable {
 
     private static final Logger logger = Logger.getLogger(Ostoskori.class);
     private List<OstoskorinTuote> tuotteet;

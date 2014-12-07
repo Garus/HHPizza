@@ -1,9 +1,11 @@
 package fi.haagahelia.pizza.domain;
 
+import java.io.Serializable;
+
 /**
  * 1 rivi ostoskorissa
  */
-public class OstoskorinTuote<T extends Tuote> {
+public class OstoskorinTuote<T extends Tuote> implements Serializable {
 
     private T tuote;
     private int maara;

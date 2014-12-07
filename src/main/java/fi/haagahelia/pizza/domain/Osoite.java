@@ -2,15 +2,18 @@ package fi.haagahelia.pizza.domain;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import java.io.Serializable;
 
 @Embeddable
-public class Osoite {
+public class Osoite implements Serializable {
 
     private String katuOsoite;
     @Embedded
     private Postinumero postinumero;
 
-    public Osoite(){}
+    public Osoite(){
+        postinumero = new Postinumero();
+    }
 
     public Osoite(String katuOsoite, Postinumero postinumero) {
         this.katuOsoite = katuOsoite;
