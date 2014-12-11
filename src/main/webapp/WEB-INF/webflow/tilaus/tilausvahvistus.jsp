@@ -2,8 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,9 +16,7 @@
 <section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Order</h1>
-
-            <p>Tilausvahvistus</p>
+            <h1>Tilausvahvistus</h1>
         </div>
     </div>
 </section>
@@ -46,12 +43,6 @@
                                 ${tilaus.tilaaja.puhelin}, ${tilaus.tilaaja.email}
                             <br>
                         </address>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                        <p>
-                            <em>Shipping DateDate: <fmt:formatDate type="date"
-                                                                   value="${order.shippingDetail.shippingDate}"/></em>
-                        </p>
                     </div>
                 </div>
                 <div class="row">
@@ -87,25 +78,22 @@
                                 <td class="col-md-1 text-center">${korinTuote.summa}</td>
                             </tr>
                         </c:forEach>
-
                         <tr>
                             <td></td>
                             <td></td>
-                            <td class="text-right"><h4>
-                                <strong>Yhteensä:</strong>
-                            </h4></td>
-                            <td class="text-center text-danger"><h4>
-                                <strong>$${tilaus.ostoskori.sum}</strong>
-                            </h4></td>
+                            <td class="text-right"><strong>Yhteensä:</strong></td>
+                            <td>
+                                <strong><fmt:formatNumber value="${tilaus.ostoskori.sum}" type="currency"/></strong>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
                     <button id="back" class="btn btn-default"
-                            name="_eventId_backToCollectShippingDetail">Takaisin
+                            name="_eventId_kysyyToimitusTiedot">Takaisin
                     </button>
 
                     <button type="submit" class="btn btn-success"
-                            name="_eventId_orderConfirmed">
+                            name="_eventId_tilausVahvistettu">
                         Vahvista tilaus<span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                     <button id="btnCancel" class="btn btn-default"

@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
 							http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-	<var name="tilaus" class="fi.haagahelia.pizza.domain.Tilaus" />
+    <var name="tilaus" class="fi.haagahelia.pizza.domain.Tilaus"/>
 
-	<action-state id="lisaaOstoskoriTilaukseen">
-		<evaluate expression="ostoskoriServiceImpl.getOstoskori()"
-			result="tilaus.ostoskori" />
-		<transition to="kysyyAsiakkaanTiedot" />
-	</action-state>
+    <action-state id="lisaaOstoskoriTilaukseen">
+        <evaluate expression="ostoskoriServiceImpl.getOstoskori()"
+                  result="tilaus.ostoskori"/>
+        <transition to="kysyyAsiakkaanTiedot"/>
+    </action-state>
 
-	<view-state id="kysyyAsiakkaanTiedot" view="kysyyAsiakastiedot.jsp" model="tilaus">
-		<transition on="asiakasTiedotOk" to="kysyyToimitusTiedot" />
-	</view-state>
+    <view-state id="kysyyAsiakkaanTiedot" view="kysyyAsiakastiedot.jsp" model="tilaus">
+        <transition on="asiakasTiedotOk" to="kysyyToimitusTiedot"/>
+    </view-state>
 
-	<view-state id="kysyyToimitusTiedot" model="tilaus">
-		<transition on="toimitusTiedotOk" to="tilausvahvistus" />
-		<transition on="backTokysyyAsiakkaanTiedot" to="kysyyAsiakkaanTiedot" />
-	</view-state>
+    <view-state id="kysyyToimitusTiedot" model="tilaus">
+        <transition on="toimitusTiedotOk" to="tilausvahvistus"/>
+        <transition on="backTokysyyAsiakkaanTiedot" to="kysyyAsiakkaanTiedot"/>
+    </view-state>
 
-	<view-state id="tilausvahvistus">
-		<transition on="orderConfirmed" to="processOrder" />
-		<transition on="backTokysyyToimitusTiedot" to="kysyyToimitusTiedot" />
-	</view-state>
-	
-	<action-state id="processOrder">
-		<evaluate expression="tilausServiceImpl.tallennaTilaus(tilaus)" result="tilaus.id"/>
-		<transition to="kiitos" />
-	</action-state>
-	
-	<view-state id="ostoskorivirhe">
-		<transition to="endState"/>
-	</view-state>
-	
-	<view-state id="kiitos" model="order">
-		<transition to="endState"/>
-	</view-state>
+    <view-state id="tilausvahvistus">
+        <transition on="tilausVahvistettu" to="processOrder"/>
+        <transition on="backTokysyyToimitusTiedot" to="kysyyToimitusTiedot"/>
+    </view-state>
 
-	<end-state id="endState"/>	
+    <action-state id="processOrder">
+        <evaluate expression="tilausServiceImpl.tallennaTilaus(tilaus)" result="tilaus.id"/>
+        <transition to="kiitos"/>
+    </action-state>
 
-	<end-state id="peruTilaus" view = "tilausPeruutettu.jsp"/>
-	
-	<global-transitions>
-		<transition on = "cancel" to="endState" />
-	</global-transitions>
+    <view-state id="ostoskorivirhe">
+        <transition to="endState"/>
+    </view-state>
+
+    <view-state id="kiitos" model="order">
+        <transition to="endState"/>
+    </view-state>
+
+    <end-state id="endState"/>
+
+    <end-state id="peruTilaus" view="tilausPeruutettu.jsp"/>
+
+    <global-transitions>
+        <transition on="cancel" to="endState"/>
+    </global-transitions>
 
 </flow>

@@ -39,7 +39,7 @@ public class Tilaus implements Serializable {
     @Column(name = "osoite")
     private String osoite;
     @JoinColumn(name = "tilaaja_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Tilaaja tilaaja;
 
     public Ostoskori getOstoskori() {
@@ -128,7 +128,13 @@ public class Tilaus implements Serializable {
 
     @Override
     public String toString() {
-        return "fi.haagahelia.pizza.domain.Tilaus[ id=" + id + " ]";
+        return "Tilaus{" +
+                "id=" + id +
+                ", toimitustapa='" + toimitustapa + '\'' +
+                ", maksutapa='" + maksutapa + '\'' +
+                ", osoite='" + osoite + '\'' +
+                ", tilaaja=" + tilaaja +
+                ", ostoskori=" + ostoskori +
+                '}';
     }
-
 }
