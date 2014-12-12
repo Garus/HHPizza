@@ -15,7 +15,8 @@ div {
     height: 60vh;
     width: 80%;
     margin: 0 auto;
-    padding: 1%;
+    padding-top: 1%;
+    padding-left: 5%;
 }
 .jumbotron {
     margin-bottom: 0;
@@ -26,13 +27,17 @@ div {
     width: 80%;
     text-align: center;
 }
-.content-left{
-    margin-left: 5%;
+.content-first{
     float:left;
     display: block;
 }
-.content-right{
-    margin-left: 20%;
+.content-second {
+    margin-left: 5%;
+    float:left;
+    display: block; 
+}
+.content-third{
+    margin-left: 10%;
     float:left;
     display: block;
 }
