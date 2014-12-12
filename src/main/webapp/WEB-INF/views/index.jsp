@@ -23,9 +23,8 @@
 
                 <ul class="nav nav-pills nav-justified" style="margin: auto; width:50%; text-align:center;">
                     <li role="presentation"><a href="tuotteet" class="btn btn-link">Tuotteet</a></li>
-
                     <c:choose>
-                    <c:when test="${!empty sessionScope.ostoskori}">
+                    <c:when test="${sessionScope.ostoskori.getCount() > 0}">
                         <li role="presentation"><a href="ostoskori" class="btn btn-link">Ostoskori: ${sessionScope.ostoskori.getCount()}, yht: <fmt:formatNumber value="${sessionScope.ostoskori.getSum()}" type="currency"/></a></li>
                     </c:when>
                         <c:otherwise>

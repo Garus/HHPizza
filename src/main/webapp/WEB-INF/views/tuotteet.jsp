@@ -22,8 +22,15 @@
                 <p>Parhaat pizzat aina
                     edulliseen hintaan!</p>
                 <ul class="nav nav-pills nav-justified" style="margin: auto; width:50%; text-align:center;">
-                    <li role="presentation" class="active"><a href="#" class="btn btn-link">Tuotteet</a></span></li>
-                    <li role="presentation"><a href="../ostoskori" class="btn btn-link">Ostoskori</a></li>
+                    <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/tuotteet" />">Tuotteet</a></li>
+                    <c:choose>
+                        <c:when test="${sessionScope.ostoskori.getCount() > 0}">
+                            <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori: ${sessionScope.ostoskori.getCount()}, yht: <fmt:formatNumber value="${sessionScope.ostoskori.getSum()}" type="currency"/></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori</a></li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>
