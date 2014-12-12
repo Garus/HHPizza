@@ -12,7 +12,7 @@
         <link href="<spring:url value="/css/hhpizza_basic.css" />"
               rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Pizzeria Il Grasso</title>
+        <title>Pizzeria il Grasso</title>
     </head>
     <body>
         <div class="header">
