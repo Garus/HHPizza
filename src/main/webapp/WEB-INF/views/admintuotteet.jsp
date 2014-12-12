@@ -12,21 +12,32 @@
 <link href="<spring:url value="/css/hhpizza_basic.css" />"
 	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pizzeria Il Grasso</title>
+<title>Pizzeria il Grasso</title>
 </head>
 <body>
-	<div class="wrapper">
-		<div class="header">
-			<div class="jumbotron">
-				<h1>Tervetuloa Il Grassoon</h1>
-				<p>Pääsette nauttimaan paikkakunnan parhaista pizzoista aina
-					edulliseen hintaan!</p>
-			</div>
-		</div>
-		<div class="content">
+       <div class="header">
             <div class="jumbotron">
-                <a href="<spring:url value="/tuotteet/admin/uusi"/>">Lisää uusi tuote</a>
+                <h1>Tervetuloa Il Grassoon</h1>
+
+                <p>Parhaat pizzat aina
+                    edulliseen hintaan!</p>
+                <ul class="nav nav-pills nav-justified" style="margin: auto; width:50%; text-align:center;">
+                    <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/tuotteet" />">Tuotteet</a></li>
+                    <c:choose>
+                        <c:when test="${sessionScope.ostoskori.getCount() > 0}">
+                            <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori: ${sessionScope.ostoskori.getCount()}, yht: <fmt:formatNumber value="${sessionScope.ostoskori.getSum()}" type="currency"/></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
             </div>
+        </div>
+		<div class="content">
+                    
+                    <a href="<spring:url value="/tuotteet/admin/uusi"/>"><button>Lisää uusi tuote</button></a>
+            
             <div class="row">
 				<c:forEach items="${tuotteet}" var="tuote">
 					<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">

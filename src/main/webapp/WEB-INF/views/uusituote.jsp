@@ -18,13 +18,13 @@
 <body>
 <div class="header">
     <div class="jumbotron">
-        <h1>Tervetuloa Il Grassoon</h1>
+        <h1>Tervetuloa il Grassoon</h1>
 
-        <p>Pääsette nauttimaan paikkakunnan parhaista pizzoista aina
-            edulliseen hintaan!</p>
+        <p>Parhaat pizzat aina
+                    edulliseen hintaan!</p>
     </div>
 </div>
-<div class="content">
+<div class="content">                
 
     <section class="container"><form:form
             modelAttribute="uusituote" class="form horizontal">
