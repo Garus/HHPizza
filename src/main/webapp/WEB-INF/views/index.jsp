@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,9 +22,17 @@
                         edulliseen hintaan!</p>
 
                 <ul class="nav nav-pills nav-justified" style="margin: auto; width:50%; text-align:center;">
-                    <li role="presentation"><a href="tuotteet" class="btn btn-link">Tuotteet</a></span></li>
-                    <li role="presentation"><a href="ostoskori" class="btn btn-link">Ostoskori</a></li>
-                </ul>                                
+                    <li role="presentation"><a href="tuotteet" class="btn btn-link">Tuotteet</a></li>
+
+                    <c:choose>
+                    <c:when test="${!empty sessionScope.ostoskori}">
+                        <li role="presentation"><a href="ostoskori" class="btn btn-link">Ostoskori: ${sessionScope.ostoskori.getCount()}, yht: <fmt:formatNumber value="${sessionScope.ostoskori.getSum()}" type="currency"/></a></li>
+                    </c:when>
+                        <c:otherwise>
+                            <li role="presentation"><a href="ostoskori" class="btn btn-link">Ostoskori</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
                 </div>
             </div>
             <div class="content">
