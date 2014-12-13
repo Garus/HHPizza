@@ -67,7 +67,7 @@
             </div>
             <div class="footer">
                 <div class="bottom-first">
-                    <a href="terms/terms.html"><p>Käyttöehdot</p>
+                    <p><a href="terms/terms.html">Käyttöehdot</a></p>
                 </div>
                 <div class="bottom-second">
                     <p><a href="tuotteet/admin">Admin-tuotteet</a><br/>
