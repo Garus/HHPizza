@@ -13,7 +13,9 @@
     </action-state>
 
     <view-state id="kysyyAsiakkaanTiedot" view="kysyyAsiakastiedot.jsp" model="tilaus">
-        <transition on="asiakasTiedotOk" to="kysyyToimitusTiedot"/>
+        <!--<transition on="asiakasTiedotOk" to="kysyyToimitusTiedot"/>-->
+        <transition on="asiakasTiedotOk" to="tilausvahvistus"/>
+
     </view-state>
 
     <view-state id="kysyyToimitusTiedot" model="tilaus">
@@ -23,7 +25,8 @@
 
     <view-state id="tilausvahvistus">
         <transition on="tilausVahvistettu" to="processOrder"/>
-        <transition on="backTokysyyToimitusTiedot" to="kysyyToimitusTiedot"/>
+        <!--<transition on="backTokysyyToimitusTiedot" to="kysyyToimitusTiedot"/>-->
+        <transition on="backTokysyyAsiakkaanTiedot" to="kysyyAsiakkaanTiedot"/>
     </view-state>
 
     <action-state id="processOrder">
@@ -44,7 +47,7 @@
     <end-state id="peruTilaus" view="tilausPeruutettu.jsp"/>
 
     <global-transitions>
-        <transition on="cancel" to="endState"/>
+        <transition on="cancel" to="peruTilaus"/>
     </global-transitions>
 
 </flow>

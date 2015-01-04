@@ -89,7 +89,7 @@
                         </tbody>
                     </table>
                     <button id="back" class="btn btn-default"
-                            name="_eventId_kysyyToimitusTiedot">Takaisin
+                            name="_eventId_backTokysyyAsiakkaanTiedot">Takaisin
                     </button>
 
                     <button type="submit" class="btn btn-success"
