@@ -44,13 +44,15 @@
 
                 <p>${tuote.kuvaus}</p>
 
-                <p>Hinta: <fmt:formatNumber value="${tuote.hinta + sum}" type="currency"/></p>
+                <p>Hinta: <fmt:formatNumber value="${tuote.hinta}" type="currency"/></p>
 
                 <br>
 
                 <p>
-                    <a href="<spring:url value="/ostoskori/muokkaapizza/id?id=${tuote.id}" /> "
-                       class="btn btn-default">Muokkaa</a> &nbsp;
+                    <c:if test="${tuote.getClass().name != 'fi.haagahelia.pizza.domain.PerusTuote'}">
+                        <a href="<spring:url value="/ostoskori/muokkaapizza/id?id=${tuote.id}" /> "
+                           class="btn btn-default">Muokkaa</a> &nbsp;
+                    </c:if>
                     <a href="<spring:url value="/ostoskori/lisaa?id=${tuote.id}" /> "
                        class="btn btn-primary">Lisää koriin</a> &nbsp;<input action="action" value="Takaisin"
                                                                              type="button" class="btn btn-default"

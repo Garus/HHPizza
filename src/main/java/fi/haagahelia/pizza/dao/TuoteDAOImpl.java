@@ -69,9 +69,8 @@ public class TuoteDAOImpl implements TuoteDAO {
     public Tuote haeTuoteTunnuksella(int id) {
         Tuote tuote = null;
         Session session = this.sessionFactory.getCurrentSession();
-        logger.info("Trying to loaded pizza with ID " + id);
         tuote = (Tuote) session.get(Tuote.class, new Integer(id));
-        logger.info("Pizza loaded successfully, Pizza = " + tuote);
+        logger.info("Tuote = " + tuote);
 
         if (tuote == null) {
             throw new TuoteNotFoundException("Ei löydetty tuotetta jonka id on: " + id);

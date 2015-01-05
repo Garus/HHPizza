@@ -3,6 +3,7 @@ package fi.haagahelia.pizza.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import fi.haagahelia.pizza.domain.LisaAine;
+import fi.haagahelia.pizza.domain.PizzaTuote;
 import fi.haagahelia.pizza.domain.Tuote;
 import fi.haagahelia.pizza.exceptions.TuoteNotFoundException;
 import org.apache.log4j.Logger;
@@ -152,7 +153,7 @@ public class TuoteController {
         Tuote tuote;
 
         if (id == null) {
-            tuote = new Tuote();
+            tuote = new PizzaTuote();
         } else {
             tuote = tuoteService.haeTuoteTunnuksella(id);
         }

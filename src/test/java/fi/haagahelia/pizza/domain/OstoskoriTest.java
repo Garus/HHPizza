@@ -14,7 +14,7 @@ public class OstoskoriTest {
     @Before
     public void setUp() throws Exception {
         ostoskori = new Ostoskori();
-        tuote = new Tuote(100, "sata", 100.00);
+        tuote = new PizzaTuote(100, "sata", 100.00);
     }
 
     @After
@@ -36,7 +36,7 @@ public class OstoskoriTest {
 
     @Test
     public void testGetCount() throws Exception {
-        ostoskori.lisääTuoteKoriin(new Tuote(1, "yksi", 1.0));
+        ostoskori.lisääTuoteKoriin(new PizzaTuote(1, "yksi", 1.0));
         assertTrue(1 == ostoskori.getCount());
     }
 

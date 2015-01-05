@@ -46,6 +46,8 @@
                 <value>fi.haagahelia.pizza.domain.Tilausloki</value>
                 <value>fi.haagahelia.pizza.domain.Tilaustuote</value>
                 <value>fi.haagahelia.pizza.domain.Tuote</value>
+                <value>fi.haagahelia.pizza.domain.PerusTuote</value>
+                <value>fi.haagahelia.pizza.domain.PizzaTuote</value>
                 <value>fi.haagahelia.pizza.domain.Kategoria</value>
                 <value>fi.haagahelia.pizza.domain.LisaAine</value>
                 <!--<value>fi.haagahelia.pizza.domain.Tyyppi</value>-->
