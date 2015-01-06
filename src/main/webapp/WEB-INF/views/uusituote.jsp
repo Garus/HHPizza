@@ -36,6 +36,7 @@
 
                 <div class="col-lg-10">
                     <form:input id="name" path="nimi" type="text"/>
+                    <form:errors path="nimi" cssClass="text-danger"/>
                 </div>
             </div>
             <div class="form-group">
@@ -44,6 +45,7 @@
 
                 <div class="col-lg-10">
                     <form:input id="price" path="hinta" type="text"/>
+                    <form:errors path="hinta" cssClass="text-danger"/>
                 </div>
             </div>
             <div class="form-group">

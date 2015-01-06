@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `juomat`
+--
+
+DROP TABLE IF EXISTS `juomat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `juomat` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_7xr9iq9birkm28v2yy312pj7m` FOREIGN KEY (`id`) REFERENCES `tuotteet` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `juomat`
+--
+
+LOCK TABLES `juomat` WRITE;
+/*!40000 ALTER TABLE `juomat` DISABLE KEYS */;
+INSERT INTO `juomat` VALUES (6),(7),(8);
+/*!40000 ALTER TABLE `juomat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `kategoria_tuotteet`
 --
 
@@ -38,7 +62,7 @@ CREATE TABLE `kategoria_tuotteet` (
 
 LOCK TABLES `kategoria_tuotteet` WRITE;
 /*!40000 ALTER TABLE `kategoria_tuotteet` DISABLE KEYS */;
-INSERT INTO `kategoria_tuotteet` VALUES (1,1),(1,2),(2,3),(2,4),(2,5);
+INSERT INTO `kategoria_tuotteet` VALUES (1,1),(1,2),(2,3),(2,4),(2,5),(3,6),(3,7),(3,8);
 /*!40000 ALTER TABLE `kategoria_tuotteet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +116,7 @@ CREATE TABLE `kayttajat` (
 
 LOCK TABLES `kayttajat` WRITE;
 /*!40000 ALTER TABLE `kayttajat` DISABLE KEYS */;
-INSERT INTO `kayttajat` VALUES (1,'aku','2014-11-30 19:59:48','Ankka Admin',NULL,1),(2,'saku','2014-11-30 19:59:48','Sorsa User',NULL,2),(3,'kissa','2014-11-30 19:59:48','Kissa Käyttäjä',NULL,3);
+INSERT INTO `kayttajat` VALUES (1,'aku','2015-01-06 19:54:11','Ankka Admin',NULL,1),(2,'saku','2015-01-06 19:54:11','Sorsa User',NULL,2),(3,'kissa','2015-01-06 19:54:11','Kissa Käyttäjä',NULL,3);
 /*!40000 ALTER TABLE `kayttajat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,6 +143,30 @@ LOCK TABLES `lisa_aineet` WRITE;
 /*!40000 ALTER TABLE `lisa_aineet` DISABLE KEYS */;
 INSERT INTO `lisa_aineet` VALUES (1,1.5,'valkosipuli'),(2,0.5,'oregano'),(3,2,'kanamuna');
 /*!40000 ALTER TABLE `lisa_aineet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pizzat`
+--
+
+DROP TABLE IF EXISTS `pizzat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pizzat` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_kprn50bog6ohc98079frfn2d0` FOREIGN KEY (`id`) REFERENCES `tuotteet` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pizzat`
+--
+
+LOCK TABLES `pizzat` WRITE;
+/*!40000 ALTER TABLE `pizzat` DISABLE KEYS */;
+INSERT INTO `pizzat` VALUES (1),(2),(3),(4),(5),(9);
+/*!40000 ALTER TABLE `pizzat` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -299,7 +347,7 @@ CREATE TABLE `tuotteet` (
   `kuvaus` varchar(255) DEFAULT NULL,
   `nimi` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +356,7 @@ CREATE TABLE `tuotteet` (
 
 LOCK TABLES `tuotteet` WRITE;
 /*!40000 ALTER TABLE `tuotteet` DISABLE KEYS */;
-INSERT INTO `tuotteet` VALUES (1,25,'Maistuvia merenherkkuja pizzan muodossa. Jaa vaikka kaverin kanssa!','Frutti Di Mare'),(2,20,'Maailman parhaaksi valittu pizza! Savuporo, kantarelli ja pizzapohjan ruiskuitu vakuuttivat niin Amerikan tuomarit kuin italialaisen suomalaisen ruokaosaamisen epäilijänkin.','Berlusconi'),(3,20.5,'Pepperonimakkaraa tonnikalan seurana. Tuhti makuelämys ei jätä ketään nälkäiseksi.','Pepperoni'),(4,21,'Special Operan jokaiseen makuun! Perinteinen, loistokkaan makoisa.','Special Opera'),(5,29,'Kulinaristillekin kelpaa aurinkokuivatulla tomaatilla, salamilla, ananaksella ja mozzarellajuustolla aateloitu erikoisuus. Hienostuneet maut täydentävät toisiaan.','Mozarella');
+INSERT INTO `tuotteet` VALUES (1,25,'Maistuvia merenherkkuja pizzan muodossa. Jaa vaikka kaverin kanssa!','Mare di Frutti'),(2,20,'Maailman parhaaksi valittu pizza! Savuporo, kantarelli ja pizzapohjan ruiskuitu vakuuttivat niin Amerikan tuomarit kuin italialaisen suomalaisen ruokaosaamisen epäilijänkin.','Berlusconi'),(3,20.5,'Pepperonimakkaraa tonnikalan seurana. Tuhti makuelämys ei jätä ketään nälkäiseksi.','Pepperoni'),(4,21,'Special Operan jokaiseen makuun! Perinteinen, loistokkaan makoisa.','Special Opera'),(5,29,'Kulinaristillekin kelpaa aurinkokuivatulla tomaatilla, salamilla, ananaksella ja mozzarellajuustolla aateloitu erikoisuus. Hienostuneet maut täydentävät toisiaan.','Mozarella'),(6,5.5,'Pepsi-Cola 1,5L','Pepsi'),(7,5,'Coca-Cola 1,5L','Coke'),(8,3.5,'Pepsi-Cola 0,5L','Pepsi'),(9,10,'Reilusti silliii ja haukii.','Sillipitsa');
 /*!40000 ALTER TABLE `tuotteet` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -321,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-30 22:14:40
+-- Dump completed on 2015-01-06 21:56:57

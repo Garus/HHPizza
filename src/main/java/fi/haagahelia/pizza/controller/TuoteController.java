@@ -1,6 +1,7 @@
 package fi.haagahelia.pizza.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import fi.haagahelia.pizza.domain.LisaAine;
 import fi.haagahelia.pizza.domain.PizzaTuote;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -169,7 +171,12 @@ public class TuoteController {
      * @return uudelleenohjaus sivulle /tuotteet/admin
      */
     @RequestMapping(value = "/admin/uusi", method = RequestMethod.POST)
-    public String getLisääUusiTuote(@ModelAttribute("uusituote") Tuote tuote) {
+    public String getLisääUusiTuote(@ModelAttribute("uusituote") @Valid PizzaTuote tuote, BindingResult result, HttpServletRequest request) {
+
+        if(result.hasErrors()) {
+            logger.info("Errors " + result.getAllErrors().toString());
+            return "uusituote";
+        }
 
         if (tuote.getId() == 0) {
             tuoteService.lisääTuote(tuote);

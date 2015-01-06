@@ -1,6 +1,10 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.*;
 
@@ -14,6 +18,8 @@ public abstract class Tuote implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
+
+    @Size(min=3, max=255, message="Nimen minimipituus=3 ja maksimipituus 255")
     protected String nimi;
     protected double hinta;
     protected String kuvaus;
@@ -36,6 +42,9 @@ public abstract class Tuote implements Serializable {
         this.nimi = name;
     }
 
+    @Min(value = 0, message = "Hinnan pitää olla positiivinen!")
+    @Digits(integer = 8, fraction = 2, message = "tarkista hinta")
+    @NotNull(message = "Ei saa olla 'Not null'!")
     public double getHinta() {
         return hinta;
     }
