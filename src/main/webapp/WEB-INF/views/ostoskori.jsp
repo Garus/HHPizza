@@ -54,7 +54,7 @@
                                 <%--<a href="<spring:url value="/tuotteet/tuote?id=${korinTuote.tuote.id}" /> ">${korinTuote.tuote.nimi}</a>--%>
                                 <td><span>${korinTuote.tuote.nimi}</span>
                             <c:choose>
-                                <c:when test="${korinTuote.tuote.aineet.size() > 0}">
+                                <c:when test="${korinTuote.tuote.getClass().name != 'fi.haagahelia.pizza.domain.PerusTuote' && korinTuote.tuote.aineet.size() > 0}">
                                     <c:forEach items="${korinTuote.tuote.aineet}" var="pizzanaine" varStatus="stat">
                                         <br>${pizzanaine.maara}x ${pizzanaine.tuote.nimi}
                                             &nbsp;<fmt:formatNumber value="${pizzanaine.tuote.hinta}"
