@@ -9,6 +9,7 @@ package fi.haagahelia.pizza.domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -34,6 +35,7 @@ public class Tilaaja implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(min=3, max=255, message="Nimen minimipituus=3 ja maksimipituus 255")
     @Basic(optional = false)
     @Column(name = "nimi")
     private String nimi;

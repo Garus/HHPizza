@@ -35,15 +35,16 @@
                 <div class="col-lg-10">
                     <form:input id="nimi" path="nimi" type="text" class="form:input-large"/>
                 </div>
+                <form:errors path="nimi" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="email">Sähköposti</label>
 
                 <div class="col-lg-10">
-                    <form:input id="email" path="email" type="text"
-                                class="form:input-large"/>
+                    <form:input id="email" path="email" type="text" class="form:input-large"/>
                 </div>
+                <form:errors path="email" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
@@ -53,6 +54,7 @@
                     <form:input id="katuOsoite" path="osoite.katuOsoite" type="text"
                                 class="form:input-large"/>
                 </div>
+                <form:errors path="osoite.katuOsoite" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
@@ -62,6 +64,7 @@
                     <form:input id="postiNumero" path="osoite.postinumero.postiNumero" type="text"
                                 class="form:input-large"/>
                 </div>
+                <form:errors path="osoite.postinumero.postiNumero" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
@@ -71,6 +74,7 @@
                     <form:input id="postiToimiPaikka" path="osoite.postinumero.postiToimiPaikka" type="text"
                                 class="form:input-large"/>
                 </div>
+                <form:errors path="osoite.postinumero.postiToimiPaikka" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">

@@ -13,6 +13,13 @@
     </action-state>
 
     <view-state id="kysyyAsiakkaanTiedot" view="kysyyAsiakastiedot.jsp" model="tilaus">
+        <binder>
+            <binding property="tilaaja.nimi" required="true" />
+            <binding property="tilaaja.email" required="true" />
+            <binding property="tilaaja.osoite" required="true" />
+            <binding property="tilaaja.osoite.katuOsoite" required="true" />
+            <binding property="tilaaja.osoite.postinumero" required="true" />
+        </binder>
         <!--<transition on="asiakasTiedotOk" to="kysyyToimitusTiedot"/>-->
         <transition on="asiakasTiedotOk" to="tilausvahvistus"/>
 

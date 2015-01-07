@@ -18,6 +18,10 @@
 
     <context:component-scan base-package="fi.haagahelia.pizza"/>
 
+    <!--<webflow:flow-registry flow-builder-services="flowBuilderServices" />-->
+    <!--<webflow:flow-builder-services id="flowBuilderServices" validator="validator" />-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

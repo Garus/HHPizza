@@ -1,14 +1,20 @@
 package fi.haagahelia.pizza.domain;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Embeddable
 public class Postinumero implements Serializable {
+
+    @Pattern(regexp = "[0-9]{5}", message = "Tarkista postinumero")
     private String postiNumero;
+    @Size(min = 3, max = 255, message = "Postitoimipaikan minimipituus=3 ja maksimipituus 255")
     private String postiToimiPaikka;
 
-public Postinumero() {}
+    public Postinumero() {
+    }
 
     public Postinumero(String postiNumero, String postiToimiPaikka) {
         this.postiNumero = postiNumero;

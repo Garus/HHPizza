@@ -2,11 +2,13 @@ package fi.haagahelia.pizza.domain;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Embeddable
 public class Osoite implements Serializable {
 
+    @Size(min=5, max=255, message="Osoitteen minimipituus=5 ja maksimipituus 255")
     private String katuOsoite;
     @Embedded
     private Postinumero postinumero;

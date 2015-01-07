@@ -174,7 +174,6 @@ public class TuoteController {
     public String getLisääUusiTuote(@ModelAttribute("uusituote") @Valid PizzaTuote tuote, BindingResult result, HttpServletRequest request) {
 
         if(result.hasErrors()) {
-            logger.info("Errors " + result.getAllErrors().toString());
             return "uusituote";
         }
 
