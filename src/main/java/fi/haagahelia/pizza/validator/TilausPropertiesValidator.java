@@ -16,7 +16,6 @@ public class TilausPropertiesValidator implements Validator {
     public void validate(Object var1, Errors errors) {
         Tilaus tilaus = (Tilaus) var1;
         Tilaaja tilaaja = tilaus.getTilaaja();
-        System.err.println("VALIDATOR");
         if (tilaaja.getNimi().length() < 3 || tilaaja.getNimi().length() > 50) {
             errors.rejectValue("tilaaja.nimi", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.nimi_virhe");
         }
@@ -25,7 +24,7 @@ public class TilausPropertiesValidator implements Validator {
             errors.rejectValue("osoite", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.tilaus_katuosoite_virhe");
         }
 
-        SähköpostiValidator sähköpostiValidator = new SähköpostiValidator();
+        SahkopostiValidator sähköpostiValidator = new SahkopostiValidator();
 
         if (!sähköpostiValidator.validate(tilaaja.getEmail())) {
             errors.rejectValue("tilaaja.email", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.email_virhe");

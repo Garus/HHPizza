@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * This code is from:
  * http://www.mkyong.com/regular-expressions/how-to-validate-email-address-with-regular-expression/
  */
-public class SähköpostiValidator {
+public class SahkopostiValidator {
 
     private Pattern pattern;
     private Matcher matcher;
@@ -17,7 +17,7 @@ public class SähköpostiValidator {
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                     + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-    public SähköpostiValidator() {
+    public SahkopostiValidator() {
         pattern = Pattern.compile(EMAIL_PATTERN);
     }
 
