@@ -31,7 +31,7 @@ public class Tilaus implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "toimitustapa")
     private String toimitustapa;
     @Column(name = "maksutapa")

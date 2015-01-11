@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:webflow="http://www.springframework.org/schema/webflow-config"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
 							http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
@@ -13,16 +14,9 @@
     </action-state>
 
     <view-state id="kysyyAsiakkaanTiedot" view="kysyyAsiakastiedot.jsp" model="tilaus">
-        <binder>
-            <binding property="tilaaja.nimi" required="true" />
-            <binding property="tilaaja.email" required="true" />
-            <binding property="tilaaja.osoite" required="true" />
-            <binding property="tilaaja.osoite.katuOsoite" required="true" />
-            <binding property="tilaaja.osoite.postinumero" required="true" />
-        </binder>
         <!--<transition on="asiakasTiedotOk" to="kysyyToimitusTiedot"/>-->
         <transition on="asiakasTiedotOk" to="tilausvahvistus"/>
-
+        <transition on="cancel" to="peruTilaus" validate="false"/>
     </view-state>
 
     <view-state id="kysyyToimitusTiedot" model="tilaus">

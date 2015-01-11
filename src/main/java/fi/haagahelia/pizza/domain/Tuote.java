@@ -19,9 +19,10 @@ public abstract class Tuote implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
-    @Size(min=3, max=255, message="Nimen minimipituus=3 ja maksimipituus 255")
+    @Size(min=3, max=50, message="Nimen minimipituus=3 ja maksimipituus 50")
     protected String nimi;
     protected double hinta;
+    @Size(min=0, max=50, message="Tuotekuvauksen minimipituus=0 ja maksimipituus 50")
     protected String kuvaus;
 
     public Tuote() {

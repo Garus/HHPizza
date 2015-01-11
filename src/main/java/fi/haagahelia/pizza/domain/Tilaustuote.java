@@ -40,15 +40,22 @@ public class Tilaustuote implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "hinta")
-    private float hinta;
-    @JoinColumn(name = "tuote_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Tuote tuoteId;
+    private double hinta;
+//    @JoinColumn(name = "tuote_id", referencedColumnName = "id")
+//    @ManyToOne(optional = true)
+//    private Tuote tuote;
+    private int tuote_id;
     @JoinColumn(name = "tilaus_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Tilaus tilausId;
+    private Tilaus tilaus;
 
     public Tilaustuote() {
+    }
+
+    public Tilaustuote(double hinta, int tuote_id, Tilaus tilaus) {
+        this.hinta = hinta;
+        this.tuote_id = tuote_id;
+        this.tilaus = tilaus;
     }
 
     public Tilaustuote(Integer id) {
@@ -68,28 +75,28 @@ public class Tilaustuote implements Serializable {
         this.id = id;
     }
 
-    public float getHinta() {
+    public double getHinta() {
         return hinta;
     }
 
-    public void setHinta(float hinta) {
+    public void setHinta(double hinta) {
         this.hinta = hinta;
     }
 
-    public Tuote getTuoteId() {
-        return tuoteId;
+    public int getTuote_id() {
+        return tuote_id;
     }
 
-    public void setTuoteId(Tuote tuoteId) {
-        this.tuoteId = tuoteId;
+    public void setTuote_id(int tuote_id) {
+        this.tuote_id = tuote_id;
     }
 
-    public Tilaus getTilausId() {
-        return tilausId;
+    public Tilaus getTilaus() {
+        return tilaus;
     }
 
-    public void setTilausId(Tilaus tilausId) {
-        this.tilausId = tilausId;
+    public void setTilaus(Tilaus tilausId) {
+        this.tilaus = tilausId;
     }
 
     @Override
@@ -114,7 +121,11 @@ public class Tilaustuote implements Serializable {
 
     @Override
     public String toString() {
-        return "fi.haagahelia.pizza.domain.Tilaustuote[ id=" + id + " ]";
+        return "Tilaustuote{" +
+                "id=" + id +
+                ", hinta=" + hinta +
+                ", tuote_id=" + tuote_id +
+                ", tilaus=" + tilaus +
+                '}';
     }
-    
 }

@@ -12,6 +12,7 @@ import org.hibernate.annotations.GenerationTime;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,10 +32,12 @@ public class Kayttaja implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private int id;
+    @Size(min=4, max=50, message="Nimen minimipituus=4 ja maksimipituus 50")
     @Basic(optional = false)
     @Column(name = "nimi")
     private String nimi;
-    @Column(name = "tunnus", nullable = false)
+    @Size(min=5, max=20, message="Käyttäjätunnuksen minimipituus=5 ja maksimipituus 20")
+    @Column(name = "tunnus", unique = true, nullable = false)
     private String kayttajaTunnus;
     @Column(name = "salasana")
     private String salasana;

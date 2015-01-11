@@ -59,7 +59,8 @@
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
                     <input type="submit" id="btnAdd" class="btn btn primary"
-                           value="${!empty tuote.id ? 'Lisää tuote' : 'Tallenna'}">
+                           value="${!empty tuote.id ? 'Lisää tuote' : 'Tallenna'}">&nbsp;
+                    <a href="<spring:url value="/tuotteet/admin"/>" class="btn btn-default">Peruuta</a>
                 </div>
             </div>
         </fieldset>

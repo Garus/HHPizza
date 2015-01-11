@@ -22,6 +22,7 @@
                 <p>Parhaat pizzat aina
                     edulliseen hintaan!</p>
                 <ul class="nav nav-pills nav-justified" style="margin: auto; width:50%; text-align:center;">
+                    <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/" />">Etusivu</a></li>
                     <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/tuotteet" />">Tuotteet</a></li>
                     <c:choose>
                         <c:when test="${sessionScope.ostoskori.getCount() > 0}">

@@ -77,6 +77,9 @@
                 <div>
                     <input type="submit" id="btnAdd" class="btn btn primary"
                            value="${!empty kayttaja.id ? 'Lisää kayttaja' : 'Tallenna'}">
+                    &nbsp;<input action="action" value="Takaisin"
+                                 type="button" class="btn btn-default"
+                                 onclick="history.go(-1);"/>
                 </div>
             </div>
         </fieldset>

@@ -29,7 +29,7 @@ public class Ostoskori implements Serializable {
 
         boolean isTuoteKorissa = true;
         for (OstoskorinTuote korinTuote : tuotteet) {
-            if (korinTuote.getTuote().equals(tuote)) {
+            if (korinTuote.getTuote().getId() == tuote.getId()) {
                 korinTuote.lisaaLukumaara();
                 isTuoteKorissa = false;
             }

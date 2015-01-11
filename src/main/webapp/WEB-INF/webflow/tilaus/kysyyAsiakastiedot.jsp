@@ -18,7 +18,7 @@
     </div>
 </section>
 <section class="container">
-    <form:form modelAttribute="tilaus.tilaaja" class="form-horizontal">
+    <form:form modelAttribute="tilaus" class="form-horizontal">
         <fieldset>
             <legend>Asiakastiedot</legend>
 
@@ -30,58 +30,67 @@
                 <%--</div>--%>
 
             <div class="form-group">
+                <label class="control-label col-lg-2" for="nimi">Tilaus osoite</label>
+
+                <div class="col-lg-10">
+                    <form:input id="osoite" path="osoite" type="text" class="form:input-large"/>
+                </div>
+                <form:errors path="osoite" cssClass="text-danger"/>
+            </div>
+
+            <div class="form-group">
                 <label class="control-label col-lg-2" for="nimi">Nimi</label>
 
                 <div class="col-lg-10">
-                    <form:input id="nimi" path="nimi" type="text" class="form:input-large"/>
+                    <form:input id="nimi" path="tilaaja.nimi" type="text" class="form:input-large"/>
                 </div>
-                <form:errors path="nimi" cssClass="text-danger"/>
+                <form:errors path="tilaaja.nimi" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="email">Sähköposti</label>
 
                 <div class="col-lg-10">
-                    <form:input id="email" path="email" type="text" class="form:input-large"/>
+                    <form:input id="email" path="tilaaja.email" type="text" class="form:input-large"/>
                 </div>
-                <form:errors path="email" cssClass="text-danger"/>
+                <form:errors path="tilaaja.email" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="katuOsoite">Katuosoite</label>
 
                 <div class="col-lg-10">
-                    <form:input id="katuOsoite" path="osoite.katuOsoite" type="text"
+                    <form:input id="katuOsoite" path="tilaaja.osoite.katuOsoite" type="text"
                                 class="form:input-large"/>
                 </div>
-                <form:errors path="osoite.katuOsoite" cssClass="text-danger"/>
+                <form:errors path="tilaaja.osoite.katuOsoite" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="postiNumero">Postinumero</label>
 
                 <div class="col-lg-10">
-                    <form:input id="postiNumero" path="osoite.postinumero.postiNumero" type="text"
+                    <form:input id="postiNumero" path="tilaaja.osoite.postinumero.postiNumero" type="text"
                                 class="form:input-large"/>
                 </div>
-                <form:errors path="osoite.postinumero.postiNumero" cssClass="text-danger"/>
+                <form:errors path="tilaaja.osoite.postinumero.postiNumero" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="postiToimiPaikka">Postitoimipaikka</label>
 
                 <div class="col-lg-10">
-                    <form:input id="postiToimiPaikka" path="osoite.postinumero.postiToimiPaikka" type="text"
+                    <form:input id="postiToimiPaikka" path="tilaaja.osoite.postinumero.postiToimiPaikka" type="text"
                                 class="form:input-large"/>
                 </div>
-                <form:errors path="osoite.postinumero.postiToimiPaikka" cssClass="text-danger"/>
+                <form:errors path="tilaaja.osoite.postinumero.postiToimiPaikka" cssClass="text-danger"/>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="puhelin">Puhelin</label>
 
                 <div class="col-lg-10">
-                    <form:input id="puhelin" path="puhelin" type="text"
+                    <form:input id="puhelin" path="tilaaja.puhelin" type="text"
                                 class="form:input-large"/>
                 </div>
             </div>

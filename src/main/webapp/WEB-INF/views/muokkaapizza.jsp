@@ -24,13 +24,17 @@
             <p>Pääsette nauttimaan paikkakunnan parhaista pizzoista aina
                 edulliseen hintaan!</p>
             <ul class="nav nav-pills nav-justified" style="margin: auto; width:50%; text-align:center;">
-                <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/tuotteet" />">Tuotteet</a></li>
+                <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/" />">Etusivu</a></li>
+                <li role="presentation" class="active"><a class="btn btn-link" href="<spring:url value="/tuotteet" />">Tuotteet</a>
+                </li>
                 <c:choose>
                     <c:when test="${sessionScope.ostoskori.getCount() > 0}">
-                        <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori: ${sessionScope.ostoskori.getCount()}, yht: <fmt:formatNumber value="${sessionScope.ostoskori.getSum()}" type="currency"/></a></li>
+                        <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori: ${sessionScope.ostoskori.getCount()},
+                            yht: <fmt:formatNumber value="${sessionScope.ostoskori.getSum()}" type="currency"/></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori</a></li>
+                        <li role="presentation"><a href="<spring:url value="/ostoskori" />" class="btn btn-link">Ostoskori</a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -64,22 +68,24 @@
                                                 <td>${pizzanaine.tuote.nimi}</td>
                                                 <td>${pizzanaine.maara}</td>
                                                 <td>&nbsp;<fmt:formatNumber value="${pizzanaine.tuote.hinta}"
-                                                                             type="currency"/>
-                                                    <%--<c:set var="sum" value="${sum + pizzanaine.getSumma()}"/>--%>
+                                                                            type="currency"/>
+                                                        <%--<c:set var="sum" value="${sum + pizzanaine.getSumma()}"/>--%>
                                                 </td>
-                                                <td><a class="btn-link" href="muokkaapizza/aine/${tuote.id}/${pizzanaine.tuote.id}">Poista</a></td>
+                                                <td><a class="btn-link"
+                                                       href="muokkaapizza/aine/${tuote.id}/${pizzanaine.tuote.id}">Poista</a>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </c:when>
                                     <c:otherwise>
                                         <tr>
-                                        <td colspan="3"></td>
-                                        <td>Ei lisäaineita</td>
+                                            <td colspan="3"></td>
+                                            <td>Ei lisäaineita</td>
                                         </tr>
                                     </c:otherwise>
                                 </c:choose>
                                 <tr>
-                                    <td colspan="2">Yhteensä: </td>
+                                    <td colspan="2">Yhteensä:</td>
                                     <td><fmt:formatNumber value="${tuote.getSumma()}" type="currency"/></td>
                                     <td></td>
                                 </tr>
@@ -102,21 +108,23 @@
             </div>
             </c:when>
             <c:otherwise>
-                Tuotteita ei ole muokattavana!<br>
-                <a href="<spring:url value="/tuotteet" />">Tuotteet</a>
+            Tuotteita ei ole muokattavana!<br>
+            <a href="<spring:url value="/tuotteet" />">Tuotteet</a>
             </c:otherwise>
             </c:choose>
     </div>
     </section>
-            <div class="footer">
-                <div class="bottom-first">
-                    <a href="terms/terms.html"><p>Käyttöehdot</p>
-                </div>
-                <div class="bottom-second">
-                    <p><a href="tuotteet/admin">Admin-tuotteet</a><br/>
-                        <a href="kayttajat/">Admin-käyttäjät</a></p>
-                    <p>Copyright © 2014 il Grasso</p>
-                </div>
-            </div>
-    </body>
+    <div class="footer">
+        <div class="bottom-first">
+            <a href="terms/terms.html">Käyttöehdot</a>
+        </div>
+        <div class="bottom-second">
+            <p><a href="tuotteet/admin">Admin-tuotteet</a><br/>
+                <a href="kayttajat/">Admin-käyttäjät</a></p>
+
+            <p>Copyright © 2014 il Grasso</p>
+        </div>
+    </div>
+</div>
+</body>
 </html>

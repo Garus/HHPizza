@@ -13,17 +13,16 @@
 
 
     <!-- Enables the Spring MVC @Controller programming model -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven validator="validator"/>
     <mvc:resources location="/resources/" mapping="/**"/>
 
     <context:component-scan base-package="fi.haagahelia.pizza"/>
 
     <!--<webflow:flow-registry flow-builder-services="flowBuilderServices" />-->
     <!--<webflow:flow-builder-services id="flowBuilderServices" validator="validator" />-->
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />-->
 
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
@@ -62,7 +61,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
             </props>
         </property>
     </bean>
@@ -84,7 +83,9 @@
     <bean id="tilausService" class="fi.haagahelia.pizza.service.TilausServiceImpl">
         <property name="tilausDAO" ref="tilausDAO"></property>
     </bean>
-
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="validationMessageSource" ref="messageSource" />
+    </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -100,9 +101,24 @@
         <property name="defaultLocale" value="fi_FI"/>
     </bean>
 
+    <bean id="tilausValidator" class="fi.haagahelia.pizza.validator.TilausValidator">
+        <property name = "springValidators">
+            <set>
+                <ref bean = "tilausPropertiesValidator"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="tilausPropertiesValidator" class="fi.haagahelia.pizza.validator.TilausPropertiesValidator"/>
+
+    <!--<webflow-config:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"-->
+                                   <!--conversion-service="conversionService" validator="validator"    development="true" />-->
+
+    <webflow-config:flow-builder-services id="flowBuilderServices" validator="validator" />
+
     <webflow-config:flow-executor id="flowExecutor" flow-registry="flowRegistry"/>
 
-    <webflow-config:flow-registry id="flowRegistry" base-path="/WEB-INF/webflow">
+    <webflow-config:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices" base-path="/WEB-INF/webflow">
         <webflow-config:flow-location path="/tilaus/tilaus-flow.xml" id="tilaus"/>
     </webflow-config:flow-registry>
 
