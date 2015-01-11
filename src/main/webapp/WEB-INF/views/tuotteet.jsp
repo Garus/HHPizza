@@ -58,11 +58,12 @@
         </div>
             <div class="footer">
                 <div class="bottom-first">
-                    <a href="terms/terms.html"><p>Käyttöehdot</p>
+                    <a href="terms/terms.html">Käyttöehdot</a>
                 </div>
                 <div class="bottom-second">
-                    <p><a href="tuotteet/admin">Admin-tuotteet</a><br/>
-                        <a href="kayttajat/">Admin-käyttäjät</a></p>
+                    <p><a href="<spring:url value="/tuotteet/admin" />">Admin-tuotteet</a><br/>
+                        <a href="<spring:url value="/kayttajat" />">Admin-käyttäjät</a>
+                    </p>
                     <p>Copyright © 2014 il Grasso</p>
                 </div>
             </div>
