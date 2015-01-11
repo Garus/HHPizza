@@ -32,6 +32,11 @@
 
     <action-state id="processOrder">
         <evaluate expression="tilausServiceImpl.tallennaTilaus(tilaus)" result="tilaus.id"/>
+        <transition to="finalizeOrder"/>
+    </action-state>
+
+    <action-state id="finalizeOrder">
+        <evaluate expression="ostoskoriServiceImpl.tyhjennaOstoskori()"/>
         <transition to="kiitos"/>
     </action-state>
 
@@ -40,7 +45,8 @@
     </view-state>
 
     <view-state id="kiitos" model="order">
-        <transition to="endState"/>
+        <transition to="endState">
+        </transition>
     </view-state>
 
     <end-state id="endState"/>

@@ -51,7 +51,7 @@ public class Ostoskori implements Serializable {
 
     public boolean poistaTuoteKorista(int tuoteId, boolean poistaKaikki) {
         boolean ok = false;
-        for (Iterator<OstoskorinTuote> it = tuotteet.iterator(); it.hasNext();) {
+        for (Iterator<OstoskorinTuote> it = tuotteet.iterator(); it.hasNext(); ) {
             OstoskorinTuote korinTuote = it.next();
             if (korinTuote.getTuote().getId() == tuoteId) {
                 if (poistaKaikki) {
@@ -79,6 +79,7 @@ public class Ostoskori implements Serializable {
     }
 
     public void poistaKaikki() {
+        logger.info("EMPTYCART");
         this.tuotteet.clear();
     }
 

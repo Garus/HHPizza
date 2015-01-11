@@ -40,23 +40,25 @@
                             <br>
                                 ${tilaus.tilaaja.osoite.postinumero.postiNumero}, ${tilaus.tilaaja.osoite.postinumero.postiToimiPaikka}
                             <br>
-                                ${tilaus.tilaaja.puhelin}, ${tilaus.tilaaja.email}
+                                ${tilaus.tilaaja.puhelin}
+                            <br>
+                                ${tilaus.tilaaja.email}
                             <br>
                         </address>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <address>
-                            <strong>Toimitustiedot</strong> <br>
-                                ${tilaus.maksutapa}<br>
-                                ${tilaus.toimitustapa}
-                            <br>
-                                ${tilaus.osoite}
-                        </address>
-                    </div>
+                <%--<div class="row">--%>
+                    <%--<div class="col-xs-6 col-sm-6 col-md-6">--%>
+                        <%--<address>--%>
+                            <%--<strong>Toimitustiedot</strong> <br>--%>
+                                <%--${tilaus.maksutapa}<br>--%>
+                                <%--${tilaus.toimitustapa}--%>
+                            <%--<br>--%>
+                                <%--${tilaus.osoite}--%>
+                        <%--</address>--%>
+                    <%--</div>--%>
 
-                </div>
+                <%--</div>--%>
                 <div class="row">
 
                     <table class="table table-hover">
@@ -74,8 +76,10 @@
                                 <td class="col-md-9"><em>${korinTuote.tuote.nimi}</em></td>
                                 <td class="col-md-1" style="text-align: center">
                                         ${korinTuote.maara}</td>
-                                <td class="col-md-1 text-center">${korinTuote.tuote.hinta}</td>
-                                <td class="col-md-1 text-center">${korinTuote.summa}</td>
+                                <td class="col-md-1 text-center"><fmt:formatNumber value="${korinTuote.tuote.hinta}"
+                                                                                   type="currency"/></td>
+                                <td class="col-md-1 text-center"><fmt:formatNumber value="${korinTuote.summa}"
+                                                                                   type="currency"/></td>
                             </tr>
                         </c:forEach>
                         <tr>

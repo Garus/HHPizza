@@ -30,15 +30,6 @@
                 <%--</div>--%>
 
             <div class="form-group">
-                <label class="control-label col-lg-2" for="nimi">Tilaus osoite</label>
-
-                <div class="col-lg-10">
-                    <form:input id="osoite" path="osoite" type="text" class="form:input-large"/>
-                </div>
-                <form:errors path="osoite" cssClass="text-danger"/>
-            </div>
-
-            <div class="form-group">
                 <label class="control-label col-lg-2" for="nimi">Nimi</label>
 
                 <div class="col-lg-10">

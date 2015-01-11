@@ -20,9 +20,9 @@ public class TilausPropertiesValidator implements Validator {
             errors.rejectValue("tilaaja.nimi", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.nimi_virhe");
         }
 
-        if (tilaus.getOsoite().length() < 2 || tilaus.getOsoite().length() > 100) {
-            errors.rejectValue("osoite", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.tilaus_katuosoite_virhe");
-        }
+//        if (tilaus.getOsoite().length() < 2 || tilaus.getOsoite().length() > 100) {
+//            errors.rejectValue("osoite", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.tilaus_katuosoite_virhe");
+//        }
 
         SahkopostiValidator sähköpostiValidator = new SahkopostiValidator();
 
