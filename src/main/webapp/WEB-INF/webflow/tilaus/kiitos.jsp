@@ -13,7 +13,7 @@
 <section>
     <div class="jumbotron">
         <div class="container">
-            <h1 class="alert alert-danger">Kiitos tilauksesta</h1>
+            <h1 class="alert-info">Kiitos tilauksesta</h1>
 
             <p>Tilausnumero on: ${tilaus.id}</p>
         </div>

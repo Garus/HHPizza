@@ -111,6 +111,17 @@
 
     <bean id="tilausPropertiesValidator" class="fi.haagahelia.pizza.validator.TilausPropertiesValidator"/>
 
+    <!-- Exception handling -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error/exception" />
+        <property name="defaultStatusCode" value="500" />
+        <property name="warnLogCategory" value="WARN" />
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.webflow.execution.repository.FlowExecutionRestorationFailureException">tilausvirhe</prop>
+            </props>
+        </property>
+    </bean>
     <!--<webflow-config:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"-->
                                    <!--conversion-service="conversionService" validator="validator"    development="true" />-->
 
