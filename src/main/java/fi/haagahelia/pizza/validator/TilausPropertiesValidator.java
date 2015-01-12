@@ -20,10 +20,6 @@ public class TilausPropertiesValidator implements Validator {
             errors.rejectValue("tilaaja.nimi", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.nimi_virhe");
         }
 
-//        if (tilaus.getOsoite().length() < 2 || tilaus.getOsoite().length() > 100) {
-//            errors.rejectValue("osoite", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.tilaus_katuosoite_virhe");
-//        }
-
         SahkopostiValidator sähköpostiValidator = new SahkopostiValidator();
 
         if (!sähköpostiValidator.validate(tilaaja.getEmail())) {
@@ -33,7 +29,7 @@ public class TilausPropertiesValidator implements Validator {
         if (tilaaja.getOsoite().getKatuOsoite().length() < 2 || tilaaja.getOsoite().getKatuOsoite().length() > 100) {
             errors.rejectValue("tilaaja.osoite.katuOsoite", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.katuosoite_virhe");
         }
-        if (tilaaja.getOsoite().getPostinumero().getPostiNumero().length() != 5) {
+        if (!PostinumeroValidator.validate(tilaaja.getOsoite().getPostinumero().getPostiNumero().trim())) {
             errors.rejectValue("tilaaja.osoite.postinumero.postiNumero", "fi.haagahelia.pizza.validator.TilausPropertiesValidator.postinumero_virhe");
         }
         if (tilaaja.getOsoite().getPostinumero().getPostiToimiPaikka().length() < 2 || tilaaja.getOsoite().getPostinumero().getPostiToimiPaikka().length() > 100) {
